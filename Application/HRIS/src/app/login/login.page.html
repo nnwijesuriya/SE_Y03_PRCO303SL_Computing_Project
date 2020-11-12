@@ -1,9 +1,48 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+<Div style="text-align: center; margin-top: 110px;">
+  <img src="../../assets/images/logo.png">
+</Div>
+<ion-grid>
+  <ion-row>
+    <ion-col size-md="6" offset-md="3">
+      <ion-list>
+        <ion-item>
+         <ion-label position="floating">Username</ion-label>
+         <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password"></ion-input>
+         </ion-item>
+         <ion-item>
+         <ion-grid>
+           <Div style="margin-left: 60px;">
+            <ion-radio-group>
+           <ion-row>
+             <ion-col>
+               <ion-item>
+              <ion-label>HR Managers</ion-label>
+              <ion-radio slot="start" value="HR Managers"></ion-radio>
+            </ion-item>
+             </ion-col>
+             <ion-col>
+            <ion-item>
+              <ion-label>Employees</ion-label>
+              <ion-radio slot="start" value="Employees"></ion-radio>
+            </ion-item>
+             </ion-col>
+           </ion-row>
+           </ion-radio-group>
+          </Div>
+         </ion-grid>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+<ion-col size-md="6" offset-md="3">
+<ion-button color="success" expand="block" (click)="login()">Login</ion-button>
+</ion-col>
+  </ion-row>
+</ion-grid>
 </ion-content>
