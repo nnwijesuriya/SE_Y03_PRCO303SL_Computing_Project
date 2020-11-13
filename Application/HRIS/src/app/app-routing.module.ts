@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'documents',
     loadChildren: () => import('./managers/documents/documents.module').then( m => m.DocumentsPageModule)
   },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./managers/tabs1/tabs/tabs.module').then( m => m.TabsPageModule)
+  },
 ];
 
 @NgModule({
