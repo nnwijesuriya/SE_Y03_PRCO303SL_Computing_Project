@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
@@ -10,15 +11,22 @@ import { notice, noticesService } from './notices.service';
 })
 export class NoticesPage implements OnInit {
 
+  pipe = new DatePipe('en-US'); 
+
   constructor(private noticeService: noticesService, private router : Router, private toastCtrl: ToastController) { }
 
   notice : notice ={
     heading: '',
     description: '',
-    priority: ''
+    priority: '',
+    date: ''
   };
 
+
   ngOnInit() {
+    const now = Date.now();
+    const myFormattedDate = this.pipe.transform(now, 'short');
+    this.notice.date= myFormattedDate;
   }
 
   async succesToast() {
@@ -40,7 +48,7 @@ export class NoticesPage implements OnInit {
   submit()
   {
     this.noticeService.addnotice(this.notice, this.notice.priority).then(() => {
-      this.router.navigateByUrl('tabs/notices');
+      this.router.navigateByUrl('dashboard');
       this.succesToast();
     }, err => {
       this.failToast();

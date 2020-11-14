@@ -8,6 +8,7 @@ export interface notice {
   heading: string,
   description: string;
   priority: string;
+  date: any;
 }
  
 @Injectable({
@@ -68,6 +69,17 @@ export class noticesService {
     }else
     {
       return this.noticeCollectionN.add(notices);
+    }
+  }
+
+  getnotices(type: string): Observable<notice[]> {
+    if(type=="Urgent Notice"){
+      return this.noticesU;
+    } else if(type=="Important Notice"){
+      return this.noticesH;
+    }else
+    {
+      return this.noticesN;
     }
   }
 }
