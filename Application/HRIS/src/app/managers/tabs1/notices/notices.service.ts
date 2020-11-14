@@ -72,7 +72,7 @@ export class noticesService {
     }
   }
 
-  getnotices(type: string): Observable<notice[]> {
+  getnotice(type: string): Observable<notice[]> {
     if(type=="Urgent Notice"){
       return this.noticesU;
     } else if(type=="Important Notice"){
