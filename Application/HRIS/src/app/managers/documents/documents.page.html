@@ -1,4 +1,13 @@
 <app-header></app-header>
 <ion-content>
-
+<ion-grid style="padding-top: 50px;">
+    <ion-row style="text-align: center;">
+        <ion-col  size-md="4" offset-md="1">
+            <ion-button expand="block" (click)="openModal()" >Submited Documents</ion-button>
+        </ion-col>
+        <ion-col  size-md="4" offset-md="2">  
+                <ion-button expand="block" (click)="openModalDT()" >Add new document</ion-button>
+        </ion-col>
+    </ion-row>   
+</ion-grid>
 </ion-content>

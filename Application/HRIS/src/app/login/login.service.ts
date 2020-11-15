@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -11,7 +12,7 @@ import { BehaviorSubject } from 'rxjs';
     private eventAuthError = new BehaviorSubject<string>("");
     eventAuthError$ = this.eventAuthError.asObservable();
     newUser;
-    constructor(private afAuth: AngularFireAuth, private route: Router) { }
+    constructor(private afAuth: AngularFireAuth, private route: Router, private navctrl: NavController) { }
   
     isfound;
   
@@ -24,12 +25,18 @@ import { BehaviorSubject } from 'rxjs';
           if(userCredential) {
             if(this.isfound= email.includes("@managers"))
             {
-              this.route.navigate(['dashboard']);
+              this.navctrl.navigateRoot(['dashboard']);
             }else
             {
               this.route.navigate(['login']);
             }
           }
         })
+    }
+
+    signout(){
+      this.afAuth.signOut().then(exit =>{
+        this.navctrl.navigateRoot('login');
+      })
     }
 }
