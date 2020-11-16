@@ -25,7 +25,6 @@ export class DashboardPage implements OnInit {
     if(data.uid && data.email)
       {
         this.id = data.uid;
-        console.log(this.id)
       } else
       {
          this.navctrl.navigateRoot('login');

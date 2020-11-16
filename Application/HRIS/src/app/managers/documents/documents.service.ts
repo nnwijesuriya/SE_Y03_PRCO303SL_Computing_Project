@@ -37,4 +37,16 @@ export class DocumentsService {
       return this.docs;
   }
 
+  getCollectionWithIDs(value) {
+    return this.afs.collection<documents>('documents/managers/forms', ref => 
+        ref.where(
+            'userId', '==', value
+        )).snapshotChanges().pipe(
+            map(actions => actions.map(a => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { id, ...data };
+        })))
+}
+
 }

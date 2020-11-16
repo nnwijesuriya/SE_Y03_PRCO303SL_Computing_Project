@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { MenuController, ModalController, NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { DocumentTypesComponent} from '../documents/modals/document-types/document-types.component'
-import {SubmitedDocumentsComponent} from '../documents/modals/submited-documents/submited-documents.component';
 import { documents, DocumentsService } from './documents.service';
 
 @Component({
@@ -12,9 +13,17 @@ import { documents, DocumentsService } from './documents.service';
 })
 export class DocumentsPage implements OnInit {
 
-  constructor(private menuctrl: MenuController,private modals: ModalController, private noticedoc: DocumentsService, private navctrl: NavController) { }
+  constructor(private menuctrl: MenuController,private modals: ModalController,
+     private noticedoc: DocumentsService, private navctrl: NavController, private firestore : AngularFirestore, private auth: AngularFireAuth) 
+     { }
 
   ngOnInit() {
+    this.auth.authState.subscribe(data=> {
+          let id;
+          id = data.uid;
+          this.searchEmployees(id);
+  })
+    
     this.menuctrl.enable(true, 'documents');
     this.menuctrl.enable(true, 'submited documents');
 
@@ -23,16 +32,11 @@ export class DocumentsPage implements OnInit {
 
   public docs : Observable<documents[]>;
 
+  public doc : Observable<documents[]>;
+
   async openModalDT(){
     const modal = await this.modals.create({
       component: DocumentTypesComponent
-    });
-    return await modal.present();
-  }
-
-  async openModal(){
-    const modal = await this.modals.create({
-      component: SubmitedDocumentsComponent
     });
     return await modal.present();
   }
@@ -41,6 +45,11 @@ export class DocumentsPage implements OnInit {
   {
     this.docs = this.noticedoc.getdocuments();
     this.navctrl.navigateRoot('documents');
+  }
+
+  searchEmployees(id)
+  {
+  this.doc = this.noticedoc.getCollectionWithIDs(id);
   }
 
 }
