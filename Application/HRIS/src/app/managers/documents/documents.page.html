@@ -1,6 +1,6 @@
 <app-header></app-header>
 <ion-content>
-<ion-grid style="padding-top: 50px;">
+<ion-grid style="padding-top: 70px;">
     <ion-row style="text-align: center;">
         <ion-col  size-md="4" offset-md="1">
             <ion-button expand="block" (click)="openModal()" >Submited Documents</ion-button>
@@ -9,5 +9,28 @@
                 <ion-button expand="block" (click)="openModalDT()" >Add new document</ion-button>
         </ion-col>
     </ion-row>   
+</ion-grid>
+<ion-grid style="padding-top: 40px;">
+    <ion-row>
+        <ion-col size-md="10" offset-md="1">
+            <ion-list *ngFor="let doc of (docs | async)">
+                <ion-item>
+               <ion-grid>
+                   <ion-row>
+                       <ion-col>
+                        {{doc.Eemail}}   
+                       </ion-col>
+                       <ion-col>
+                        {{doc.formtype}}
+                       </ion-col>
+                       <ion-col>
+                        {{doc.sdate}}
+                       </ion-col>
+                   </ion-row>
+               </ion-grid>
+               </ion-item>
+               </ion-list>
+        </ion-col>
+    </ion-row>
 </ion-grid>
 </ion-content>

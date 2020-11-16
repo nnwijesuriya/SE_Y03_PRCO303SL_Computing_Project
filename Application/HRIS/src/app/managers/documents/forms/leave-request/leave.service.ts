@@ -4,25 +4,33 @@ import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
  
  
-export interface documents {
+export interface leaveForm {
   id?: string,
   userId: any;
   formtype: string;
+  Fname: string,
+  Lname: string;
   Eemail: string;
+  phone: string;
+  position: string;
+  Ldate: any;
+  Edate: any;
+  Ltype: string;
+  comments: string;
   sdate:any;
 }
  
 @Injectable({
   providedIn: 'root'
 })
-export class DocumentsService {
+export class LeaveService {
 
-  private docs: Observable<documents[]>;
-  private docsCollection: AngularFirestoreCollection<documents>;
+  private leave: Observable<leaveForm[]>;
+  private leaveCollection: AngularFirestoreCollection<leaveForm>;
 
   constructor(private afs : AngularFirestore){
-    this.docsCollection = this.afs.collection<documents>('documents/managers/forms');
-    this.docs = this.docsCollection.snapshotChanges().pipe(
+    this.leaveCollection = this.afs.collection<leaveForm>('documents/managers/forms');
+    this.leave = this.leaveCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -33,8 +41,8 @@ export class DocumentsService {
     );
   }
 
-  getdocuments(): Observable<documents[]> {
-      return this.docs;
-  }
-
+  addform(leav : leaveForm): Promise<DocumentReference> { 
+      return this.leaveCollection.add(leav);
+    }
+ 
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { notice, noticesService } from '../tabs1/notices/notices.service';
-import {NoticesPage} from '../tabs1/notices/notices.page';
 import { MenuController, ModalController, NavController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 
