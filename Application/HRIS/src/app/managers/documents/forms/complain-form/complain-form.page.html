@@ -1,0 +1,160 @@
+<ion-content>
+  <h1 style="text-align: center;">Accident Report Form</h1>
+<ion-grid>
+<ion-row>
+  <ion-col size-md="8" offset-md="2">
+    <ion-row>
+      <ion-header>Details of the Employee</ion-header>
+    </ion-row>
+<ion-item style="padding-top: 20px;">
+    <ion-row>
+      <ion-col>
+      <ion-item>
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input [(ngModel)]="form.EFname"></ion-input>        
+      </ion-item>
+    </ion-col>
+    <hr>
+    <hr>
+      <ion-col style="padding-left: 40px;">
+        <ion-item>
+          <ion-label position="floating">Last Name</ion-label>
+          <ion-input [(ngModel)]="form.ELname"></ion-input>
+        </ion-item>
+      </ion-col>    
+    </ion-row>
+</ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Employee email</ion-label>
+          <ion-input [(ngModel)]="form.Eemail"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Department</ion-label>
+          <ion-input [(ngModel)]="form.Edepartment"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Position</ion-label>
+          <ion-input [(ngModel)]="form.Eposition"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+</ion-col>
+</ion-row>
+</ion-grid>
+<ion-grid>
+  <ion-row>
+    <ion-col size-md="8" offset-md="2">
+      <ion-row>
+        <ion-header>Details of the complaing employee</ion-header>
+      </ion-row>
+  <ion-item style="padding-top: 20px;">
+      <ion-row>
+        <ion-col>
+        <ion-item>
+            <ion-label position="floating">First Name</ion-label>
+            <ion-input [(ngModel)]="form.CFname"></ion-input>        
+        </ion-item>
+      </ion-col>
+      <hr>
+      <hr>
+        <ion-col style="padding-left: 40px;">
+          <ion-item>
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input [(ngModel)]="form.CLname"></ion-input>
+          </ion-item>
+        </ion-col>    
+      </ion-row>
+  </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-top: 10px;">
+            <ion-label position="floating">Department</ion-label>
+            <ion-input [(ngModel)]="form.Cdepartment"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-top: 10px;">
+            <ion-label position="floating">Position</ion-label>
+            <ion-input [(ngModel)]="form.Cposition"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+  </ion-col>
+  </ion-row>
+  </ion-grid>
+<ion-grid>
+  <ion-row>
+    <ion-col size-md="8" offset-md="2">
+      <ion-row>
+        <ion-header>Details Of The Complaint</ion-header>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-top: 10px;">
+            <ion-label position="floating">Reason for the complain</ion-label>
+            <ion-textarea [(ngModel)]="form.Rcomplain"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-top: 20px;">
+            <ion-label position="floating">Incident occured Date</ion-label>
+            <ion-datetime [(ngModel)]="form.Idate"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-top: 10px;">
+            <ion-label position="floating">Location</ion-label>
+            <ion-input [(ngModel)]="form.location"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-top: 10px;">
+            <ion-label position="floating">Witnesses Emails</ion-label>
+            <ion-textarea [(ngModel)]="form.witness"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-top: 10px;">
+            <ion-label position="floating">Comments</ion-label>
+            <ion-textarea [(ngModel)]="form.comments"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-grid style="padding-bottom: 10px;">
+  <ion-row>
+    <ion-col size-md="6" offset-md="3">
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" shape="round" (click)="addform()">Submit</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" shape="round" (click)="cancel()">Cancel</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

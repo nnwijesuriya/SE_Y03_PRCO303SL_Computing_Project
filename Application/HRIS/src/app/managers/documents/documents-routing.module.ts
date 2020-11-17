@@ -39,6 +39,22 @@ const routes: Routes = [
   {
     path: 'employee-review/:id',
     loadChildren: () => import('./submitedForms/employee-review/employee-review.module').then( m => m.EmployeeReviewPageModule)
+  },
+  {
+    path: 'complain-form',
+    loadChildren: () => import('./forms/complain-form/complain-form.module').then( m => m.ComplainFormPageModule)
+  },
+  {
+    path: 'medical-form',
+    loadChildren: () => import('./forms/medical-form/medical-form.module').then( m => m.MedicalFormPageModule)
+  },
+  {
+    path: 'recruitment-form',
+    loadChildren: () => import('./forms/recruitment-form/recruitment-form.module').then( m => m.RecruitmentFormPageModule)
+  },
+  {
+    path: 'return-work-form',
+    loadChildren: () => import('./forms/return-work-form/return-work-form.module').then( m => m.ReturnWorkFormPageModule)
   }
 ];
 

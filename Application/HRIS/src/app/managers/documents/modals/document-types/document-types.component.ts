@@ -37,4 +37,45 @@ export class DocumentTypesComponent implements OnInit {
       this.route.navigateByUrl('documents/disciplinary-form')
       });
   }
+
+  async employeeReview(){
+    await this.modals.dismiss().then(nav=>
+      {
+      this.route.navigateByUrl('documents/employee-review-form')
+      });
+  }
+  async recruitment(){
+    await this.modals.dismiss().then(nav=>
+      {
+      this.route.navigateByUrl('documents/recruitment-form')
+      });
+  }
+
+  async medicalform(){
+    await this.modals.dismiss().then(nav=>
+      {
+      this.route.navigateByUrl('documents/medical-form')
+      });
+  }
+  
+  async complain(){
+    await this.modals.dismiss().then(nav=>
+      {
+      this.route.navigateByUrl('documents/complain-form')
+      });
+  }
+
+  async disciplinary(){
+    await this.modals.dismiss().then(nav=>
+      {
+      this.route.navigateByUrl('documents/disciplinary-form')
+      });
+  }
+
+  async returnwork(){
+    await this.modals.dismiss().then(nav=>
+      {
+      this.route.navigateByUrl('documents/return-work-form')
+      });
+  }
 }
