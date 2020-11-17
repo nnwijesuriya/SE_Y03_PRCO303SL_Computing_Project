@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import { MenuController, ModalController, NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { DocumentTypesComponent} from '../documents/modals/document-types/document-types.component'
@@ -14,14 +15,15 @@ import { documents, DocumentsService } from './documents.service';
 export class DocumentsPage implements OnInit {
 
   constructor(private menuctrl: MenuController,private modals: ModalController,
-     private noticedoc: DocumentsService, private navctrl: NavController, private firestore : AngularFirestore, private auth: AngularFireAuth) 
+     private noticedoc: DocumentsService, private navctrl: NavController,
+      private firestore : AngularFirestore, private auth: AngularFireAuth, private router: Router) 
      { }
 
   ngOnInit() {
     this.auth.authState.subscribe(data=> {
           let id;
           id = data.uid;
-          this.searchEmployees(id);
+          this.searchDocument(id);
   })
     
     this.menuctrl.enable(true, 'documents');
@@ -47,9 +49,16 @@ export class DocumentsPage implements OnInit {
     this.navctrl.navigateRoot('documents');
   }
 
-  searchEmployees(id)
+  searchDocument(id)
   {
   this.doc = this.noticedoc.getCollectionWithIDs(id);
   }
 
+  getdocument(id, type)
+  {
+   if(type=="Leave Request")
+   {
+     this.router.navigate(['/documents/request-leaves',id]);
+   }
+  }
 }

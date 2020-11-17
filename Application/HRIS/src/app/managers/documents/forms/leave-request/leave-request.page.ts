@@ -39,7 +39,7 @@ pipe = new DatePipe('en-US');
 
 
     this.auth.authState.subscribe(data=> {
-      if(data.uid && data.email)
+      if(data.uid)
         {
           this.form.userId = data.uid;
           console.log( this.form.userId)
@@ -57,16 +57,16 @@ pipe = new DatePipe('en-US');
     }
 
     cancel(){
-      this.form.userId= '',
-      this.form.Fname= '',
-      this.form.Lname= '',
-      this.form.Eemail= '',
-      this.form.phone= '',
-      this.form.position= '',
-      this.form.Ldate= '',
-      this.form.Edate= '',
-      this.form.Ltype= '',
-      this.form.comments= ''
+      this.form.userId= '';
+      this.form.Fname= '';
+      this.form.Lname= '';
+      this.form.Eemail= '';
+      this.form.phone= '';
+      this.form.position= '';
+      this.form.Ldate= '';
+      this.form.Edate= '';
+      this.form.Ltype= '';
+      this.form.comments= '';
       this.nav.navigateRoot('documents');
     }
 }

@@ -49,4 +49,14 @@ export class DocumentsService {
         })))
 }
 
+getIdea(id: string): Observable<documents> {
+  return this.docsCollection.doc<documents>(id).valueChanges().pipe(
+    take(1),
+    map(idea => {
+      idea.id = id;
+      return idea
+    })
+  );
+}
+
 }

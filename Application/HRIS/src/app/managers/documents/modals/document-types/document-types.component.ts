@@ -23,4 +23,18 @@ export class DocumentTypesComponent implements OnInit {
       this.route.navigateByUrl('documents/leave-request')
       });
   }
+
+  async accident(){
+    await this.modals.dismiss().then(nav=>
+      {
+      this.route.navigateByUrl('documents/accidentreport-form')
+      });
+  }
+
+  async disiplinary(){
+    await this.modals.dismiss().then(nav=>
+      {
+      this.route.navigateByUrl('documents/disciplinary-form')
+      });
+  }
 }

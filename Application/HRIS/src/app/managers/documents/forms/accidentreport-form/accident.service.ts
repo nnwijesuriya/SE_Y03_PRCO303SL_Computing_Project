@@ -4,32 +4,34 @@ import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
  
  
-export interface leaveForm {
+export interface accidentForm {
   id?: string,
   userId: any;
   formtype: string;
-  Fname: string,
-  Lname: string;
+  EFname: string,
+  ELname: string;
   Eemail: string;
-  phone: string;
-  position: string;
-  Ldate: any;
-  Edate: any;
-  Ltype: string;
-  comments: string;
+  MFname: string,
+  MLname: string;
+  department: string;
+  Idate: any;
+  Wemail: string;
+  Eexplain: string;
+  location: string;
+  Idetails: string;
   sdate: any;
 }
  
 @Injectable({
   providedIn: 'root'
 })
-export class LeaveService {
+export class AccidentService {
 
-  private leave: Observable<leaveForm[]>;
-  private leaveCollection: AngularFirestoreCollection<leaveForm>;
+  private leave: Observable<accidentForm[]>;
+  private leaveCollection: AngularFirestoreCollection<accidentForm>;
 
   constructor(private afs : AngularFirestore){
-    this.leaveCollection = this.afs.collection<leaveForm>('documents/managers/forms');
+    this.leaveCollection = this.afs.collection<accidentForm>('documents/managers/forms');
     this.leave = this.leaveCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -41,13 +43,13 @@ export class LeaveService {
     );
   }
 
-  addform(leav : leaveForm): Promise<DocumentReference> { 
-      return this.leaveCollection.add(leav);
+  addform(accid : accidentForm): Promise<DocumentReference> { 
+      return this.leaveCollection.add(accid);
     }
 
 //to get the form data with each id
-  getform(id: string): Observable<leaveForm> {
-      return this.leaveCollection.doc<leaveForm>(id).valueChanges().pipe(
+  getform(id: string): Observable<accidentForm> {
+      return this.leaveCollection.doc<accidentForm>(id).valueChanges().pipe(
         take(1),
         map(lform => {
           lform.id = id;
@@ -55,5 +57,4 @@ export class LeaveService {
         })
       );
     }
- 
 }

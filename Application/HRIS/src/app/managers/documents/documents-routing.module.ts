@@ -19,6 +19,26 @@ const routes: Routes = [
   {
     path: 'disciplinary-form',
     loadChildren: () => import('./forms/disciplinary-form/disciplinary-form.module').then( m => m.DisciplinaryFormPageModule)
+  },
+  {
+    path: 'request-leaves/:id',
+    loadChildren: () => import('./submitedForms/request-leaves/request-leaves.module').then( m => m.RequestLeavesPageModule)
+  },
+  {
+    path: 'accident-form/:id',
+    loadChildren: () => import('./submitedForms/accident-form/accident-form.module').then( m => m.AccidentFormPageModule)
+  },
+  {
+    path: 'accidentreport-form',
+    loadChildren: () => import('./forms/accidentreport-form/accidentreport-form.module').then( m => m.AccidentreportFormPageModule)
+  },
+  {
+    path: 'disciplinary/:id',
+    loadChildren: () => import('./submitedForms/disciplinary/disciplinary.module').then( m => m.DisciplinaryPageModule)
+  },
+  {
+    path: 'employee-review/:id',
+    loadChildren: () => import('./submitedForms/employee-review/employee-review.module').then( m => m.EmployeeReviewPageModule)
   }
 ];
 
