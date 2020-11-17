@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./managers/tabs1/tabs/tabs.module').then( m => m.TabsPageModule)
-  },
+  }
 ];
 
 @NgModule({

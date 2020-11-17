@@ -23,7 +23,7 @@ export class ReturnWorkFormPage implements OnInit {
     Iabsence: '',
     Esituation: '',
     position: '',
-    sdate: '',
+    sdate: ''
   }
 
   pipe = new DatePipe('en-US'); 

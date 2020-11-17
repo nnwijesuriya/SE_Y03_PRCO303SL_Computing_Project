@@ -68,6 +68,24 @@ export class DocumentsPage implements OnInit {
    }else if(type == "Accident Report")
    {
     this.router.navigate(['/documents/accident-form',id]);
+   }else if(type == "Medical Form")
+   {
+    this.router.navigate(['/documents/medical',id]);
+   }else if(type == "Release Form")
+   {
+    this.router.navigate(['/documents/employee-release',id]);
+   }else if(type == "Complain Form")
+   {
+    this.router.navigate(['/documents/complain',id]);
+   }else if(type == "PTO Request")
+   {
+    this.router.navigate(['/documents/pto-request',id]);
+   }else if(type == "Recruitment Form")
+   {
+    this.router.navigate(['/documents/recruitment',id]);
+   }else if(type == "Return To Work Form")
+   {
+    this.router.navigate(['/documents/return-work',id]);
    }
   }
 }

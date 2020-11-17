@@ -1,0 +1,98 @@
+<ion-content>
+  <h1 style="text-align: center;">Employee Recruitment Form</h1>
+<ion-grid>
+<ion-row>
+  <ion-col size-md="8" offset-md="2">
+    <ion-row>
+      <ion-header>Details of the Employees</ion-header>
+    </ion-row>
+<ion-item style="padding-top: 20px;">
+    <ion-row>
+      <ion-col>
+      <ion-item>
+          <ion-label position="floating">First Name</ion-label>
+          <br>
+          <ion-input readonly>{{form.Fname}}</ion-input>        
+      </ion-item>
+    </ion-col>
+    <hr>
+    <hr>
+      <ion-col style="padding-left: 40px;">
+        <ion-item>
+          <ion-label position="floating">Middle Name</ion-label>
+          <br>
+          <ion-input readonly>{{form.Mname}}</ion-input>
+        </ion-item>
+      </ion-col>
+      <hr>
+      <hr> 
+      <ion-col>
+        <ion-item>
+            <ion-label position="floating">Last Name</ion-label>
+            <br>
+            <ion-input readonly>{{form.Lname}}</ion-input>        
+        </ion-item>
+      </ion-col>   
+    </ion-row>
+</ion-item>
+<ion-row>
+  <ion-col>
+    <ion-item style="padding-top: 10px;">
+      <ion-label position="floating">Date Of Birth</ion-label>
+      <br>
+      <ion-input readonly>{{form.dbirth}}</ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Personal email</ion-label>
+          <br>
+          <ion-input readonly>{{form.email}}</ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Mobile Number</ion-label>
+          <br>
+          <ion-input readonly>{{form.phone}}</ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Land-Line Number</ion-label>
+          <br>
+          <ion-input readonly>{{form.Lphone}}</ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Home Address</ion-label>
+          <br>
+          <ion-textarea readonly>{{form.address}}</ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+</ion-col>
+</ion-row>
+</ion-grid>
+<ion-grid style="padding-bottom: 10px;">
+  <ion-row>
+    <ion-col size-md="6" offset-md="3">
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" shape="round" (click)="close()">Close</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
+

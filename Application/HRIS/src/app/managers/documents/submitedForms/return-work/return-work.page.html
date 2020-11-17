@@ -11,7 +11,8 @@
       <ion-col>
       <ion-item>
           <ion-label position="floating">First Name</ion-label>
-          <ion-input [(ngModel)]="form.Fname"></ion-input>        
+          <br>
+          <ion-input readonly>{{form.Fname}}</ion-input>        
       </ion-item>
     </ion-col>
     <hr>
@@ -19,7 +20,8 @@
       <ion-col style="padding-left: 40px;">
         <ion-item>
           <ion-label position="floating">Last Name</ion-label>
-          <ion-input [(ngModel)]="form.Lname"></ion-input>
+          <br>
+          <ion-input readonly>{{form.Lname}}</ion-input>
         </ion-item>
       </ion-col>    
     </ion-row>
@@ -28,7 +30,8 @@
       <ion-col>
         <ion-item style="padding-top: 10px;">
           <ion-label position="floating">Employee email</ion-label>
-          <ion-input [(ngModel)]="form.Eemail"></ion-input>
+          <br>
+          <ion-input readonly>{{form.Eemail}}</ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -36,7 +39,8 @@
       <ion-col>
         <ion-item style="padding-top: 10px;">
           <ion-label position="floating">phone Number</ion-label>
-          <ion-input [(ngModel)]="form.phone"></ion-input>
+          <br>
+          <ion-input readonly>{{form.phone}}</ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -44,7 +48,8 @@
       <ion-col>
         <ion-item style="padding-top: 10px;">
           <ion-label position="floating">Department</ion-label>
-          <ion-input [(ngModel)]="form.department"></ion-input>
+          <br>
+          <ion-input readonly>{{form.department}}</ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -52,7 +57,8 @@
       <ion-col>
         <ion-item style="padding-top: 10px;">
           <ion-label position="floating">Position</ion-label>
-          <ion-input [(ngModel)]="form.position"></ion-input>
+          <br>
+          <ion-input readonly>{{form.position}}</ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -69,7 +75,8 @@
         <ion-col>
           <ion-item style="padding-top: 10px;">
             <ion-label position="floating">Reason For Absance</ion-label>
-            <ion-input [(ngModel)]="form.Iabsence"></ion-input>
+            <br>
+            <ion-input readonly>{{form.Iabsence}}</ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -77,7 +84,8 @@
         <ion-col>
           <ion-item style="padding-top: 10px;">
             <ion-label position="floating">Explain the situation</ion-label>
-            <ion-input [(ngModel)]="form.Esituation"></ion-input>
+            <br>
+            <ion-input readonly>{{form.Esituation}}</ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -89,10 +97,7 @@
       <ion-col size-md="6" offset-md="3">
         <ion-row>
           <ion-col>
-            <ion-button expand="block" shape="round" (click)="addform()">Submit</ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button expand="block" shape="round" (click)="cancel()">Cancel</ion-button>
+            <ion-button expand="block" shape="round" (click)="close()">Close</ion-button>
           </ion-col>
         </ion-row>
       </ion-col>

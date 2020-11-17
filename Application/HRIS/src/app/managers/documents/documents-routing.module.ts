@@ -63,6 +63,30 @@ const routes: Routes = [
   {
     path: 'ptorequest-form',
     loadChildren: () => import('./forms/ptorequest-form/ptorequest-form.module').then( m => m.PTOrequestFormPageModule)
+  },
+  {
+    path: 'complain/:id',
+    loadChildren: () => import('./submitedForms/complain/complain.module').then( m => m.ComplainPageModule)
+  },
+  {
+    path: 'employee-release/:id',
+    loadChildren: () => import('./submitedForms/employee-release/employee-release.module').then( m => m.EmployeeReleasePageModule)
+  },
+  {
+    path: 'medical/:id',
+    loadChildren: () => import('./submitedForms/medical/medical.module').then( m => m.MedicalPageModule)
+  },
+  {
+    path: 'pto-request/:id',
+    loadChildren: () => import('./submitedForms/pto-request/pto-request.module').then( m => m.PtoRequestPageModule)
+  },
+  {
+    path: 'recruitment/:id',
+    loadChildren: () => import('./submitedForms/recruitment/recruitment.module').then( m => m.RecruitmentPageModule)
+  },
+  {
+    path: 'return-work/:id',
+    loadChildren: () => import('./submitedForms/return-work/return-work.module').then( m => m.ReturnWorkPageModule)
   }
 ];
 

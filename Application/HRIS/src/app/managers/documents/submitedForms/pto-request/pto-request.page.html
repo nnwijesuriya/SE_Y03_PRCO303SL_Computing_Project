@@ -1,5 +1,5 @@
 <ion-content>
-  <h1 style="text-align: center;">Leave Request Form</h1>
+  <h1 style="text-align: center;">Paid Time Off Request Form</h1>
 <ion-grid>
 <ion-row>
   <ion-col size-md="8" offset-md="2">
@@ -12,90 +12,89 @@
       <ion-item>
           <ion-label position="floating">First Name</ion-label>
           <br>
-          <ion-input readonly>{{leave.Fname}}</ion-input>        
+          <ion-input readonly>{{form.Fname}}</ion-input>        
       </ion-item>
     </ion-col>
     <hr>
     <hr>
-      <ion-col style="padding-left: 40px;">
+      <ion-col>
         <ion-item>
-          <ion-label position="floating">Last Name</ion-label>
-          <br>
-          <ion-input readonly>{{leave.Lname}}</ion-input>
+            <ion-label position="floating">Last Name</ion-label>
+            <br>
+            <ion-input readonly>{{form.Lname}}</ion-input>        
         </ion-item>
-      </ion-col>    
+      </ion-col>   
     </ion-row>
 </ion-item>
     <ion-row>
       <ion-col>
         <ion-item style="padding-top: 10px;">
-          <ion-label position="floating">Employee email</ion-label>
+          <ion-label position="floating">Email</ion-label>
           <br>
-          <ion-input readonly>{{leave.Eemail}}</ion-input>
+          <ion-input readonly>{{form.email}}</ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
         <ion-item style="padding-top: 10px;">
-          <ion-label position="floating">Phone Number</ion-label>
+          <ion-label position="floating">Mobile Number</ion-label>
           <br>
-          <ion-input readonly>{{leave.phone}}</ion-input>
+          <ion-input readonly>{{form.phone}}</ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
         <ion-item style="padding-top: 10px;">
-          <ion-label position="floating">Position</ion-label>
+          <ion-label position="floating">Supervisor Name</ion-label>
           <br>
-          <ion-input readonly>{{leave.position}}</ion-input>
+          <ion-input readonly>{{form.Sname}}</ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Department</ion-label>
+          <br>
+          <ion-input readonly>{{form.department}}</ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
 </ion-col>
 </ion-row>
 </ion-grid>
-
 <ion-grid>
   <ion-row>
     <ion-col size-md="8" offset-md="2">
       <ion-row>
-        <ion-header>Details of the leave</ion-header>
+        <ion-header>Details of the PTO request</ion-header>
       </ion-row>
       <ion-row>
         <ion-col>
           <ion-item style="padding-top: 20px;">
-            <ion-label position="floating">Leave Date</ion-label>
+            <ion-label position="floating">PTO Start Date</ion-label>
             <br>
-            <ion-input readonly>{{leave.Ldate}}</ion-input>
+            <ion-input readonly>{{form.PTstart}}</ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-top: 20px;">
+            <ion-label position="floating">PTO End Date</ion-label>
+            <br>
+            <ion-input readonly>{{form.PTend}}</ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <ion-item style="padding-top: 10px;">
-            <ion-label position="floating">Leave end</ion-label>
+            <ion-label position="floating">Comments</ion-label>
             <br>
-           <ion-input readonly>{{leave.Edate}}</ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-        <ion-item style="padding-top: 10px;">
-            <ion-label position="floating">Leave Type</ion-label>
-            <br>
-            <ion-input readonly>{{leave.Ltype}}</ion-input>
-      </ion-item>
-    </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item style="padding-top: 10px;">
-            <ion-label position="stacked">Comments</ion-label>
-            <br>
-            <ion-input readonly>{{leave.comments}}</ion-input>
+            <ion-textarea readonly>{{form.comments}}</ion-textarea>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -114,4 +113,3 @@
   </ion-row>
 </ion-grid>
 </ion-content>
-
