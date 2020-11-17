@@ -28,7 +28,7 @@ export class RecruitmentFormPage implements OnInit {
 
   pipe = new DatePipe('en-US'); 
 
-  constructor(private recruitser: RecruitService, private auth: AngularFireAuth, private nav: NavController,) { }
+  constructor(private recruitser: RecruitService, private auth: AngularFireAuth, private nav: NavController) { }
 
   ngOnInit() {
     const now = Date.now();

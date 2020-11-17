@@ -78,4 +78,18 @@ export class DocumentTypesComponent implements OnInit {
       this.route.navigateByUrl('documents/return-work-form')
       });
   }
+
+  async ptorequest(){
+    await this.modals.dismiss().then(nav=>
+      {
+      this.route.navigateByUrl('documents/ptorequest-form')
+      });
+  }
+
+  async release(){
+    await this.modals.dismiss().then(nav=>
+      {
+      this.route.navigateByUrl('documents/employee-release-form')
+      });
+  }
 }

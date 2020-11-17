@@ -55,6 +55,14 @@ const routes: Routes = [
   {
     path: 'return-work-form',
     loadChildren: () => import('./forms/return-work-form/return-work-form.module').then( m => m.ReturnWorkFormPageModule)
+  },
+  {
+    path: 'employee-release-form',
+    loadChildren: () => import('./forms/employee-release-form/employee-release-form.module').then( m => m.EmployeeReleaseFormPageModule)
+  },
+  {
+    path: 'ptorequest-form',
+    loadChildren: () => import('./forms/ptorequest-form/ptorequest-form.module').then( m => m.PTOrequestFormPageModule)
   }
 ];
 

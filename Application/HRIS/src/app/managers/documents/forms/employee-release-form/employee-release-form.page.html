@@ -1,18 +1,17 @@
 <ion-content>
-  <h1 style="text-align: center;">Accident Report Form</h1>
+  <h1 style="text-align: center;">Employee Release Form</h1>
 <ion-grid>
 <ion-row>
   <ion-col size-md="8" offset-md="2">
     <ion-row>
-      <ion-header>Details of the Employees</ion-header>
+      <ion-header>Details Of The Employees</ion-header>
     </ion-row>
 <ion-item style="padding-top: 20px;">
     <ion-row>
       <ion-col>
       <ion-item>
           <ion-label position="floating">First Name</ion-label>
-          <br>
-          <ion-input>{{form.Fname}}</ion-input>        
+          <ion-input [(ngModel)]="form.EFname"></ion-input>        
       </ion-item>
     </ion-col>
     <hr>
@@ -20,8 +19,7 @@
       <ion-col style="padding-left: 40px;">
         <ion-item>
           <ion-label position="floating">Last Name</ion-label>
-          <br>
-          <ion-input>{{form.Lname}}</ion-input>
+          <ion-input [(ngModel)]="form.ELname"></ion-input>
         </ion-item>
       </ion-col>    
     </ion-row>
@@ -29,9 +27,8 @@
     <ion-row>
       <ion-col>
         <ion-item style="padding-top: 10px;">
-          <ion-label position="floating">Employee email</ion-label>
-          <br>
-          <ion-input>{{form.Eemail}}</ion-input>
+          <ion-label position="floating">Employee Email</ion-label>
+          <ion-input [(ngModel)]="form.Eemail"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -39,8 +36,7 @@
       <ion-col>
         <ion-item style="padding-top: 10px;">
           <ion-label position="floating">Department</ion-label>
-          <br>
-          <ion-input>{{form.Department}}</ion-input>
+          <ion-input [(ngModel)]="form.department"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -48,8 +44,7 @@
       <ion-col>
         <ion-item style="padding-top: 10px;">
           <ion-label position="floating">Position</ion-label>
-          <br>
-          <ion-input>{{form.position}}</ion-input>
+          <ion-input [(ngModel)]="form.position"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -67,8 +62,7 @@
           <ion-col>
           <ion-item>
               <ion-label position="floating">Manager First Name</ion-label>
-              <br>
-              <ion-input>{{form.MFname}}</ion-input>        
+              <ion-input [(ngModel)]="form.MFname"></ion-input>        
           </ion-item>
         </ion-col>
         <hr>
@@ -76,12 +70,19 @@
           <ion-col style="padding-left: 40px;">
             <ion-item>
               <ion-label position="floating">Manager Last Name</ion-label>
-              <br>
-              <ion-input>{{form.MLname}}</ion-input>
+              <ion-input [(ngModel)]="form.MLname"></ion-input>
             </ion-item>
           </ion-col>    
         </ion-row>
       </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-top: 10px;">
+            <ion-label position="floating">Supervisor Email</ion-label>
+            <ion-input [(ngModel)]="form.Memail"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
     </ion-col>
   </ion-row>
 </ion-grid>
@@ -89,52 +90,37 @@
   <ion-row>
     <ion-col size-md="8" offset-md="2">
       <ion-row>
-        <ion-header>Details of the Incident</ion-header>
+        <ion-header>Details Of The Release</ion-header>
       </ion-row>
-      <ion-item style="padding-top: 20px;">
-        <ion-row>
-          <ion-col>
-          <ion-item>
-              <ion-label position="floating">Infraction</ion-label>
-              <br>
-              <ion-input>{{form.infraction}}</ion-input>        
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-top: 20px;">
+            <ion-label position="floating">Last Worked Day</ion-label>
+            <ion-datetime [(ngModel)]="form.LWdate"></ion-datetime>
           </ion-item>
         </ion-col>
-        <hr>
-        <hr>
-          <ion-col style="padding-left: 40px;">
-            <ion-item>
-              <ion-label position="floating">Date of incident</ion-label>
-              <br>
-              <ion-input>{{form.Idate}}</ion-input>
-            </ion-item>
-          </ion-col>    
-        </ion-row>
-      </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-top: 20px;">
+            <ion-label position="floating">Last Payed Day</ion-label>
+            <ion-datetime [(ngModel)]="form.LPdate"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
       <ion-row>
         <ion-col>
           <ion-item style="padding-top: 10px;">
-            <ion-label position="floating">Annotation of infraction</ion-label>
-            <br>
-            <ion-textarea>{{form.Idetails}}</ion-textarea>
+            <ion-label position="floating">Reason For Release</ion-label>
+            <ion-textarea [(ngModel)]="form.release"></ion-textarea>
           </ion-item>
         </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-        <ion-item style="padding-top: 10px;">
-            <ion-label position="stacked">Saction</ion-label>
-            <br>
-            <ion-input>{{form.saction}}</ion-input>
-      </ion-item>
-    </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
           <ion-item style="padding-top: 10px;">
             <ion-label position="floating">Comments</ion-label>
-            <br>
-            <ion-textarea>{{form.comments}}</ion-textarea>
+            <ion-textarea [(ngModel)]="form.comments"></ion-textarea>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -146,7 +132,10 @@
     <ion-col size-md="6" offset-md="3">
       <ion-row>
         <ion-col>
-          <ion-button expand="block" shape="round" (click)="close()">Close</ion-button>
+          <ion-button expand="block" shape="round" (click)="addform()">Submit</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" shape="round" (click)="cancel()">Cancel</ion-button>
         </ion-col>
       </ion-row>
     </ion-col>

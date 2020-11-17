@@ -59,6 +59,15 @@ export class DocumentsPage implements OnInit {
    if(type=="Leave Request")
    {
      this.router.navigate(['/documents/request-leaves',id]);
+   }else if(type == "Diciplinary Form")
+   {
+    this.router.navigate(['/documents/disciplinary',id]);
+   }else if(type == "Employee Review Form")
+   {
+    this.router.navigate(['/documents/employee-review',id]);
+   }else if(type == "Accident Report")
+   {
+    this.router.navigate(['/documents/accident-form',id]);
    }
   }
 }
