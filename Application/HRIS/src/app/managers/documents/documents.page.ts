@@ -29,10 +29,21 @@ export class DocumentsPage implements OnInit {
     this.menuctrl.enable(true, 'documents');
     this.menuctrl.enable(true, 'submited documents');
 
-    this.getdocs()
+    let acc = "Accepted";
+    this.searchDocumnetaccepted(acc);
+
+    let pen = "Pending";
+    this.searchDocumnetpending(pen);
+
+    let dec="Decline"
+    this.searchDocumnetdecline(dec);
   }
 
-  public docs : Observable<documents[]>;
+  public docsA : Observable<documents[]>;
+
+  public docsD : Observable<documents[]>;
+
+  public docsP : Observable<documents[]>;
 
   public doc : Observable<documents[]>;
 
@@ -43,16 +54,23 @@ export class DocumentsPage implements OnInit {
     return await modal.present();
   }
 
-  getdocs()
-  {
-    this.docs = this.noticedoc.getdocuments();
-    this.navctrl.navigateRoot('documents');
-  }
-
   searchDocument(id)
   {
   this.doc = this.noticedoc.getCollectionWithIDs(id);
   }
+ 
+  searchDocumnetaccepted(status){
+  this.docsA = this.noticedoc.getCollection(status);
+  }
+
+  searchDocumnetpending(status){
+    this.docsP = this.noticedoc.getCollection(status);
+  }
+
+  searchDocumnetdecline(status){
+    this.docsD = this.noticedoc.getCollection(status);
+  }
+
 
   getdocument(id, type)
   {

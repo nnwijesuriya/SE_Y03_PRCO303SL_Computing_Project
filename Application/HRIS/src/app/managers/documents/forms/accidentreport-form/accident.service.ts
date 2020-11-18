@@ -19,6 +19,7 @@ export interface accidentForm {
   Eexplain: string;
   location: string;
   Idetails: string;
+  status: string;
   sdate: any;
 }
  
@@ -57,4 +58,12 @@ export class AccidentService {
         })
       );
     }
+
+    deleteIdea(id: string): Promise<void> {
+      return this.leaveCollection.doc(id).delete();
+  }
+  
+  updateIdea(doc: accidentForm): Promise<void> {
+    return this.leaveCollection.doc(doc.id).update({ status: doc.status});
+  }
 }

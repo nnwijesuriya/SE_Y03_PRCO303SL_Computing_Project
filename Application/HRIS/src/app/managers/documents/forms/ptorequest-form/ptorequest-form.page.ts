@@ -23,6 +23,7 @@ export class PTOrequestFormPage implements OnInit {
    PTstart: '',
    PTend: '',
    comments: '',
+   status: 'Pending',
    sdate: ''
   }
 
@@ -67,6 +68,7 @@ export class PTOrequestFormPage implements OnInit {
     this.form.PTstart = '';
     this.form.PTend = '';
     this.form.comments = '';
+    this.form.status = '';
     this.form.sdate = '';
     this.nav.navigateRoot('documents');
   }

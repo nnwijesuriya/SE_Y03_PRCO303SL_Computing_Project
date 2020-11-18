@@ -11,7 +11,70 @@
     <ion-row>
         <ion-col size-md="10" offset-md="1">
             <ion-header style="padding-bottom: 15px;">Documents Submited</ion-header>
-            <ion-list *ngFor="let doc of (docs | async)">
+            <ion-list *ngFor="let doc of (docsP | async)">
+                <ion-item>
+               <ion-grid>
+                   <ion-row>
+                       <ion-col>
+                        {{doc.Eemail}}   
+                       </ion-col>
+                       <ion-col>
+                        {{doc.formtype}}
+                       </ion-col>
+                       <ion-col>
+                        {{doc.sdate}}
+                       </ion-col>
+                       <ion-col>
+                        {{doc.status}}
+                       </ion-col>
+                       <ion-col>
+                        <ion-item (click)="getdocument(doc.id, doc.formtype)">
+                            <ion-icon name="eye-outline" slot="end"></ion-icon>
+                           </ion-item>
+                       </ion-col>
+                   </ion-row>
+               </ion-grid>
+               </ion-item>
+               </ion-list>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+<ion-grid style="padding-top: 30px;">
+    <ion-row>
+        <ion-col size-md="10" offset-md="1">
+            <ion-header style="padding-bottom: 15px;">Documents Submited By Me</ion-header>
+            <ion-list *ngFor="let doc of (doc | async)">
+                <ion-item>
+               <ion-grid>
+                   <ion-row>
+                       <ion-col>
+                        {{doc.Eemail}}   
+                       </ion-col>
+                       <ion-col>
+                        {{doc.formtype}}
+                       </ion-col>
+                       <ion-col>
+                        {{doc.sdate}}
+                       </ion-col>
+                           <ion-row>
+                               <ion-col>
+                                <ion-item (click)="getdocument(doc.id, doc.formtype)">
+                                    <ion-icon name="eye-outline" slot="end"></ion-icon>
+                                </ion-item>
+                            </ion-col>
+                           </ion-row> 
+                   </ion-row>
+               </ion-grid>
+               </ion-item>
+               </ion-list>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+<ion-grid style="padding-top: 30px;">
+    <ion-row>
+        <ion-col size-md="10" offset-md="1">
+            <ion-header style="padding-bottom: 15px;">Documents Accepted</ion-header>
+            <ion-list *ngFor="let doc of (docsA | async)">
                 <ion-item>
                <ion-grid>
                    <ion-row>
@@ -36,12 +99,11 @@
         </ion-col>
     </ion-row>
 </ion-grid>
-
 <ion-grid style="padding-top: 30px;">
     <ion-row>
         <ion-col size-md="10" offset-md="1">
-            <ion-header style="padding-bottom: 15px;">Documents Submited By Me</ion-header>
-            <ion-list *ngFor="let doc of (doc | async)">
+            <ion-header style="padding-bottom: 15px;">Documents Declined</ion-header>
+            <ion-list *ngFor="let doc of (docsD | async)">
                 <ion-item>
                <ion-grid>
                    <ion-row>

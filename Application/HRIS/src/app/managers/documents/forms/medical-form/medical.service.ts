@@ -17,6 +17,7 @@ export interface medicalForm {
   HCNumber: any;
   recovery: any;
   limits: string;
+  status: string;
   sdate: any;
 }
  
@@ -55,4 +56,13 @@ export class MedicalService {
         })
       );
     }
+
+    deleteIdea(id: string): Promise<void> {
+      return this.leaveCollection.doc(id).delete();
+  }
+  
+  updateIdea(doc: medicalForm): Promise<void> {
+    return this.leaveCollection.doc(doc.id).update({ status: doc.status});
+  }
+
 }

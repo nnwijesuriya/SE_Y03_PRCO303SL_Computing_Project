@@ -21,6 +21,7 @@ export interface diciplinaryForm {
   Ainfration: string;
   saction: string;
   comments: string;
+  status: string;
   sdate: any;
 }
  
@@ -59,5 +60,13 @@ export class disService {
         })
       );
     }
+
+    deleteIdea(id: string): Promise<void> {
+      return this.leaveCollection.doc(id).delete();
+  }
+  
+  updateIdea(doc: diciplinaryForm): Promise<void> {
+    return this.leaveCollection.doc(doc.id).update({ status: doc.status});
+  }
  
 }

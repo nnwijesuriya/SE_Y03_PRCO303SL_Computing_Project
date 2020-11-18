@@ -29,6 +29,7 @@ export class EmployeeReviewFormPage implements OnInit {
     dependability: '',
     Orating: '',
     comments: '',
+    status: 'Pending',
     sdate: ''
   }
 
@@ -80,6 +81,7 @@ export class EmployeeReviewFormPage implements OnInit {
     this.form.Orating = '';
     this.form.comments = '';
     this.form.sdate = '';
+    this.form.status = '';
     this.nav.navigateRoot('documents');
   }
 

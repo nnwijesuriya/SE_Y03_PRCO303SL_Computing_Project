@@ -24,6 +24,7 @@ form : leaveForm = {
   Edate: '',
   Ltype: '',
   comments: '',
+  status: 'Pending',
   sdate: ''
 }
 
@@ -67,6 +68,7 @@ pipe = new DatePipe('en-US');
       this.form.Edate= '';
       this.form.Ltype= '';
       this.form.comments= '';
+      this.form.status = '';
       this.nav.navigateRoot('documents');
     }
 }

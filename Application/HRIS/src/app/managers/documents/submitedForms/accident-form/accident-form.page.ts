@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NavController, ToastController } from '@ionic/angular';
 import { accidentForm, AccidentService } from '../../forms/accidentreport-form/accident.service';
 
 @Component({
@@ -24,10 +24,11 @@ export class AccidentFormPage implements OnInit {
     Eexplain: '',
     location: '',
     Idetails: '',
+    status: '',
     sdate: ''
   }
 
-  constructor(private acc: AccidentService,private activatedroute : ActivatedRoute, private nav: NavController) { }
+  constructor(private acc: AccidentService,private route: Router, private activatedroute : ActivatedRoute, private nav: NavController, private toastCtrl: ToastController) { }
 
   ngOnInit() {
   }
@@ -40,6 +41,49 @@ export class AccidentFormPage implements OnInit {
       });
     }
   }
+
+  async succesToast() {
+    const toast = await this.toastCtrl.create({
+      message: 'Your document has been deleted',
+      duration: 2000  
+    });
+    toast.present();
+  }
+
+    async failToast() {
+    const toast =  await this.toastCtrl.create({
+      message: 'There was a problem deleting your document',
+      duration: 2000
+    });
+    toast.present();  
+  } 
+
+  delete()
+  {
+    this.acc.deleteIdea(this.form.id).then(() => {
+      this.route.navigateByUrl('documents');
+      this.succesToast();
+    }, err => {
+      this.failToast();
+    });
+  }
+
+  updateA()
+  {
+    this.form.status="Accepted";
+    this.acc.updateIdea(this.form).then(() => {
+      this.route.navigateByUrl('documents');
+    })
+  }
+
+  updateD()
+  {
+    this.form.status="Decline";
+    this.acc.updateIdea(this.form).then(() => {
+      this.route.navigateByUrl('documents');
+    })
+  }
+ 
 
   close()
   {
@@ -56,6 +100,7 @@ export class AccidentFormPage implements OnInit {
     this.form.Eexplain = '';
     this.form.location = '';
     this.form.Idetails = '';
+    this.form.status = '';
     this.form.sdate ='';
     this.nav.navigateRoot('documents')
   }

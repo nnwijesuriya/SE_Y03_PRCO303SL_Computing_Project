@@ -23,6 +23,7 @@ form : medicalForm={
   HCNumber: '',
   recovery: '',
   limits: '',
+  status: 'Pending',
   sdate: ''
 }
 
@@ -68,6 +69,7 @@ pipe = new DatePipe('en-US');
     this.form.recovery = '';
     this.form.limits = '';
     this.form.sdate = '';
+    this.form.status = '';
     this.nav.navigateRoot('documents')
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NavController, ToastController } from '@ionic/angular';
 import { returnWorkForm, returnWorkService } from '../../forms/return-work-form/returnWork.service';
 
 @Component({
@@ -21,10 +21,12 @@ export class ReturnWorkPage implements OnInit {
     Iabsence: '',
     Esituation: '',
     position: '',
+    status: '',
     sdate: ''
   }
 
-  constructor(private retunW: returnWorkService, private activatedroute : ActivatedRoute, private nav: NavController) { }
+  constructor(private retunW: returnWorkService, private route: Router,
+     private activatedroute : ActivatedRoute, private nav: NavController, private toastCtrl: ToastController) { }
 
   ngOnInit() {
   }
@@ -38,6 +40,49 @@ export class ReturnWorkPage implements OnInit {
     }
   }
 
+  async succesToast() {
+    const toast = await this.toastCtrl.create({
+      message: 'Your document has been deleted',
+      duration: 2000  
+    });
+    toast.present();
+  }
+
+    async failToast() {
+    const toast =  await this.toastCtrl.create({
+      message: 'There was a problem deleting your document',
+      duration: 2000
+    });
+    toast.present();  
+  } 
+
+  delete()
+  {
+    this.retunW.deleteIdea(this.form.id).then(() => {
+      this.route.navigateByUrl('documents');
+      this.succesToast();
+    }, err => {
+      this.failToast();
+    });
+  }
+
+  updateA()
+  {
+    this.form.status="Accepted";
+    this.retunW.updateIdea(this.form).then(() => {
+      this.route.navigateByUrl('documents');
+    })
+  }
+
+  updateD()
+  {
+    this.form.status="Decline";
+    this.retunW.updateIdea(this.form).then(() => {
+      this.route.navigateByUrl('documents');
+    })
+  }
+
+
   close(){
     this.form.userId = '';
     this.form.formtype = '';
@@ -49,6 +94,7 @@ export class ReturnWorkPage implements OnInit {
     this.form.Iabsence = '';
     this.form.Esituation =  '';
     this.form.position = '';
+    this.form.status = '';
     this.form.sdate = '';
     this.nav.navigateRoot('documents');
   }

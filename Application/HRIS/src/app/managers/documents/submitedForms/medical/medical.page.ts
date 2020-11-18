@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NavController, ToastController } from '@ionic/angular';
 import { medicalForm, MedicalService } from '../../forms/medical-form/medical.service';
 
 @Component({
@@ -22,10 +22,13 @@ form : medicalForm ={
   HCNumber: '',
   recovery: '',
   limits: '',
+  status: '',
   sdate: ''
 }
 
-  constructor(private medical: MedicalService,  private activatedroute : ActivatedRoute, private nav: NavController) { }
+  constructor(private medical: MedicalService,  private activatedroute : ActivatedRoute, 
+    private nav: NavController, private toastCtrl:ToastController,
+     private route: Router) { }
 
   ngOnInit() {
   }
@@ -38,6 +41,49 @@ form : medicalForm ={
       });
     }
   }
+
+  async succesToast() {
+    const toast = await this.toastCtrl.create({
+      message: 'Your document has been deleted',
+      duration: 2000  
+    });
+    toast.present();
+  }
+
+    async failToast() {
+    const toast =  await this.toastCtrl.create({
+      message: 'There was a problem deleting your document',
+      duration: 2000
+    });
+    toast.present();  
+  } 
+
+  delete()
+  {
+    this.medical.deleteIdea(this.form.id).then(() => {
+      this.route.navigateByUrl('documents');
+      this.succesToast();
+    }, err => {
+      this.failToast();
+    });
+  }
+
+  updateA()
+  {
+    this.form.status="Accepted";
+    this.medical.updateIdea(this.form).then(() => {
+      this.route.navigateByUrl('documents');
+    })
+  }
+
+  updateD()
+  {
+    this.form.status="Decline";
+    this.medical.updateIdea(this.form).then(() => {
+      this.route.navigateByUrl('documents');
+    })
+  }
+
 
   close()
   {
@@ -52,6 +98,7 @@ form : medicalForm ={
     this.form.HCNumber = '';
     this.form.recovery = '';
     this.form.limits = '';
+    this.form.status = '';
     this.form.sdate = '';
     this.nav.navigateRoot('documents')
   }

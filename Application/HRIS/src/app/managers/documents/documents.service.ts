@@ -9,7 +9,8 @@ export interface documents {
   userId: any;
   formtype: string;
   Eemail: string;
-  sdate:any;
+  status: string;
+  sdate: any;
 }
  
 @Injectable({
@@ -49,6 +50,18 @@ export class DocumentsService {
         })))
 }
 
+getCollection(value) {
+  return this.afs.collection<documents>('documents/managers/forms', ref => 
+      ref.where(
+          'status', '==', value
+      )).snapshotChanges().pipe(
+          map(actions => actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+      })))
+}
+
 getIdea(id: string): Observable<documents> {
   return this.docsCollection.doc<documents>(id).valueChanges().pipe(
     take(1),
@@ -57,6 +70,10 @@ getIdea(id: string): Observable<documents> {
       return idea
     })
   );
+}
+
+deleteIdea(id: string): Promise<void> {
+  return this.docsCollection.doc(id).delete();
 }
 
 }

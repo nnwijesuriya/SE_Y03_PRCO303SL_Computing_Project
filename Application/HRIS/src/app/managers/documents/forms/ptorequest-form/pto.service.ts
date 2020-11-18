@@ -6,18 +6,19 @@ import { Observable } from 'rxjs';
  
 export interface ptoForm {
 //////
-  id?: string,
+  id?: string;
   userId: any;
   formtype: string;
-  Fname: string,
+  Fname: string;
   Lname: string;
   email: string;
   phone: any;
-  Sname: string,
-  department: string,
-  PTstart: any,
-  PTend: any,
-  comments: any,
+  Sname: string;
+  department: string;
+  PTstart: any;
+  PTend: any;
+  comments: any;
+  status: string;
   sdate: any;
 }
  
@@ -56,4 +57,12 @@ export class PTOService {
         })
       );
     }
+
+    deleteIdea(id: string): Promise<void> {
+      return this.leaveCollection.doc(id).delete();
+  }
+  
+  updateIdea(doc: ptoForm): Promise<void> {
+    return this.leaveCollection.doc(doc.id).update({ status: doc.status});
+  }
 }

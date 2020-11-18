@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NavController, ToastController } from '@ionic/angular';
 import { employeereleaseForm, EmployeeReleaseService } from '../../forms/employee-release-form/employeeRelease.service';
 
 @Component({
@@ -25,10 +25,11 @@ export class EmployeeReleasePage implements OnInit {
     LPdate: '',
     release: '',
     comments: '',
+    status: '',
     sdate: ''
   }
 
-  constructor(private release: EmployeeReleaseService, private activatedroute : ActivatedRoute, private nav: NavController) { }
+  constructor(private release: EmployeeReleaseService, private route:Router, private activatedroute : ActivatedRoute, private nav: NavController,private toastCtrl:ToastController ) { }
 
   ngOnInit() {
   }
@@ -41,6 +42,51 @@ export class EmployeeReleasePage implements OnInit {
       });
     }
   }
+
+  
+  async succesToast() {
+    const toast = await this.toastCtrl.create({
+      message: 'Your document has been deleted',
+      duration: 2000  
+    });
+    toast.present();
+  }
+
+    async failToast() {
+    const toast =  await this.toastCtrl.create({
+      message: 'There was a problem deleting your document',
+      duration: 2000
+    });
+    toast.present();  
+  } 
+
+  delete()
+  {
+    this.release.deleteIdea(this.form.id).then(() => {
+      this.route.navigateByUrl('documents');
+      this.succesToast();
+    }, err => {
+      this.failToast();
+    });
+  }
+
+  updateA()
+  {
+    this.form.status="Accepted";
+    this.release.updateIdea(this.form).then(() => {
+      this.route.navigateByUrl('documents');
+    })
+  }
+
+  updateD()
+  {
+    this.form.status="Decline";
+    this.release.updateIdea(this.form).then(() => {
+      this.route.navigateByUrl('documents');
+    })
+  }
+
+
 
   close()
   {
@@ -58,6 +104,7 @@ export class EmployeeReleasePage implements OnInit {
     this.form.LPdate = '';
     this.form.release = '';
     this.form.comments = '';
+    this.form.status= '';
     this.form.sdate = '';
     this.nav.navigateRoot('documents');
   }

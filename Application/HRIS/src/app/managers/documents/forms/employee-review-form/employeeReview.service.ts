@@ -23,6 +23,7 @@ export interface reviewForm {
   dependability: string;
   Orating: string;
   comments: string;
+  status: string;
   sdate: any;
 }
  
@@ -61,4 +62,12 @@ export class employeeReviewService {
         })
       );
     }
+
+    deleteIdea(id: string): Promise<void> {
+      return this.leaveCollection.doc(id).delete();
+  }
+  
+  updateIdea(doc: reviewForm): Promise<void> {
+    return this.leaveCollection.doc(doc.id).update({ status: doc.status});
+  }
 }

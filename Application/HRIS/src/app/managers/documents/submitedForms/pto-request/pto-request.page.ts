@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NavController, ToastController } from '@ionic/angular';
 import { ptoForm, PTOService } from '../../forms/ptorequest-form/pto.service';
 
 @Component({
@@ -22,10 +22,11 @@ export class PtoRequestPage implements OnInit {
    PTstart: '',
    PTend: '',
    comments: '',
+   status: '',
    sdate: ''
   }
 
-  constructor(private ptoser: PTOService, private activatedroute : ActivatedRoute, private nav: NavController) { }
+  constructor(private ptoser: PTOService,private route:Router, private activatedroute : ActivatedRoute, private nav: NavController, private toastCtrl:ToastController) { }
 
   ngOnInit() {
   }
@@ -38,6 +39,49 @@ export class PtoRequestPage implements OnInit {
       });
     }
   }
+
+  async succesToast() {
+    const toast = await this.toastCtrl.create({
+      message: 'Your document has been deleted',
+      duration: 2000  
+    });
+    toast.present();
+  }
+
+    async failToast() {
+    const toast =  await this.toastCtrl.create({
+      message: 'There was a problem deleting your document',
+      duration: 2000
+    });
+    toast.present();  
+  } 
+
+  delete()
+  {
+    this.ptoser.deleteIdea(this.form.id).then(() => {
+      this.route.navigateByUrl('documents');
+      this.succesToast();
+    }, err => {
+      this.failToast();
+    });
+  }
+
+  updateA()
+  {
+    this.form.status="Accepted";
+    this.ptoser.updateIdea(this.form).then(() => {
+      this.route.navigateByUrl('documents');
+    })
+  }
+
+  updateD()
+  {
+    this.form.status="Decline";
+    this.ptoser.updateIdea(this.form).then(() => {
+      this.route.navigateByUrl('documents');
+    })
+  }
+
 
   close()
   {
@@ -52,6 +96,7 @@ export class PtoRequestPage implements OnInit {
     this.form.PTstart = '';
     this.form.PTend = '';
     this.form.comments = '';
+    this.form.status = '';
     this.form.sdate = '';
     this.nav.navigateRoot('documents');
   }

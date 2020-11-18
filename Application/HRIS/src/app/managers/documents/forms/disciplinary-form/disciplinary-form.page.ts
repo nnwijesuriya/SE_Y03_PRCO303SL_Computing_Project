@@ -27,6 +27,7 @@ export class DisciplinaryFormPage implements OnInit {
     Ainfration: '',
     saction: '',
     comments: '',
+    status: 'Pending',
     sdate: ''
   }
 
@@ -74,6 +75,7 @@ export class DisciplinaryFormPage implements OnInit {
     this.form.saction = '',
     this.form.comments = '',
     this.form.sdate = ''
+    this.form.status = '';
     this.nav.navigateRoot('documents')
   }
 

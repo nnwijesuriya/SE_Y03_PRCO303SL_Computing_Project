@@ -16,6 +16,7 @@ export interface returnWorkForm {
   Iabsence: string
   Esituation: string
   position: string;
+  status: string;
   sdate: any;
 }
  
@@ -54,4 +55,13 @@ export class returnWorkService {
         })
       );
     }
+
+    deleteIdea(id: string): Promise<void> {
+      return this.leaveCollection.doc(id).delete();
+  }
+  
+  updateIdea(doc: returnWorkForm): Promise<void> {
+    return this.leaveCollection.doc(doc.id).update({ status: doc.status});
+  }
+
 }

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
  
  
 export interface leaveForm {
@@ -17,6 +19,7 @@ export interface leaveForm {
   Edate: any;
   Ltype: string;
   comments: string;
+  status: string;
   sdate: any;
 }
  
@@ -55,5 +58,12 @@ export class LeaveService {
         })
       );
     }
- 
+
+deleteIdea(id: string): Promise<void> {
+    return this.leaveCollection.doc(id).delete();
+}
+
+updateIdea(leave: leaveForm): Promise<void> {
+  return this.leaveCollection.doc(leave.id).update({ status: leave.status});
+}
 }

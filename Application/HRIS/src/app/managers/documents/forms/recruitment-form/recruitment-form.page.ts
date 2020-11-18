@@ -19,10 +19,11 @@ export class RecruitmentFormPage implements OnInit {
     Mname: '',
     Lname: '',
     dbirth: '',
-    email: '',
+    Eemail: '',
     phone: '',
     Lphone: '',
     address: '',
+    status: 'Pending',
     sdate: ''
   }
 
@@ -56,18 +57,19 @@ export class RecruitmentFormPage implements OnInit {
 
   cancel()
   {
-    this.form.userId = '',
-    this.form.formtype = '',
-    this.form.Fname = '',
-    this.form.Mname = '',
-    this.form.Lname = '',
-    this.form.dbirth = '',
-    this.form.email = '',
-    this.form.phone = '',
-    this.form.Lphone = '',
-    this.form.address = '',
-    this.form.sdate =  ''
-    this.nav.navigateRoot('documents')
+    this.form.userId = '';
+    this.form.formtype = '';
+    this.form.Fname = '';
+    this.form.Mname = '';
+    this.form.Lname = '';
+    this.form.dbirth = '';
+    this.form.Eemail = '';
+    this.form.phone = '';
+    this.form.Lphone = '';
+    this.form.address = '';
+    this.form.status = '';
+    this.form.sdate =  '';
+    this.nav.navigateRoot('documents');
   }
 
 }

@@ -27,6 +27,7 @@ export class EmployeeReleaseFormPage implements OnInit {
     LPdate: '',
     release: '',
     comments: '',
+    status: 'Pending',
     sdate: ''
   }
 
@@ -73,6 +74,7 @@ export class EmployeeReleaseFormPage implements OnInit {
     this.form.LWdate = '';
     this.form.LPdate = '';
     this.form.release = '';
+    this.form.status = '';
     this.form.comments = '';
     this.form.sdate = '';
     this.nav.navigateRoot('documents');

@@ -21,6 +21,7 @@ export interface employeereleaseForm {
   LPdate: any;
   release: string;
   comments: string;
+  status: string;
   sdate: any;
 }
  
@@ -59,4 +60,12 @@ export class EmployeeReleaseService {
         })
       );
     }
+
+    deleteIdea(id: string): Promise<void> {
+      return this.leaveCollection.doc(id).delete();
+  }
+  
+  updateIdea(doc: employeereleaseForm): Promise<void> {
+    return this.leaveCollection.doc(doc.id).update({ status: doc.status});
+  }
 }

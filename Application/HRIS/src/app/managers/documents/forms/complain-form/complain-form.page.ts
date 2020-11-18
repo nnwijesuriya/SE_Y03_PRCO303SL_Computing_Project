@@ -28,6 +28,7 @@ export class ComplainFormPage implements OnInit {
     location: '',
     witness: '',
     comments: '',
+    status: 'Pending',
     sdate: '',
   }
 
@@ -75,6 +76,7 @@ export class ComplainFormPage implements OnInit {
     this.form.location = '';
     this.form.witness = '';
     this.form.comments= '';
+    this.form.status = '';
     this.form.sdate = '';
     this.nav.navigateRoot('documents');
   }

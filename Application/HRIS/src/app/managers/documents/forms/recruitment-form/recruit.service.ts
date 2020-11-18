@@ -12,10 +12,11 @@ export interface recruitForm {
   Mname: string,
   Lname: string;
   dbirth: any;
-  email: string;
+  Eemail: string;
   phone: any;
   Lphone: any;
   address: any;
+  status: string;
   sdate: any;
 }
  
@@ -54,4 +55,12 @@ export class RecruitService {
         })
       );
     }
+
+  deleteIdea(id: string): Promise<void> {
+      return this.leaveCollection.doc(id).delete();
+  }
+  
+  updateIdea(doc: recruitForm): Promise<void> {
+    return this.leaveCollection.doc(doc.id).update({ status: doc.status});
+  }
 }

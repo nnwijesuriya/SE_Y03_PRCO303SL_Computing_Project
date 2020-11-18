@@ -23,6 +23,7 @@ export class ReturnWorkFormPage implements OnInit {
     Iabsence: '',
     Esituation: '',
     position: '',
+    status: 'Pending',
     sdate: ''
   }
 
@@ -67,6 +68,7 @@ export class ReturnWorkFormPage implements OnInit {
     this.form.Esituation =  '';
     this.form.position = '';
     this.form.sdate = '';
+    this.form.status = '';
     this.nav.navigateRoot('documents');
   }
 

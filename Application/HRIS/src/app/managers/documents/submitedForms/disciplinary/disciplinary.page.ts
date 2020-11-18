@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NavController, ToastController } from '@ionic/angular';
 import { diciplinaryForm, disService } from '../../forms/disciplinary-form/dis.service';
 
 @Component({
@@ -26,10 +26,11 @@ export class DisciplinaryPage implements OnInit {
     Ainfration: '',
     saction: '',
     comments: '',
+    status: '',
     sdate: ''
   }
 
-  constructor(private dis: disService, private activatedroute : ActivatedRoute, private nav: NavController) { }
+  constructor(private dis: disService,private route: Router, private activatedroute : ActivatedRoute, private nav: NavController, private toastCtrl: ToastController) { }
 
   ionViewWillEnter() {
     let id = this.activatedroute.snapshot.paramMap.get('id');
@@ -38,6 +39,48 @@ export class DisciplinaryPage implements OnInit {
         this.form = disciplinary;   
       });
     }
+  }
+
+  async succesToast() {
+    const toast = await this.toastCtrl.create({
+      message: 'Your document has been deleted',
+      duration: 2000  
+    });
+    toast.present();
+  }
+
+    async failToast() {
+    const toast =  await this.toastCtrl.create({
+      message: 'There was a problem deleting your document',
+      duration: 2000
+    });
+    toast.present();  
+  } 
+
+  delete()
+  {
+    this.dis.deleteIdea(this.form.id).then(() => {
+      this.route.navigateByUrl('documents');
+      this.succesToast();
+    }, err => {
+      this.failToast();
+    });
+  }
+
+  updateA()
+  {
+    this.form.status="Accepted";
+    this.dis.updateIdea(this.form).then(() => {
+      this.route.navigateByUrl('documents');
+    })
+  }
+
+  updateD()
+  {
+    this.form.status="Decline";
+    this.dis.updateIdea(this.form).then(() => {
+      this.route.navigateByUrl('documents');
+    })
   }
   
   close()
@@ -57,6 +100,7 @@ export class DisciplinaryPage implements OnInit {
     this.form.Ainfration = '',
     this.form.saction = '',
     this.form.comments = '',
+    this.form.status= '';
     this.form.sdate = ''
     this.nav.navigateRoot('documents')
   }

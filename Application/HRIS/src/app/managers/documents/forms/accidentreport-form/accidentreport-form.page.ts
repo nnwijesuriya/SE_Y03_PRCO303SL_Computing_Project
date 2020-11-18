@@ -25,6 +25,7 @@ export class AccidentreportFormPage implements OnInit {
   Eexplain: '',
   location: '',
   Idetails: '',
+  status: 'Pending',
   sdate: ''
  }
 
@@ -71,6 +72,7 @@ export class AccidentreportFormPage implements OnInit {
     this.form.Eexplain = '';
     this.form.location = '';
     this.form.Idetails = '';
+    this.form.status = '';
     this.form.sdate ='';
     this.nav.navigateRoot('documents')
   }

@@ -22,6 +22,7 @@ export interface complainForm {
   location: any;
   witness: string;
   comments: string;
+  status: string;
   sdate: any;
 }
  
@@ -60,4 +61,12 @@ export class ComplainService {
         })
       );
     }
+
+    deleteIdea(id: string): Promise<void> {
+      return this.leaveCollection.doc(id).delete();
+  }
+  
+  updateIdea(doc: complainForm): Promise<void> {
+    return this.leaveCollection.doc(doc.id).update({ status: doc.status});
+  }
 }
