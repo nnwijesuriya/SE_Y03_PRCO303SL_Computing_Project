@@ -1,0 +1,108 @@
+<ion-content>
+  <h1 style="text-align: center;">Adding Users</h1>
+<ion-grid>
+<ion-row>
+  <ion-col size-md="8" offset-md="2">
+    <ion-row>
+      <ion-header>Details of the Employee</ion-header>
+    </ion-row>
+<ion-item style="padding-top: 20px;">
+    <ion-row>
+      <ion-col>
+      <ion-item>
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input [(ngModel)]="form.Fname"></ion-input>        
+      </ion-item>
+    </ion-col>
+    <hr>
+    <hr>
+      <ion-col style="padding-left: 40px;">
+        <ion-item>
+          <ion-label position="floating">Last Name</ion-label>
+          <ion-input [(ngModel)]="form.Lname"></ion-input>
+        </ion-item>
+      </ion-col>    
+    </ion-row>
+</ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Employee Personal Email</ion-label>
+          <ion-input [(ngModel)]="form.Pemail"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Phone Number</ion-label>
+          <ion-input [(ngModel)]="form.phone"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">New Office Email</ion-label>
+          <ion-input [(ngModel)]="form.Eemail"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">New Password</ion-label>
+          <ion-input [(ngModel)]="form.password"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Department</ion-label>
+          <ion-input [(ngModel)]="form.department"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      <ion-item style="padding-top: 10px;">
+          <ion-label position="stacked">Role</ion-label>
+         <ion-radio-group [(ngModel)]="form.role">
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label>HR Managers</ion-label>
+                <ion-radio slot="start" value="HR Managers"></ion-radio>
+              </ion-item>
+               </ion-col>
+            <ion-col>
+           <ion-item>
+             <ion-label>Employees</ion-label>
+             <ion-radio slot="start" value="Employees"></ion-radio>
+           </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-radio-group>
+    </ion-item>
+  </ion-col>
+    </ion-row>
+</ion-col>
+</ion-row>
+</ion-grid>
+<ion-grid style="padding-bottom: 10px;">
+  <ion-row>
+    <ion-col size-md="6" offset-md="3">
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" shape="round" (click)="submit()">Submit</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" shape="round" (click)="cancel()">Cancel</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
+
