@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireDatabaseModule} from '@angular/fire/database'
 import {environment} from '../environments/environment';
 
 
@@ -24,6 +25,7 @@ import { HeaderComponent } from '../app/header/header.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFireDatabaseModule
     
   ],
   providers: [

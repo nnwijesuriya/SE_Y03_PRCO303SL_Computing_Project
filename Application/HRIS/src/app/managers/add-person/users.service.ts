@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
-import { map, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
  
 export interface users {
@@ -9,7 +9,6 @@ export interface users {
   Lname: string,
   Pemail: string,
   Eemail: string,
-  password: string;
   phone : string,
   department : string,
   role : string,

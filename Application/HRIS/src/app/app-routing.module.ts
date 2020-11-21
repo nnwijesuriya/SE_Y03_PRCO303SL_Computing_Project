@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'add-person',
     loadChildren: () => import('./managers/add-person/add-person.module').then( m => m.AddPersonPageModule)
+  },
+  {
+    path: 'chatgroup',
+    loadChildren: () => import('./managers/chatgroup/chatgroup.module').then( m => m.ChatgroupPageModule)
   }
 ];
 

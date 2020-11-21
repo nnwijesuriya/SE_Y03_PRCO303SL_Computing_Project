@@ -18,12 +18,12 @@ export class FormPage implements OnInit {
     Lname: '',
     Pemail: '',
     Eemail: '',
-    password: '',
     phone : '',
     department : '',
     role: '',
     sdate: ''
   }
+  password = "";
 
   pipe = new DatePipe('en-US'); 
 
@@ -54,7 +54,7 @@ export class FormPage implements OnInit {
 
   submit()
   {
-   this.afAuth.createUserWithEmailAndPassword(this.form.Eemail, this.form.password).then( res => {
+   this.afAuth.createUserWithEmailAndPassword(this.form.Eemail, this.password).then( res => {
    this.user.addnotice(this.form);
    this.router.navigateByUrl('add-person')
    this.succesToast();
