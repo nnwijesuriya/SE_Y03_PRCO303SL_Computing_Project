@@ -3,15 +3,13 @@
 <ion-content>
   <ion-grid>
     <ion-row *ngFor="let message of messages | async">
-      <ion-col size="9" class="message">
-        <b>{{ message.from}}</b><br>
-        <span>{{message.msg}}
+      <ion-col size-md="10" offset-md="1" class="message" style="float: left;">
+        <b class="username">{{ message.from}}</b><br><br>
+        <span class="mes">{{message.msg}}
         </span>
-        <div class="ion-text-right"><br>{{ message.createdAt | date:'short' }}</div>
       </ion-col>
     </ion-row>
   </ion-grid>
- 
 </ion-content>
 <ion-footer>
   <ion-toolbar color="light">

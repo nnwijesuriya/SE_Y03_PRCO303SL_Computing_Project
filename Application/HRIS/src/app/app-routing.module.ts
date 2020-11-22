@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'departments',
+    path: 'departments salaries',
     loadChildren: () => import('./managers/departments/departments.module').then( m => m.DepartmentsPageModule)
   },
   {
@@ -32,8 +32,8 @@ const routes: Routes = [
     loadChildren: () => import('./managers/add-person/add-person.module').then( m => m.AddPersonPageModule)
   },
   {
-    path: 'chatgroup',
-    loadChildren: () => import('./managers/chatgroup/chatgroup.module').then( m => m.ChatgroupPageModule)
+    path: 'departments chat',
+    loadChildren: () => import('./managers/workgroup/departments/departments.module').then( m => m.DepartmentsPageModule)
   }
 ];
 

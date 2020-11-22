@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import {AngularFireModule} from '@angular/fire';
-import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireDatabaseModule} from '@angular/fire/database'
 import {environment} from '../environments/environment';
 
@@ -25,8 +26,8 @@ import { HeaderComponent } from '../app/header/header.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
-    
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
   providers: [
     StatusBar,
