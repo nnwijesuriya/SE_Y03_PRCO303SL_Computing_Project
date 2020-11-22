@@ -21,7 +21,7 @@ export class AccountingPage implements OnInit {
   email;
   newMsg = '';
   date;
-  department = "Marketing";
+  department = "Accounting";
 
   ngOnInit() {
     this.auth.authState.subscribe(data=> {

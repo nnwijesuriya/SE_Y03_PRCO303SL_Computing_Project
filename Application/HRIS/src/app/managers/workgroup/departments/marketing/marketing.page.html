@@ -1,5 +1,11 @@
-<app-header></app-header>
-
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="departments chat"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Marketing Department Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
   <ion-grid>
     <ion-row *ngFor="let message of messages | async">
@@ -14,14 +20,14 @@
 <ion-footer>
   <ion-toolbar color="light">
     <ion-row class="ion-align-items-center">
-      <ion-col size="10">
+      <ion-col size="11">
         <ion-textarea autoGrow="true" class="message-input" rows="1" maxLength="500" [(ngModel)]="newMsg" >
         </ion-textarea>
       </ion-col>
-      <ion-col size="2">
+      <ion-col size="1">
         <ion-button expand="block" fill="clear" color="primary" [disabled]="newMsg ==''"
           class="msg-btn" (click)="sendMessage()">
-          <ion-icon name="send" slot="icon-only"></ion-icon>
+          <ion-icon name="send" slot="icon-only" size="large"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>

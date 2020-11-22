@@ -188,7 +188,6 @@ export class ChatService {
             const id = a.payload.doc.id;
             return { id, ...data };
         })))
-       return this.Muser;
     }else if(department == "Production")
     {
         return this.afs.collection<Message>('chat/messages/production', ref => 
@@ -200,7 +199,6 @@ export class ChatService {
             const id = a.payload.doc.id;
             return { id, ...data };
         })))
-       return this.Muser;
     }else if(department== "Research")
     {
         return this.afs.collection<Message>('chat/messages/research', ref => 
@@ -212,7 +210,6 @@ export class ChatService {
             const id = a.payload.doc.id;
             return { id, ...data };
         })))
-       return this.Muser;
     } else if(department == "Accounting")
     {
         return this.afs.collection<Message>('chat/messages/accounting', ref => 
@@ -224,7 +221,6 @@ export class ChatService {
             const id = a.payload.doc.id;
             return { id, ...data };
         })))
-       return this.Muser;
     }else if(department== "Purchasing")
     {
         return this.afs.collection<Message>('chat/messages/purchasing', ref => 
@@ -235,8 +231,7 @@ export class ChatService {
             const data = a.payload.doc.data();
             const id = a.payload.doc.id;
             return { id, ...data };
-        })))
-       return this.Muser;  
+        }))) 
     } else if(department == "Managers")
     {
         return this.afs.collection<Message>('chat/messages/managers', ref => 
@@ -248,7 +243,6 @@ export class ChatService {
             const id = a.payload.doc.id;
             return { id, ...data };
         })))
-       return this.Muser;
     }
     else if(department == "HR Managers")
     {
@@ -261,7 +255,6 @@ export class ChatService {
             const id = a.payload.doc.id;
             return { id, ...data };
         })))
-       return this.Muser;
     }
   }
 }

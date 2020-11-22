@@ -8,7 +8,6 @@ import { MarketingPageRoutingModule } from './marketing-routing.module';
 
 import { MarketingPage } from './marketing.page';
 
-import { HeaderComponent } from '../../../../header/header.component';
 
 @NgModule({
   imports: [
@@ -17,6 +16,6 @@ import { HeaderComponent } from '../../../../header/header.component';
     IonicModule,
     MarketingPageRoutingModule
   ],
-  declarations: [MarketingPage, HeaderComponent]
+  declarations: [MarketingPage]
 })
 export class MarketingPageModule {}

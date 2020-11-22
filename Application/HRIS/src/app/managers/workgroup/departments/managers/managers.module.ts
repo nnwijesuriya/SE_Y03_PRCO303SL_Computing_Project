@@ -8,7 +8,6 @@ import { ManagersPageRoutingModule } from './managers-routing.module';
 
 import { ManagersPage } from './managers.page';
 
-import {HeaderComponent} from '../../../../header/header.component'
 
 @NgModule({
   imports: [
@@ -17,6 +16,6 @@ import {HeaderComponent} from '../../../../header/header.component'
     IonicModule,
     ManagersPageRoutingModule
   ],
-  declarations: [ManagersPage, HeaderComponent]
+  declarations: [ManagersPage]
 })
 export class ManagersPageModule {}

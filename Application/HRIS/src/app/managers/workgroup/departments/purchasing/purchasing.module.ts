@@ -8,7 +8,6 @@ import { PurchasingPageRoutingModule } from './purchasing-routing.module';
 
 import { PurchasingPage } from './purchasing.page';
 
-import {HeaderComponent} from '../../../../header/header.component'
 
 @NgModule({
   imports: [
@@ -17,6 +16,6 @@ import {HeaderComponent} from '../../../../header/header.component'
     IonicModule,
     PurchasingPageRoutingModule
   ],
-  declarations: [PurchasingPage, HeaderComponent]
+  declarations: [PurchasingPage]
 })
 export class PurchasingPageModule {}

@@ -21,7 +21,7 @@ export class PurchasingPage implements OnInit {
   email;
   newMsg = '';
   date;
-  department = "Marketing";
+  department = "Purchasing";
 
   ngOnInit() {
     this.auth.authState.subscribe(data=> {

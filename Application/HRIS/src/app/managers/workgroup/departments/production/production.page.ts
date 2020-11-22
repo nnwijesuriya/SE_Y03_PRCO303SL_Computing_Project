@@ -21,7 +21,7 @@ export class ProductionPage implements OnInit {
   email;
   newMsg = '';
   date;
-  department = "production";
+  department = "Production";
 
   ngOnInit() {
     this.auth.authState.subscribe(data=> {
@@ -31,7 +31,7 @@ export class ProductionPage implements OnInit {
           this.email = data.email
         }
   })
-
+    
     this.date = firebase.default.firestore.FieldValue.serverTimestamp()
     this.getmessage();
   }

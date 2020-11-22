@@ -22,7 +22,7 @@ export class ManagersPage implements OnInit {
   email;
   newMsg = '';
   date;
-  department = "Marketing";
+  department = "Managers";
 
   ngOnInit() {
     this.auth.authState.subscribe(data=> {

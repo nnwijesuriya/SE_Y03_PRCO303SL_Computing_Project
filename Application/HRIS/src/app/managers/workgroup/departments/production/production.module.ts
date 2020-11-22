@@ -8,7 +8,7 @@ import { ProductionPageRoutingModule } from './production-routing.module';
 
 import { ProductionPage } from './production.page';
 
-import {HeaderComponent} from '../../../../header/header.component';
+
 
 @NgModule({
   imports: [
@@ -17,6 +17,6 @@ import {HeaderComponent} from '../../../../header/header.component';
     IonicModule,
     ProductionPageRoutingModule
   ],
-  declarations: [ProductionPage, HeaderComponent]
+  declarations: [ProductionPage]
 })
 export class ProductionPageModule {}

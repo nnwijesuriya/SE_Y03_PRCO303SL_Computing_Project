@@ -1,4 +1,11 @@
-<app-header></app-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="departments chat"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Accounting & Finance Department Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
   <ion-grid>
     <ion-row *ngFor="let message of messages | async">
@@ -6,9 +13,9 @@
         <b class="username">{{ message.from}}</b><br><br>
         <span class="mes">{{message.msg}}
         </span>
-      </ion-col>
+      </ion-col> 
     </ion-row>
-  </ion-grid>
+  </ion-grid> 
 </ion-content>
 <ion-footer>
   <ion-toolbar color="light">
@@ -19,8 +26,8 @@
       </ion-col>
       <ion-col size="2">
         <ion-button expand="block" fill="clear" color="primary" [disabled]="newMsg ==''"
-          class="msg-btn" (click)="sendMessage()">
-          <ion-icon name="send" slot="icon-only"></ion-icon>
+          (click)="sendMessage()">
+          <ion-icon name="send" slot="icon-only" size="large"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>

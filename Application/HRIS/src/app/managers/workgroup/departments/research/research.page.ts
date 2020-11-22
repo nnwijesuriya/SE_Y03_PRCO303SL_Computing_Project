@@ -22,7 +22,7 @@ export class ResearchPage implements OnInit {
   email;
   newMsg = '';
   date;
-  department = "Marketing";
+  department = "Research";
 
   ngOnInit() {
     this.auth.authState.subscribe(data=> {

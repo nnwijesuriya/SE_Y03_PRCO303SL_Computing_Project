@@ -8,7 +8,6 @@ import { HRmanagersPageRoutingModule } from './hrmanagers-routing.module';
 
 import { HRmanagersPage } from './hrmanagers.page';
 
-import {HeaderComponent} from '../../../../header/header.component'
 
 @NgModule({
   imports: [
@@ -17,6 +16,6 @@ import {HeaderComponent} from '../../../../header/header.component'
     IonicModule,
     HRmanagersPageRoutingModule
   ],
-  declarations: [HRmanagersPage, HeaderComponent]
+  declarations: [HRmanagersPage]
 })
 export class HRmanagersPageModule {}

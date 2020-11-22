@@ -21,7 +21,7 @@ export class HRmanagersPage implements OnInit {
   email;
   newMsg = '';
   date;
-  department = "Marketing";
+  department = "HR Managers";
 
   ngOnInit() {
     this.auth.authState.subscribe(data=> {

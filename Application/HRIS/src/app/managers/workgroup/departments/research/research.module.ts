@@ -8,7 +8,6 @@ import { ResearchPageRoutingModule } from './research-routing.module';
 
 import { ResearchPage } from './research.page';
 
-import {HeaderComponent} from '../../../../header/header.component';
 
 @NgModule({
   imports: [
@@ -17,6 +16,6 @@ import {HeaderComponent} from '../../../../header/header.component';
     IonicModule,
     ResearchPageRoutingModule
   ],
-  declarations: [ResearchPage, HeaderComponent]
+  declarations: [ResearchPage]
 })
 export class ResearchPageModule {}
