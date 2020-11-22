@@ -9,9 +9,10 @@
 <ion-content>
   <ion-grid>
     <ion-row *ngFor="let message of messages | async">
-      <ion-col size-md="10" offset-md="1" class="message" style="float: left;">
+      <ion-col size-md="10" offset-md="1" class="message">
         <b class="username">{{ message.from}}</b><br><br>
-        <span class="mes">{{message.msg}}
+        <span class="mes">{{message.msg}} 
+          <div class="date ion-text-right"><br>{{ message.createdAt?.toMillis() | date:'short' }}</div>
         </span>
       </ion-col>
     </ion-row>

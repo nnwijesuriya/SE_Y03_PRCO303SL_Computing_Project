@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
 
-
-
 export interface Message {  
     id?: string;
     from: string;
