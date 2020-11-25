@@ -14,7 +14,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from '../app/header/header.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+
 
 
 @NgModule({
@@ -27,7 +28,9 @@ import { HeaderComponent } from '../app/header/header.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     StatusBar,

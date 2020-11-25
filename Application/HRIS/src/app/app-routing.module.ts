@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'departments chat',
     loadChildren: () => import('./managers/workgroup/departments/departments.module').then( m => m.DepartmentsPageModule)
+  },
+  {
+    path: 'calendar',
+    loadChildren: () => import('./managers/calendar/calendar.module').then( m => m.CalendarPageModule)
   }
 ];
 
