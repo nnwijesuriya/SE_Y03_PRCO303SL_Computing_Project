@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { notice, noticesService } from '../tabs1/notices/notices.service';
 import { MenuController, ModalController, NavController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
-
+import { AvailabilityService } from './availability.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,13 +13,14 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class DashboardPage implements OnInit {
   constructor(private route: Router, private activatedRoute: ActivatedRoute,
-     private noticeservice: noticesService, private menuctrl: MenuController,private navctrl: NavController, private modals: ModalController, private auth: AngularFireAuth) { }
+     private noticeservice: noticesService, private menuctrl: MenuController,private navctrl: NavController,
+      private modals: ModalController, private auth: AngularFireAuth, private avalab: AvailabilityService ) { }
 
   public notices:  Observable<notice[]>;
 
   typen = "";
   id;
-
+  
   ngOnInit() {
   this.auth.authState.subscribe(data=> {
     if(data.uid && data.email)
@@ -32,7 +33,6 @@ export class DashboardPage implements OnInit {
 })
   this.getnotice(this.typen);
 }
-
   getnotice(types)
   {
     this.notices = this.noticeservice.getnotice(types);

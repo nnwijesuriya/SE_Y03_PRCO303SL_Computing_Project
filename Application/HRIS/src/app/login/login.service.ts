@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
+import { first } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -12,7 +14,7 @@ import { BehaviorSubject } from 'rxjs';
     private eventAuthError = new BehaviorSubject<string>("");
     eventAuthError$ = this.eventAuthError.asObservable();
     newUser;
-    constructor(private afAuth: AngularFireAuth, private route: Router, private navctrl: NavController) { }
+    constructor(private afAuth: AngularFireAuth, private route: Router, private navctrl: NavController, private db: AngularFireDatabase) { }
   
     isfound;
   
@@ -22,6 +24,7 @@ import { BehaviorSubject } from 'rxjs';
           this.eventAuthError.next(error);
         })
         .then(userCredential => {
+          
           if(userCredential) {
             if(this.isfound= email.includes("@managers"))
             {
@@ -34,9 +37,25 @@ import { BehaviorSubject } from 'rxjs';
         })
     }
 
+    // to make the user presense be offline when he sign out
+    getuser()
+  {
+      return this.afAuth.authState.pipe(first()).toPromise();
+  }
+
+    async setavailability(status: string)
+    {
+        const user = await this.getuser();
+        if(user)
+        {
+            return this.db.object(`status/${user.uid}`).update({status})
+        }
+    }
+    
     signout(){
       this.afAuth.signOut().then(exit =>{
-        this.navctrl.navigateRoot('login');
+        this.setavailability('offline');
+        this.route.navigateByUrl('login');
       })
     }
 }

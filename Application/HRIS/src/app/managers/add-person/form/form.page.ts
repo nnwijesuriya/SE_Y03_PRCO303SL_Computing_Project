@@ -38,7 +38,7 @@ export class FormPage implements OnInit {
 
   async succesToast() {
     const toast = await this.toastCtrl.create({
-      message: 'Your notice has been added',
+      message: 'The new employee has been added to the system',
       duration: 2000  
     });
     toast.present();
@@ -46,7 +46,7 @@ export class FormPage implements OnInit {
 
     async failToast() {
     const toast =  await this.toastCtrl.create({
-      message: 'There was a problem adding your notice',
+      message: 'There was a problem adding the new employee',
       duration: 2000
     });
     toast.present();  
