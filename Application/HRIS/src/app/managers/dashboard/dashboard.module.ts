@@ -8,6 +8,7 @@ import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
 import {HeaderComponent} from '../../header/header.component';
+import { NotepadComponent } from './notepad/notepad.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import {HeaderComponent} from '../../header/header.component';
     IonicModule,
     DashboardPageRoutingModule
   ],
-  declarations: [DashboardPage, HeaderComponent]
+  declarations: [DashboardPage, HeaderComponent, NotepadComponent],
+  entryComponents: [NotepadComponent]
 })
 export class DashboardPageModule {}

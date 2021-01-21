@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">
+      Adding Notes
+   </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid style="padding-top: 50px;">
+    <ion-row>
+      <ion-col>
+        <form #form="ngForm" (ngSubmit)="addingnotes()">
+          <ion-item>   
+            <ion-label position="floating" >Title</ion-label>
+            <ion-input type="text" [(ngModel)]="notes.title" name="title" required></ion-input>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-label position="floating">description</ion-label>
+            <ion-input type="text" [(ngModel)]="notes.description" name="description" required></ion-input>
+          </ion-item>
+          <br> 
+          <br>
+          <br>
+          <ion-button type="submit" expand="full" [disabled]="!form.valid">Add Notes</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="dismiss()" expand="full">Cancel</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

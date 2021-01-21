@@ -1,20 +1,56 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { of } from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
+import { Observable, of } from 'rxjs';
 import { first, map, switchMap, tap } from 'rxjs/operators';
- 
+
+export interface notes{
+    id?: string,
+    title: string,
+    description: string
+  }
+
 @Injectable({
   providedIn: 'root'
 })
 export class AvailabilityService {
 
-  constructor(private afs: AngularFireAuth, private db: AngularFireDatabase) {
+    private note: Observable<notes[]>;
+    private notesCollection: AngularFirestoreCollection<notes>;
+
+    private noteC: Observable<notes[]>;
+    private notesCollectionC: AngularFirestoreCollection<notes>;
+
+  constructor(private afs: AngularFireAuth, private db: AngularFireDatabase, private store: AngularFirestore) {
     this.offline().subscribe();
     this.updateuser().subscribe();
     this.away()
+
+    this.notesCollection = this.store.collection<notes>('notepad/notes/Task To Do');
+    this.note = this.notesCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+
+    this.notesCollectionC = this.store.collection<notes>('notepad/notes/Task Completed');
+    this.noteC = this.notesCollectionC.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+
   }
+
   presense(uid: string){
       return this.db.object(`status/${uid}`).valueChanges();
   }
@@ -64,6 +100,34 @@ export class AvailabilityService {
             }
         })
       );
+  }
+
+  addnotes( notes: notes): Promise<DocumentReference>
+  {
+    return this.notesCollection.add(notes);
+  }
+
+  addnotesC( notes: notes): Promise<DocumentReference>
+  {
+    return this.notesCollectionC.add(notes);
+  }
+
+  addcompletednotes()
+  {
+    return this.noteC;
+  }
+
+  shownotes()
+  {
+   return this.note;
+  }
+
+  deletenoteWithIDs(id : string) {
+    return this.notesCollection.doc(id).delete();
+}
+
+  deletenoteWithIDsComp(id : string) {
+    return this.notesCollectionC.doc(id).delete();
   }
 
 }
