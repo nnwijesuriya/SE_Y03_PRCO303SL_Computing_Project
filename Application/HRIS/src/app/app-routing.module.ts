@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'calendar',
     loadChildren: () => import('./managers/calendar/calendar.module').then( m => m.CalendarPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./managers/profile/profile.module').then( m => m.ProfilePageModule)
   }
 ];
 
