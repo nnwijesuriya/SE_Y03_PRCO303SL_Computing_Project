@@ -6,13 +6,20 @@ import { Observable } from 'rxjs';
 export interface users {
   id?: string,
   Fname: string,
+  Mname: string,
   Lname: string,
   Pemail: string,
   Eemail: string,
   phone : string,
+  Hphone : string,
+  DOB ,
+  addressH: string,
   department : string,
+  Rdepartment: string,
   role : string,
-  sdate: string
+  sdate: string,
+  Econtact: string,
+  Otherinformation: string
 }
  
 @Injectable({

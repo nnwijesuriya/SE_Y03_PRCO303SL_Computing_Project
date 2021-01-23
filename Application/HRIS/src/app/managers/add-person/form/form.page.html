@@ -16,6 +16,14 @@
     </ion-col>
     <hr>
     <hr>
+    <ion-col>
+      <ion-item>
+          <ion-label position="floating">Middle Name</ion-label> 
+          <ion-input [(ngModel)]="form.Mname"></ion-input>        
+      </ion-item>
+    </ion-col>
+    <hr>
+    <hr>
       <ion-col style="padding-left: 40px;">
         <ion-item>
           <ion-label position="floating">Last Name</ion-label>
@@ -24,19 +32,43 @@
       </ion-col>    
     </ion-row>
 </ion-item>
+<ion-row>
+  <ion-col>
+    <ion-item style="padding-top: 10px;">
+      <ion-label position="floating">Date Of Birth</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MMM DD YYYY" [(ngModel)]="form.DOB"></ion-datetime>
+    </ion-item>
+  </ion-col>
+</ion-row>
     <ion-row>
       <ion-col>
         <ion-item style="padding-top: 10px;">
-          <ion-label position="floating">Employee Personal Email</ion-label>
-          <ion-input [(ngModel)]="form.Pemail"></ion-input>
+          <ion-label position="floating">Mobile Number</ion-label>
+          <ion-input [(ngModel)]="form.phone"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
         <ion-item style="padding-top: 10px;">
-          <ion-label position="floating">Phone Number</ion-label>
-          <ion-input [(ngModel)]="form.phone"></ion-input>
+          <ion-label position="floating">Home Number</ion-label>
+          <ion-input [(ngModel)]="form.Hphone"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Home Address</ion-label>
+          <ion-input [(ngModel)]="form.addressH"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Employee Personal Email</ion-label>
+          <ion-input [(ngModel)]="form.Pemail"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -66,6 +98,14 @@
     </ion-row>
     <ion-row>
       <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Department Position</ion-label>
+          <ion-input [(ngModel)]="form.Rdepartment"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
       <ion-item style="padding-top: 10px;">
           <ion-label position="stacked">Role</ion-label>
          <ion-radio-group [(ngModel)]="form.role">
@@ -86,6 +126,22 @@
         </ion-radio-group>
     </ion-item>
   </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Emergency Contact</ion-label>
+          <ion-input [(ngModel)]="form.Econtact"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item style="padding-top: 10px;">
+          <ion-label position="floating">Additional Information</ion-label>
+          <ion-input [(ngModel)]="form.Otherinformation"></ion-input>
+        </ion-item>
+      </ion-col>
     </ion-row>
 </ion-col>
 </ion-row>

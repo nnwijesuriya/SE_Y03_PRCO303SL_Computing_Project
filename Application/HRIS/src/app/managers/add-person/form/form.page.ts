@@ -15,13 +15,20 @@ export class FormPage implements OnInit {
 
   form : users = {
     Fname: '',
+    Mname: '',
     Lname: '',
+    DOB: '',
     Pemail: '',
     Eemail: '',
+    Hphone: '',
     phone : '',
+    addressH: '',
     department : '',
+    Rdepartment: '',
     role: '',
-    sdate: ''
+    sdate: '',
+    Econtact: '',
+    Otherinformation: ''
   }
   password = "";
 
@@ -56,7 +63,7 @@ export class FormPage implements OnInit {
   {
    this.afAuth.createUserWithEmailAndPassword(this.form.Eemail, this.password).then( res => {
    this.user.addnotice(this.form);
-   this.router.navigateByUrl('add-person')
+   this.cancel();
    this.succesToast();
    }, err =>{
      this.failToast();
@@ -65,14 +72,21 @@ export class FormPage implements OnInit {
 
   cancel()
   {
-    this.form.Fname = '';
-    this.form.Lname = '';
-    this.form.Pemail = '';
-    this.form.Eemail = '';
-    this.form.phone  =  '';
-    this.form.department = '';
-    this.form.sdate = '';
-    this.form.role = '';
+    this.password = "";
+    this.form.Fname = "";
+    this.form.Mname = "";
+    this.form.Lname = "";
+    this.form.DOB = "";
+    this.form.Pemail = "";
+    this.form.Eemail = "";
+    this.form.Hphone = "";
+    this.form.phone = "";
+    this.form.addressH = "";
+    this.form.department = "";
+    this.form.Rdepartment = "";
+    this.form.role = "";
+    this.form.Econtact = "";
+    this.form.Otherinformation = "";
     this.router.navigateByUrl('add-person')
   }
 
