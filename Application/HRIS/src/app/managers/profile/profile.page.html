@@ -20,9 +20,9 @@
            <ion-title>Actions</ion-title>
            <ion-card>
              <ion-card-content>
-               <ion-button expand="block">Edit Profile</ion-button>
+               <ion-button expand="block" (click)="editprofilemodal()">Edit Profile</ion-button>
                <br>
-               <ion-button expand="block">Change Password</ion-button>
+               <ion-button expand="block" (click)="passwordmodal()">Change Password</ion-button>
              </ion-card-content>
            </ion-card>
           </ion-col>
@@ -34,55 +34,55 @@
                 <ion-card-subtitle style=" font-size: large;">General Information</ion-card-subtitle>
               </ion-card-header>
               <ion-card-content>
-                   First Name: 
+                   First Name: {{profile.Fname}}
                    <br>
                    <br>
-                   Middle Name: 
+                   Middle Name: {{profile.Mname}}
                    <br>
                    <br>
-                   Last Name:
+                   Last Name: {{profile.Lname}}
                    <br>
                    <br>
-                   Date of Birth:
+                   Date of Birth: {{profile.DOB}}
               </ion-card-content>
               <ion-card-header>
                 <ion-card-subtitle style=" font-size: large;">Contact Information</ion-card-subtitle>
               </ion-card-header>
               <ion-card-content>
-                  Mobile Number:
+                  Mobile Number: {{profile.phone}}
                   <br>
                   <br>
-                  Home Number
+                  Home Number {{profile.Hphone}}
                   <br>
                   <br>
-                  Home Address:
+                  Home Address: {{profile.addressH}}
                   <br>
                   <br>
-                  Personal E-mail:
+                  Personal E-mail: {{profile.Pemail}}
               </ion-card-content>
               <ion-card-header>
                 <ion-card-subtitle style=" font-size: large;">Company Information</ion-card-subtitle>
               </ion-card-header>
               <ion-card-content>
-                Company E-mail:
+                Company E-mail: {{profile.Eemail}}
                 <br>
                 <br>
-                Department:
+                Department: {{profile.department}}
                 <br>
                 <br>
-                role in department:
+                role in department: {{profile.Rdepartment}}
                 <br>
                 <br>
-                Company Joined Date:
+                Company Joined Date: {{profile.sdate}}
               </ion-card-content>
               <ion-card-header>
                 <ion-card-subtitle style=" font-size: large;">Additional Information</ion-card-subtitle>
               </ion-card-header>
               <ion-card-content>
-                Emergency Contact:
+                Emergency Contact: {{profile.Econtact}}
                 <br>
                 <br>
-                Other Information:
+                Other Information: {{profile.Otherinformation}}
               </ion-card-content>
             </div>
             </ion-card>

@@ -14,6 +14,7 @@ import { users, UserService } from '../users.service';
 export class FormPage implements OnInit {
 
   form : users = {
+    userid: '',
     Fname: '',
     Mname: '',
     Lname: '',
@@ -62,6 +63,7 @@ export class FormPage implements OnInit {
   submit()
   {
    this.afAuth.createUserWithEmailAndPassword(this.form.Eemail, this.password).then( res => {
+   this.form.userid = res.user.uid;
    this.user.addnotice(this.form);
    this.cancel();
    this.succesToast();
@@ -73,6 +75,7 @@ export class FormPage implements OnInit {
   cancel()
   {
     this.password = "";
+    this.form.userid = "";
     this.form.Fname = "";
     this.form.Mname = "";
     this.form.Lname = "";

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-password',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasswordComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modal: ModalController) { }
 
   ngOnInit() {}
 
+  closemodal()
+  {
+    this.modal.dismiss();
+  }
 }

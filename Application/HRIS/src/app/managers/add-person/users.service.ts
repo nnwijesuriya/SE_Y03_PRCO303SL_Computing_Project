@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
  
 export interface users {
   id?: string,
+  userid: string,
   Fname: string,
   Mname: string,
   Lname: string,
@@ -12,7 +13,7 @@ export interface users {
   Eemail: string,
   phone : string,
   Hphone : string,
-  DOB ,
+  DOB : any,
   addressH: string,
   department : string,
   Rdepartment: string,
@@ -56,8 +57,24 @@ export class UserService {
         })))
   }
   
-  addnotice(use: users): Promise<DocumentReference> {
-      return this.usersCollection.add(use);   
+  //this adds a document with a particular user id i want
+  addnotice(use: users){
+      return this.usersCollection.doc(use.userid).set(use);   
 }
 
+//to get the value with id
+getform(id: string): Observable<users> {
+  return this.usersCollection.doc<users>(id).valueChanges().pipe(
+    take(1),
+    map(lform => {
+      lform.userid = id;
+      return lform;
+    })
+  );
+}
+
+updateuser(value: users)
+{
+  return this.usersCollection.doc(value.userid).update(value);
+}
 }
