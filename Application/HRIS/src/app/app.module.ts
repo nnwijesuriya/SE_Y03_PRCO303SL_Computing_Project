@@ -4,7 +4,8 @@ import { RouteReuseStrategy } from '@angular/router';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
-import {AngularFireDatabaseModule} from '@angular/fire/database'
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
 
 
@@ -28,6 +29,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AngularFirestoreModule,
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule

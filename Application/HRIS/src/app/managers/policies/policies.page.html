@@ -1,0 +1,66 @@
+<app-header></app-header>
+<ion-content>
+<ion-grid style="padding-top: 40px;">
+  <ion-row>
+    <ion-col size-md="10" offset-md="1">
+      <ion-button expand="block" (click)="addpolices()">Add New Polices</ion-button>
+      <br>
+      <br>
+      <ion-header>Active Policies</ion-header>
+      <br>
+      <ion-list *ngFor="let policyA of (policiesA | async)">
+        <ion-item>
+       <ion-grid>
+           <ion-row>
+               <ion-col>
+                {{policyA.PName}}   
+               </ion-col>
+               <ion-col>
+                {{policyA.Cdate}}
+               </ion-col>
+               <ion-col>
+                {{policyA.purpose}}
+               </ion-col>
+               <ion-col>
+                <ion-item (click)="getdocument(policyA.id)" >
+                    <ion-icon name="eye-outline" slot="end"></ion-icon>
+                </ion-item>
+               </ion-col>
+           </ion-row>
+       </ion-grid>
+       </ion-item>
+       </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row style="padding-top: 20px;">
+    <ion-col size-md="10" offset-md="1">
+      <ion-header>Removed Policies</ion-header>
+      <br>
+      <ion-list *ngFor="let policyD of (policiesD | async)">
+        <ion-item>
+       <ion-grid>
+           <ion-row>
+               <ion-col>
+                {{policyD.PName}}   
+               </ion-col>
+               <ion-col>
+                {{policyD.Cdate}}
+               </ion-col>
+               <ion-col>
+                {{policyD.purpose}}
+               </ion-col>
+                   <ion-row>
+                       <ion-col>
+                        <ion-item (click)="getdocument(policyD.id)">
+                            <ion-icon name="eye-outline" slot="end"></ion-icon>
+                        </ion-item>
+                    </ion-col>
+                   </ion-row> 
+           </ion-row>
+       </ion-grid>
+       </ion-item>
+       </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

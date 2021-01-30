@@ -34,7 +34,6 @@ export class EditProfileComponent implements OnInit {
 
   uid;
 
-
   constructor(private modal: ModalController, private users: UserService, private auth: AngularFireAuth) { }
 
   ngOnInit() {

@@ -33,6 +33,9 @@ export class FormPage implements OnInit {
   }
   password = "";
 
+  showpassword= false;
+  passwordtoggleicon = 'eye';
+
   pipe = new DatePipe('en-US'); 
 
 
@@ -92,5 +95,18 @@ export class FormPage implements OnInit {
     this.form.Otherinformation = "";
     this.router.navigateByUrl('add-person')
   }
+
+  togglepassword()
+  {
+    this.showpassword = !this.showpassword;
+
+    if(this.passwordtoggleicon == 'eye')
+    {
+      this.passwordtoggleicon = 'eye-off';
+    }else
+    {
+      this.passwordtoggleicon = 'eye';
+    }
+  } 
 
 }

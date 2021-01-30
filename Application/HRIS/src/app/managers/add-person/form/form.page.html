@@ -84,7 +84,8 @@
       <ion-col>
         <ion-item style="padding-top: 10px;">
           <ion-label position="floating">New Password</ion-label>
-          <ion-input [(ngModel)]="password"></ion-input>
+          <ion-input [(ngModel)]="password" [type]="showpassword ? 'text' : 'password'"></ion-input>
+          <ion-icon slot="end" [name]="passwordtoggleicon" (click)="togglepassword()"></ion-icon>
         </ion-item>
       </ion-col>
     </ion-row>

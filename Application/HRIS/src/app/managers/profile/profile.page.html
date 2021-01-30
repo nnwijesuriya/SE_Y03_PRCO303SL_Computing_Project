@@ -12,7 +12,8 @@
              </ion-card-header>
            </ion-card>
            <hr>
-           <ion-button expand="block">Change Profile Picture</ion-button>
+           <ion-input type="file" (change)="upload($event)" accept="*.png.jpg"></ion-input>
+           <ion-button expand="block" (click)="imageUpload()">Change Profile Picture</ion-button>
            <br>
            <br>
            <br>
