@@ -21,6 +21,7 @@ export class ProfilePage implements OnInit {
   Lname: '',
   Pemail: '',
   Eemail: '',
+  password: '',
   phone : '',
   Hphone : '',
   DOB: '' ,
@@ -30,7 +31,8 @@ export class ProfilePage implements OnInit {
   role : '',
   sdate: '',
   Econtact: '',
-  Otherinformation: ''
+  Otherinformation: '',
+  picture: ''
  } 
 
   constructor(private user: UserService, private auth: AngularFireAuth, private toast:ToastController, private modal: ModalController, private storage: AngularFireStorage) { }
@@ -108,6 +110,8 @@ export class ProfilePage implements OnInit {
       {
        fileref.getDownloadURL().subscribe((url)=>{
          this.imageurl=url;
+         this.profile.picture = this.imageurl;
+         this.user.updateuser(this.profile);
          this.reset();
          console.log(this.imageurl)
        })

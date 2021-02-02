@@ -21,6 +21,7 @@ export class FormPage implements OnInit {
     DOB: '',
     Pemail: '',
     Eemail: '',
+    password: '',
     Hphone: '',
     phone : '',
     addressH: '',
@@ -29,7 +30,8 @@ export class FormPage implements OnInit {
     role: '',
     sdate: '',
     Econtact: '',
-    Otherinformation: ''
+    Otherinformation: '',
+    picture: ''
   }
   password = "";
 
@@ -45,6 +47,7 @@ export class FormPage implements OnInit {
     const now = Date.now();
     const myFormattedDate = this.pipe.transform(now, 'short');
     this.form.sdate= myFormattedDate;
+    this.form.picture = "https://firebasestorage.googleapis.com/v0/b/hris-project-9b070.appspot.com/o/images0.5205803502471043%5Bobject%20File%5D?alt=media&token=1b793545-17a2-46b8-a195-5b71ac3c0235"
   }
 
   async succesToast() {
@@ -65,14 +68,10 @@ export class FormPage implements OnInit {
 
   submit()
   {
-   this.afAuth.createUserWithEmailAndPassword(this.form.Eemail, this.password).then( res => {
-   this.form.userid = res.user.uid;
-   this.user.addnotice(this.form);
-   this.cancel();
-   this.succesToast();
-   }, err =>{
-     this.failToast();
-   })
+    this.form.password = this.password;
+    this.user.addnotice(this.form);
+    this.cancel(); 
+    this.succesToast();
   }
 
   cancel()
@@ -85,6 +84,7 @@ export class FormPage implements OnInit {
     this.form.DOB = "";
     this.form.Pemail = "";
     this.form.Eemail = "";
+    this.form.password = "";
     this.form.Hphone = "";
     this.form.phone = "";
     this.form.addressH = "";

@@ -6,10 +6,8 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-           <ion-card>
-             <ion-card-header>
-               <ion-card-header>Enter the picture here</ion-card-header>
-             </ion-card-header>
+           <ion-card style="height: 180px; width: 250px;">
+            <img style="height: 100%;" src={{profile.picture}}>
            </ion-card>
            <hr>
            <ion-input type="file" (change)="upload($event)" accept="*.png.jpg"></ion-input>

@@ -7,6 +7,7 @@ import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore'
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
+import {HttpClientModule} from '@angular/common/http';
 
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -32,7 +33,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
     AngularFirestoreModule,
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,

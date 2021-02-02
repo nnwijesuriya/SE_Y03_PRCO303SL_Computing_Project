@@ -21,6 +21,7 @@ export class EditProfileComponent implements OnInit {
     DOB: '',
     Pemail: '',
     Eemail: '',
+    password: '',
     Hphone: '',
     phone : '',
     addressH: '',
@@ -29,7 +30,8 @@ export class EditProfileComponent implements OnInit {
     role: '',
     sdate: '',
     Econtact: '',
-    Otherinformation: ''
+    Otherinformation: '',
+    picture: ''
   }
 
   uid;

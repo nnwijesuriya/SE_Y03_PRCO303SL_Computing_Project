@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
  
 export interface users {
   id?: string,
@@ -11,6 +12,7 @@ export interface users {
   Lname: string,
   Pemail: string,
   Eemail: string,
+  password: any,
   phone : string,
   Hphone : string,
   DOB : any,
@@ -20,7 +22,8 @@ export interface users {
   role : string,
   sdate: string,
   Econtact: string,
-  Otherinformation: string
+  Otherinformation: string,
+  picture: any
 }
  
 @Injectable({
@@ -31,7 +34,7 @@ export class UserService {
   private Ausers: Observable<users[]>;
   private usersCollection: AngularFirestoreCollection<users>;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private httpclient: HttpClient) {
 
     this.usersCollection = this.afs.collection<users>('users');
     this.Ausers = this.usersCollection.snapshotChanges().pipe(
@@ -59,8 +62,33 @@ export class UserService {
   
   //this adds a document with a particular user id i want
   addnotice(use: users){
-      return this.usersCollection.doc(use.userid).set(use);   
+    const profile : users = {
+      userid: null,
+      Fname: use.Fname,
+      Mname: use.Mname,
+      Lname: use.Lname,
+      Pemail: use.Pemail,
+      Eemail: use.Eemail,
+      password: use.password,
+      phone : use.phone,
+      Hphone : use.Hphone,
+      DOB : use.DOB,
+      addressH: use.addressH,
+      department : use.department,
+      Rdepartment: use.Rdepartment,
+      role : use.role,
+      sdate: use.sdate,
+      Econtact: use.Econtact,
+      Otherinformation: use.Otherinformation,
+      picture: use.picture
+    };
+    this.httpclient.post<{message: string}>('http://localhost:3000/add-person/form', profile).subscribe((responsestatus) => {
+      profile.userid = responsestatus.message;  
+      this.usersCollection.doc(profile.userid).set(profile); 
+    });   
 }
+
+
 
 //to get the value with id
 getform(id: string): Observable<users> {
