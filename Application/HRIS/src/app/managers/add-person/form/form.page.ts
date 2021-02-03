@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { users, UserService } from '../users.service';
 
-
 @Component({
   selector: 'app-form',
   templateUrl: './form.page.html',
@@ -42,6 +41,9 @@ export class FormPage implements OnInit {
 
 
   constructor(private router : Router, private toastCtrl: ToastController, private user: UserService, private afAuth: AngularFireAuth) { }
+
+
+  encriped;
 
   ngOnInit() {
     const now = Date.now();

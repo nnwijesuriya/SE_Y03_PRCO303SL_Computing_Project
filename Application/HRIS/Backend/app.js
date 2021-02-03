@@ -37,4 +37,20 @@ admin.auth().createUser({
   });
 });
 
+app.post('/profile',(req, res, next) => {
+  const post = req.body;
+    admin.auth().updateUser(post.uid,{
+      email: post.Eemail, 
+      password: post.password
+  }).then((userRecord) => {
+      console.log('Successfully updated the password:', userRecord.uid);
+      res.status(201).json({ 
+         message: userRecord.uid.toString()
+      });
+    })
+    .catch((error) => {
+      console.log('Error updating the password:', error);
+    });
+  });
+  
 module.exports = app;

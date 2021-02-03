@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection} from '@angular/fire/fires
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import * as CryptoJS from 'crypto-js';
  
 export interface users {
   id?: string,
@@ -83,12 +84,13 @@ export class UserService {
       picture: use.picture
     };
     this.httpclient.post<{message: string}>('http://localhost:3000/add-person/form', profile).subscribe((responsestatus) => {
-      profile.userid = responsestatus.message;  
+      profile.userid = responsestatus.message; 
+      let id = this.set('123456$#@$^@1ERF', profile.password);
+      console.log(id);
+      profile.password = id;
       this.usersCollection.doc(profile.userid).set(profile); 
     });   
 }
-
-
 
 //to get the value with id
 getform(id: string): Observable<users> {
@@ -104,5 +106,33 @@ getform(id: string): Observable<users> {
 updateuser(value: users)
 {
   return this.usersCollection.doc(value.userid).update(value);
+}
+
+set(keys, value){
+  var key = CryptoJS.enc.Utf8.parse(keys);
+  var iv = CryptoJS.enc.Utf8.parse(keys);
+  var encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(value.toString()), key,
+  {
+      keySize: 128 / 8,
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+  });
+
+  return encrypted.toString();
+}
+
+//The get method is use for decrypt the value.
+get(keys, value){
+  var key = CryptoJS.enc.Utf8.parse(keys);
+  var iv = CryptoJS.enc.Utf8.parse(keys);
+  var decrypted = CryptoJS.AES.decrypt(value, key, {
+      keySize: 128 / 8,
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+  });
+
+  return decrypted.toString(CryptoJS.enc.Utf8);
 }
 }

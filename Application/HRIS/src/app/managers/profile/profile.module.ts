@@ -9,6 +9,7 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 import { ProfilePage } from './profile.page';
 import {HeaderComponent} from '../../header/header.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { PasswordComponent } from './password/password.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     IonicModule,
     ProfilePageRoutingModule
   ],
-  declarations: [ProfilePage, HeaderComponent, EditProfileComponent],
-  entryComponents: [EditProfileComponent]
+  declarations: [ProfilePage, HeaderComponent, EditProfileComponent, PasswordComponent],
+  entryComponents: [EditProfileComponent, PasswordComponent]
 })
 export class ProfilePageModule {}

@@ -67,10 +67,10 @@ export class ProfilePage implements OnInit {
 
   async passwordmodal()
   {
-    const Emodal = await this.modal.create({
+    const pmodal = await this.modal.create({
       component: PasswordComponent
     });
-   await Emodal.present();
+    await pmodal.present();
   }
 
   upload($event)
