@@ -92,6 +92,35 @@ export class UserService {
     });   
 }
 
+deletuser(use:users)
+{
+  const profile : users = {
+    userid: use.userid,
+    Fname: use.Fname,
+    Mname: use.Mname,
+    Lname: use.Lname,
+    Pemail: use.Pemail,
+    Eemail: use.Eemail,
+    password: use.password,
+    phone : use.phone,
+    Hphone : use.Hphone,
+    DOB : use.DOB,
+    addressH: use.addressH,
+    department : use.department,
+    Rdepartment: use.Rdepartment,
+    role : use.role,
+    sdate: use.sdate,
+    Econtact: use.Econtact,
+    Otherinformation: use.Otherinformation,
+    picture: use.picture
+  };
+  this.httpclient.post<{message: string}>('http://localhost:3000/add-person', profile).subscribe((responsestatus) => {
+      console.log(responsestatus);
+      console.log(profile.userid);  
+    });   
+    this.usersCollection.doc(profile.userid).delete();
+}
+
 //to get the value with id
 getform(id: string): Observable<users> {
   return this.usersCollection.doc<users>(id).valueChanges().pipe(

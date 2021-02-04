@@ -58,5 +58,8 @@
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
   },
+  "browser": {
+    "crypto": false
+},
   "description": "An Ionic project"
 }

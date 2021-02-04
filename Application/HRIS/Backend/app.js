@@ -52,5 +52,20 @@ app.post('/profile',(req, res, next) => {
       console.log('Error updating the password:', error);
     });
   });
+
+  app.post('/add-person',(req, res, next) => {
+    const post = req.body;
+    console.log(post.userid);
+    admin.auth().deleteUser(post.userid)
+    .then(() => {
+      console.log('Successfully deleted the user');
+      res.status(201).json({ 
+         message: 'Successfully deleted the user'
+      });
+    })
+    .catch((error) => { 
+      console.log('Error Deleting the user:');
+    });
+});
   
 module.exports = app;

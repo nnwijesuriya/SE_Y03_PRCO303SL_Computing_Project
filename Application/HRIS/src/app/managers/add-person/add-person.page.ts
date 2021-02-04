@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { users, UserService } from './users.service';
 
@@ -10,7 +10,28 @@ import { users, UserService } from './users.service';
 })
 export class AddPersonPage implements OnInit {
 
-  constructor(private nav: NavController, private user: UserService) { }
+  form : users = {
+    userid: '',
+    Fname: '',
+    Mname: '',
+    Lname: '',
+    DOB: '',
+    Pemail: '',
+    Eemail: '',
+    password: '',
+    Hphone: '',
+    phone : '',
+    addressH: '',
+    department : '',
+    Rdepartment: '',
+    role: '',
+    sdate: '',
+    Econtact: '',
+    Otherinformation: '',
+    picture: ''
+  }
+
+  constructor(private nav: NavController, private user: UserService, private toastCtrl: ToastController) { }
 
   public Muse : Observable<users[]>;
 
@@ -38,6 +59,27 @@ export class AddPersonPage implements OnInit {
       this.Euse = this.user.getCollection(role);
     }
 
+    async succesToast() {
+      const toast = await this.toastCtrl.create({
+        message: 'The user has been successfully deleted from the system',
+        duration: 3000  
+      });
+      toast.present();
+    }
+  
 
-
+    deleteuser(id, email)
+    {
+     console.log(id);
+     console.log(email); 
+     if(confirm("Are you sure you want to delete the user " + email))
+     {
+     this.user.getform(id).subscribe(profiles => {
+       this.form = profiles;   
+       console.log(this.form);
+       this.user.deletuser(this.form);    
+       this.succesToast();  
+     });
+    }
+  }
 }
