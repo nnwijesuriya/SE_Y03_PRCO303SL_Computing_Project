@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import * as CryptoJS from 'crypto-js';
  
 export interface users {
-  id?: string,
+  id?: string, 
   userid: string,
   Fname: string,
   Mname: string,
@@ -164,4 +164,9 @@ get(keys, value){
 
   return decrypted.toString(CryptoJS.enc.Utf8);
 }
+
+getusers()
+  {
+      return this.Ausers;
+  }
 }

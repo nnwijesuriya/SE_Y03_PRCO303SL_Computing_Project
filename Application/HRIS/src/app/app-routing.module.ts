@@ -46,6 +46,10 @@ const routes: Routes = [
   {
     path: 'policies',
     loadChildren: () => import('./managers/policies/policies.module').then( m => m.PoliciesPageModule)
+  },
+  {
+    path: 'tab',
+    loadChildren: () => import('./managers/attendance-tab/tab/tab.module').then( m => m.TabPageModule)
   }
 ];
 

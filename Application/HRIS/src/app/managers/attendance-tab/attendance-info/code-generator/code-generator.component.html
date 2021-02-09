@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Mark Attendance
+   </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closemodal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="8" offset-md="2">
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">New QR-Code</ion-label>
+              <ion-input [(ngModel)]="code.qrcode"></ion-input>
+            </ion-item>
+          </ion-col>
+    </ion-col>
+    </ion-row>
+    </ion-grid>
+    <ion-grid style="padding-top: 10px;">
+      <ion-row>
+          <ion-col size-md="10" offset-md="1">
+              <ion-header style="padding-bottom: 15px;">Currently used QR Code</ion-header>
+              <ion-list *ngFor="let users of (user | async)">
+                  <ion-item>
+                 <ion-grid>
+                     <ion-row>
+                         <ion-col>
+                          {{users.date}}
+                         </ion-col>
+                         <ion-col>
+                          {{users.qrcode}}
+                         </ion-col>
+                         <ion-col> 
+                          <ion-item (click)="deletecode(users.id)">
+                           <ion-icon name="trash-outline" slot="end"></ion-icon>
+                          </ion-item>                  
+                      </ion-col>
+                     </ion-row>
+                 </ion-grid>
+                 </ion-item>
+                 </ion-list>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="addcode()">ADD New QR-Code</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="closemodal()">Cancel</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>
+
