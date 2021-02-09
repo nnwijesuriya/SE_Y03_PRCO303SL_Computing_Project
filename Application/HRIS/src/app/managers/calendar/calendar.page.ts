@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ModalController } from '@ionic/angular';
 import { CalendarComponent } from 'ionic2-calendar';
+import { IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-calendar',
@@ -10,6 +11,8 @@ import { CalendarComponent } from 'ionic2-calendar';
   styleUrls: ['./calendar.page.scss'],
 })
 export class CalendarPage implements OnInit {
+
+  @ViewChild(IonContent, { static: false }) content: IonContent;
 
   form = {
     title: '',
@@ -80,6 +83,7 @@ export class CalendarPage implements OnInit {
     this.db.collection('events').add(this.form);
     this.myCal.loadEvents();
     this.resetEvent();
+    this.content.scrollToTop(1500);
   }
 
   resetEvent() {
@@ -104,6 +108,11 @@ export class CalendarPage implements OnInit {
   onViewTitleChanged(title)
   {
     this.titlecal = title;
+  }
+
+  gobottom()
+  {
+    this.content.scrollToBottom(1500);
   }
 
 }
