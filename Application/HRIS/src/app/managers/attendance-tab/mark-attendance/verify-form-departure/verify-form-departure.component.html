@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Change Password
+      Mark Leaving Time
    </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="closemodal()">
@@ -16,15 +16,15 @@
       <ion-col size-md="8" offset-md="2">
           <ion-col>
             <ion-item style="padding-top: 10px;">
-              <ion-label position="floating">Old Password</ion-label>
-              <ion-input type="password" [(ngModel)]="password"></ion-input>
+              <ion-label position="floating">E-mail</ion-label>
+              <ion-input placeholder="{{email}}"></ion-input>
             </ion-item>
           </ion-col>
         <ion-row>
           <ion-col>
             <ion-item style="padding-top: 10px;">
-              <ion-label position="floating">New Password</ion-label>
-              <ion-input type="password" [(ngModel)]="newpassword" ></ion-input>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input [(ngModel)]="password" ></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -34,7 +34,7 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-button expand="block" (click)="Updatepassword()">Change Password</ion-button>
+          <ion-button expand="block" (click)="markattendance()">Mark Attendance</ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -44,3 +44,4 @@
       </ion-row>
     </ion-grid>
 </ion-content>
+

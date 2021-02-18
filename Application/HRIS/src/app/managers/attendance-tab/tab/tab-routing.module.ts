@@ -16,6 +16,10 @@ const routes: Routes = [
         path: 'mark-attendance',
         loadChildren: () => import('../mark-attendance/mark-attendance.module').then( m => m.MarkAttendancePageModule)
       },
+      {
+        path: 'attendance-report',
+        loadChildren: () => import('../attendance-report/attendance-report.module').then( m => m.AttendanceReportPageModule)
+      }
     ]
   },
 {

@@ -2,6 +2,7 @@ const express = require('express');
 const bodyparser = require ('body-parser');
 const admin = require('firebase-admin');
 
+
 const app = express();
 
 var serviceAccount = require("../Backend/servicekey.json");
@@ -67,5 +68,17 @@ app.post('/profile',(req, res, next) => {
       console.log('Error Deleting the user:');
     });
 });
-  
+
+// this is to remove the collection in the attendance
+app.post('/tab/attendance-info',(req, res, next) => {
+  const post = req.body;
+  var batch = admin.firestore().batch();
+  admin.firestore().collection(post.path).listDocuments().then(val => {
+    val.map((val) => {
+        batch.delete(val)
+    })
+    batch.commit()
+  })
+})
+
 module.exports = app;

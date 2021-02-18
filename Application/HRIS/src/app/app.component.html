@@ -12,24 +12,24 @@
           <ion-label>Profile</ion-label>
         </ion-item> 
         </ion-menu-toggle>  
-        <ion-menu-toggle>      
+        <ion-menu-toggle>       
         <ion-item>  
           <ion-icon name="color-palette-outline" slot="start"></ion-icon>
           <ion-label>Themes </ion-label>
         </ion-item> 
-        </ion-menu-toggle>  
+        </ion-menu-toggle>   
         <ion-menu-toggle>
           <ion-item routerLink="add-person">
             <ion-icon name="person-add-outline" slot="start"></ion-icon>
             <ion-label>Add User</ion-label>
           </ion-item>   
-          </ion-menu-toggle>     
+          </ion-menu-toggle>       
         <ion-menu-toggle>
-        <ion-item>
+        <ion-item (click)="signout()">
           <ion-icon name="log-out-outline" slot="start"></ion-icon>
           <ion-label>Logout</ion-label>
         </ion-item>
-        </ion-menu-toggle>
+        </ion-menu-toggle> 
       </ion-list>
       <br>
       <br>

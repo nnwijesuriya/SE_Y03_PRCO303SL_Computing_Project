@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { ModalController } from '@ionic/angular';
@@ -23,7 +24,12 @@ export class AttendanceInfoPage implements OnInit {
     name: '',
     department: '',
     email: '',
-    date: ''
+    date: '',
+    ddate: '',
+    hoursw: '',
+    minw: '',
+    worktype: '',
+    status: ''
   }
 
   form : employee = {
@@ -35,7 +41,7 @@ export class AttendanceInfoPage implements OnInit {
   elementType = 'url';
   temp;
 
-  constructor(private barcodescanner: BarcodeScanner, private modal: ModalController, private attendance: AttendanceService, private userservice: UserService, private mark: MarkingService) { }
+  constructor(private barcodescanner: BarcodeScanner, private httpclient: HttpClient, private modal: ModalController, private attendance: AttendanceService, private userservice: UserService, private mark: MarkingService) { }
 
   ngOnInit() {
     this.getprofile();
@@ -49,6 +55,7 @@ export class AttendanceInfoPage implements OnInit {
     });
   }
 
+  // to get all the attendance information
   getprofile()
   {
    this.users = this.mark.getusers();
@@ -68,5 +75,15 @@ export class AttendanceInfoPage implements OnInit {
      this.getcode(this.temp);
      this.qrdata = this.temp;
  });
+}
+
+removedata()
+{
+  let path = "attendance/employees/present employees";
+  const data = {path: path, message : "working"}
+  this.httpclient.post<{message: string}>('http://localhost:3000/tab/attendance-info', data).subscribe((responsestatus) => {
+    let response = responsestatus.message; 
+    console.log(response);
+  });   
 }
 }

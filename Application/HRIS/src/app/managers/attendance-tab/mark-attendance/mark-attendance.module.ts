@@ -9,6 +9,7 @@ import { MarkAttendancePageRoutingModule } from './mark-attendance-routing.modul
 import { MarkAttendancePage } from './mark-attendance.page';
 import { HeaderComponent } from 'src/app/header/header.component';
 import { VerifyFormComponent } from './verify-form/verify-form.component';
+import { VerifyFormDepartureComponent } from './verify-form-departure/verify-form-departure.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { VerifyFormComponent } from './verify-form/verify-form.component';
     IonicModule,
     MarkAttendancePageRoutingModule
   ],
-  declarations: [MarkAttendancePage, HeaderComponent, VerifyFormComponent]
+  declarations: [MarkAttendancePage, HeaderComponent, VerifyFormComponent, VerifyFormDepartureComponent]
 })
 export class MarkAttendancePageModule {}

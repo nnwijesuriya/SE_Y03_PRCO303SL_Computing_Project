@@ -1,21 +1,34 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { ModalController, NavParams, ToastController } from '@ionic/angular';
+import { ModalController, ToastController, NavParams } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { users, UserService } from 'src/app/managers/add-person/users.service';
-import { mark, MarkingService } from './marking.service';
+import { mark, MarkingService } from '../verify-form/marking.service';
 
 @Component({
-  selector: 'app-verify-form',
-  templateUrl: './verify-form.component.html',
-  styleUrls: ['./verify-form.component.scss'],
+  selector: 'app-verify-form-departure',
+  templateUrl: './verify-form-departure.component.html',
+  styleUrls: ['./verify-form-departure.component.scss'],
 })
-export class VerifyFormComponent implements OnInit {
+export class VerifyFormDepartureComponent implements OnInit {
 
   public user : Observable<users[]>;
   public attendance : Observable<mark[]>;
- 
+
+  attend: mark = {
+    userid: '',
+    email: '', 
+    name: '',
+    department: '',
+    date: '',
+    ddate: '',
+    hoursw: '',
+    minw: '',
+    worktype: '',
+    status: ''
+  }
+
   attendeees: mark = {
     userid: '',
     email: '', 
@@ -55,7 +68,6 @@ export class VerifyFormComponent implements OnInit {
   date;
   dbpassword;
   password;
-  checkdate
 
   pipe = new DatePipe('en-US'); 
   constructor(private modal: ModalController, private toast: ToastController, private nav: NavParams, private marking: MarkingService, private auth: AngularFireAuth, private users: UserService) { }
@@ -68,16 +80,12 @@ export class VerifyFormComponent implements OnInit {
       this.uid = data.uid; 
       console.log(this.uid);
       this.getuserdetils();
+      this.getmarkdetails();
   })
 
   const now = Date.now();
     const myFormattedDate = this.pipe.transform(now, 'short');
     this.date = myFormattedDate;
-
-    const checkdate= this.pipe.transform(now, 'shortDate');
-    // The time below is the start time of the organization
-    this.checkdate = checkdate + ", 08:30 AM";
-    console.log(this.checkdate);
 }
 
   closemodal()
@@ -88,7 +96,7 @@ export class VerifyFormComponent implements OnInit {
 
   async failToast() {
     const toast =  await this.toast.create({
-      message: 'Your Attendance was not recorded',
+      message: 'Your Departure time was not recorded',
       duration: 2000
     });
     toast.present();  
@@ -104,7 +112,7 @@ export class VerifyFormComponent implements OnInit {
 
   async successToast() {
     const toast =  await this.toast.create({
-      message: 'Your Attendance was successfully recorded',
+      message: 'Your Departure Time was successfully recorded',
       duration: 2000
     });
     toast.present();  
@@ -117,6 +125,14 @@ export class VerifyFormComponent implements OnInit {
     });
   }
 
+  getmarkdetails()
+  {
+    this.marking.getusersdepartureindividually(this.uid).subscribe(profiles => {
+      this.attend = profiles;   
+      });
+  }
+
+  // to get the hours each employee is working
   gethoursDiff(startDate, endDate) {
     var diff = endDate.getTime() - startDate.getTime();
     var hours = Math.floor(diff / (60 * 60 * 1000));
@@ -130,9 +146,9 @@ export class VerifyFormComponent implements OnInit {
     var hours = Math.floor(diff / (60 * 60 * 1000)) - (days * 24);
     var minutes = Math.floor(diff / (60 * 1000)) - ((days * 24 * 60) + (hours * 60));
     return minutes;
-   } 
+   }
 
-  markattendance()
+  markattendance() 
   {
     console.log(this.profile.password)
     this.dbpassword = this.users.get('123456$#@$^@1ERF', this.profile.password);
@@ -143,30 +159,29 @@ export class VerifyFormComponent implements OnInit {
       this.attendeees.email = this.profile.Eemail;
       this.attendeees.name = this.profile.Fname;
       this.attendeees.department = this.profile.department;
-      this.attendeees.ddate = "";
-      this.attendeees.hoursw = "";
-      this.attendeees.minw ="";
-      this.attendeees.worktype = "";
-      this.attendeees.date = this.date;
+      this.attendeees.status = this.attend.status;
+      this.attendeees.date = this.attend.date;
       let adate = this.attendeees.date;
-      let bdate = this.checkdate;
-      console.log(bdate);
-      console.log(adate);
-      
-      if(adate > bdate)
+      let dedate= this.date;
+      let diffH = this.gethoursDiff(new Date(adate), new Date(dedate));
+      let diffM = this.getminDiff(new Date(adate), new Date(dedate));
+      this.attendeees.hoursw = diffH; 
+      this.attendeees.minw = diffM;
+      //have to calculate number of hours worked 
+      if(diffH<=5)
       {
-        let diffH = this.gethoursDiff(new Date(bdate), new Date(adate));
-        let diffM = this.getminDiff(new Date(bdate), new Date(adate));
-        this.attendeees.status = "Late by " + diffH + " Hrs " + diffM + " Min";
-    
-      }else // this does not work only detects lateness have to fix this
+        this.attendeees.worktype = "Half day"
+      }else if(diffH>=5 && diffH <=10)
       {
-        let diffH = this.gethoursDiff(new Date(adate), new Date(bdate));
-        let diffM = this.getminDiff(new Date(adate), new Date(bdate));
-        this.attendeees.status = "Early by " + diffH + " Hrs " + diffM + " Min";
-      } 
-      
-      this.marking.markattendance(this.attendeees);
+        this.attendeees.worktype = "Full day"
+      }else
+      {
+        this.attendeees.worktype = "Over time day"
+      }
+      this.attendeees.ddate = this.date;
+      this.marking.markattendanced(this.attendeees);
+      //saves the record permanetly
+      this.marking.addrecord(this.attendeees);
       this.modal.dismiss();
       this.successToast();
     } else
