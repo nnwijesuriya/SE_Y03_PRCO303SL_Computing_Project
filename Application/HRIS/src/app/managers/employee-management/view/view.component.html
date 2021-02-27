@@ -1,0 +1,128 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Edit Profile
+   </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closemodal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="8" offset-md="2">
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">First Name</ion-label>
+              <ion-input [(ngModel)]="form.Fname" placeholder="{{form.Fname}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;"> 
+              <ion-label position="floating">Middle Name</ion-label>
+              <ion-input [(ngModel)]="form.Mname" placeholder="{{form.Mname}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Last Name</ion-label>
+              <ion-input [(ngModel)]="form.Lname" placeholder="{{form.Lname}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Mobile Number</ion-label>
+              <ion-input [(ngModel)]="form.phone" placeholder="{{form.phone}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Home Number</ion-label>
+              <ion-input [(ngModel)]="form.Hphone" placeholder="{{form.Hphone}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Home Address</ion-label>
+              <ion-input [(ngModel)]="form.addressH" placeholder="{{form.addressH}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Employee Personal Email</ion-label>
+              <ion-input [(ngModel)]="form.Pemail" placeholder="{{form.Pemail}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Employee email</ion-label>
+              <ion-input [(ngModel)]="form.Eemail" placeholder="{{form.Eemail}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Department</ion-label>
+              <ion-input [(ngModel)]="form.department" placeholder="{{form.department}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Department Role</ion-label>
+              <ion-input [(ngModel)]="form.Rdepartment" placeholder="{{form.Rdepartment}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Emergency Contact</ion-label>
+              <ion-input [(ngModel)]="form.Econtact" placeholder="{{form.Econtact}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Additional Information</ion-label>
+              <ion-input [(ngModel)]="form.Otherinformation" placeholder="{{form.Otherinformation}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+    </ion-col>
+    </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="update()">Update employee</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="closemodal()">Cancel</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

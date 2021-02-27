@@ -35,10 +35,24 @@ export class UserService {
   private Ausers: Observable<users[]>;
   private usersCollection: AngularFirestoreCollection<users>;
 
+  private Dusers: Observable<users[]>;
+  private DusersCollection: AngularFirestoreCollection<users>;
+
   constructor(private afs: AngularFirestore, private httpclient: HttpClient) {
 
     this.usersCollection = this.afs.collection<users>('users');
     this.Ausers = this.usersCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+
+    this.DusersCollection = this.afs.collection<users>('employees/removed employees/details');
+    this.Dusers = this.DusersCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -132,6 +146,18 @@ getform(id: string): Observable<users> {
   );
 }
 
+addDeletedUser(user:users)
+{
+  console.log(user.userid);
+  let value: string = user.userid;
+  return this.DusersCollection.doc(value).set(user); 
+}
+
+removeDeleteduser(id: string)
+{
+  return this.DusersCollection.doc(id).delete();
+}
+
 updateuser(value: users)
 {
   return this.usersCollection.doc(value.userid).update(value);
@@ -168,5 +194,30 @@ get(keys, value){
 getusers()
   {
       return this.Ausers;
+  }
+
+  getDepartmentCollection(value) {
+    return this.afs.collection<users>('users', ref => 
+        ref.where(
+            'department', '==', value
+        )).snapshotChanges().pipe(
+            map(actions => actions.map(a => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { id, ...data };
+        })))
+  }
+
+  //doesnt work have to figure out
+  getDateCollection(value) {
+    return this.afs.collection<users>('users', ref => 
+        ref.where(
+            'sdate','==', value
+        )).snapshotChanges().pipe(
+            map(actions => actions.map(a => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { id, ...data };
+        })))
   }
 }

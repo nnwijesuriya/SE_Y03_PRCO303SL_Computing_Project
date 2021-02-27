@@ -1,0 +1,103 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="10" offset-md="1">
+        <ion-header style="font-size: xx-large; padding-top: 10px; text-align: center; font-weight: bold;" >Active Employees</ion-header>
+        <br>
+        <br>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-searchbar (ionInput)="filterusers($event)"></ion-searchbar>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-select placeholder="Departments" [(ngModel)]="department" (ionChange)="getByDepartment()">
+                  <ion-select-option value="All">All</ion-select-option>
+                  <ion-select-option value="Marketing">Marketing</ion-select-option>
+                  <ion-select-option value="Production">Production</ion-select-option>
+                  <ion-select-option value="Research & Development">Research & Development</ion-select-option>
+                  <ion-select-option value="Accounting & Finance">Accounting & Finance</ion-select-option>
+                  <ion-select-option value="Purchasing & Customer service">Purchasing & Customer service</ion-select-option>
+                  <ion-select-option value="Management">Management</ion-select-option>
+                  <ion-select-option value="HR Management">HR Management</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+            <ion-item>
+              <ion-datetime displayFormat="MM/DD/YYYY" placeholder="Start date" [(ngModel)]="selectedDate" (ionChange)="getByDate()"></ion-datetime>
+            </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="11" offset-md="0.5">
+        <ion-grid>
+          <ion-card *ngFor="let users of (employees | async)">
+          <ion-row> 
+            <ion-col>
+              <ion-item>
+                  <ion-avatar style="height: 140px; width: 130px;">
+                    <ion-img  src={{users.picture}}></ion-img>
+                  </ion-avatar>
+              </ion-item>   
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>Name: {{users.Fname}} {{users.Lname}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Role: {{users.role}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Status: </ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item (click)="editemployee(users.id);">
+                <ion-icon name="pencil-outline"></ion-icon>
+                <ion-label> Edit</ion-label>
+              </ion-item> 
+              <ion-item (click)="alertConfirm(users.id);">
+                <ion-icon name="trash-outline"></ion-icon>
+                <ion-label> Remove</ion-label>
+              </ion-item> 
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>E-mail: {{users.Eemail}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Mobile number: {{users.phone}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Started date: {{users.sdate}}</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>Department: {{users.department}}</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <div>
+                  <ion-icon name="star" *ngFor="let num of [1,2,3,4,5]" (click)="rate(num)" 
+                  [ngStyle]="{'color':getColor(num)}"></ion-icon>
+                </div>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          </ion-card>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

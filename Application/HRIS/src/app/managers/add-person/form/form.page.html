@@ -92,8 +92,53 @@
     <ion-row>
       <ion-col>
         <ion-item style="padding-top: 10px;">
-          <ion-label position="floating">Department</ion-label>
-          <ion-input [(ngModel)]="form.department"></ion-input>
+          <ion-label position="stacked">Department</ion-label>
+          <ion-radio-group [(ngModel)]="form.department">
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label>Marketing</ion-label>
+                  <ion-radio slot="start" value="Marketing"></ion-radio>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+             <ion-item>
+               <ion-label>Production</ion-label>
+               <ion-radio slot="start" value="Production"></ion-radio>
+             </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label>Research & Development</ion-label>
+                  <ion-radio slot="start" value="Research & Development"></ion-radio>
+                </ion-item>
+                 </ion-col>
+                 <ion-col>
+                  <ion-item>
+                    <ion-label>Accounting & Finance</ion-label>
+                    <ion-radio slot="start" value="Accounting & Finance"></ion-radio>
+                  </ion-item>
+                   </ion-col>
+                   <ion-col>
+                    <ion-item>
+                      <ion-label>Management</ion-label>
+                      <ion-radio slot="start" value="Management"></ion-radio>
+                    </ion-item>
+                     </ion-col>
+                     <ion-col>
+                      <ion-item>
+                        <ion-label>HR Management</ion-label>
+                        <ion-radio slot="start" value="HR Management"></ion-radio>
+                      </ion-item>
+                       </ion-col>
+                       <ion-col>
+                        <ion-item>
+                          <ion-label>Purchasing & Customer service</ion-label>
+                          <ion-radio slot="start" value="Purchasing & Customer service"></ion-radio>
+                        </ion-item>
+                         </ion-col>
+            </ion-row>
+          </ion-radio-group>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -108,7 +153,7 @@
     <ion-row>
       <ion-col>
       <ion-item style="padding-top: 10px;">
-          <ion-label position="stacked">Role</ion-label>
+          <ion-label position="stacked">System Role</ion-label>
          <ion-radio-group [(ngModel)]="form.role">
           <ion-row>
             <ion-col>

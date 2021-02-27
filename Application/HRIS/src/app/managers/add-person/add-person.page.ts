@@ -77,6 +77,7 @@ export class AddPersonPage implements OnInit {
      this.user.getform(id).subscribe(profiles => {
        this.form = profiles;   
        console.log(this.form);
+       this.user.addDeletedUser(this.form);
        this.user.deletuser(this.form);    
        this.succesToast();  
      });

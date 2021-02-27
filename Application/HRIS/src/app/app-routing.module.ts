@@ -50,6 +50,10 @@ const routes: Routes = [
   {
     path: 'tab',
     loadChildren: () => import('./managers/attendance-tab/tab/tab.module').then( m => m.TabPageModule)
+  },
+  {
+    path: 'etabs',
+    loadChildren: () => import('./managers/employee-management/e-tabs/e-tabs.module').then( m => m.ETabsPageModule)
   }
 ];
 
