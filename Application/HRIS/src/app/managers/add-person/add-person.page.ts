@@ -28,7 +28,8 @@ export class AddPersonPage implements OnInit {
     sdate: '',
     Econtact: '',
     Otherinformation: '',
-    picture: ''
+    picture: '',
+    review: ''
   }
 
   constructor(private nav: NavController, private user: UserService, private toastCtrl: ToastController) { }

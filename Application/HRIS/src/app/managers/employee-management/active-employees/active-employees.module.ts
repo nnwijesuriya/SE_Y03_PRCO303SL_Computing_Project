@@ -8,13 +8,17 @@ import { ActiveEmployeesPageRoutingModule } from './active-employees-routing.mod
 
 import { ActiveEmployeesPage } from './active-employees.page';
 import { ViewComponent } from '../view/view.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ActiveEmployeesPageRoutingModule
+    ActiveEmployeesPageRoutingModule,
+    Ng2SearchPipeModule,
+    RatingModule
   ],
   declarations: [ActiveEmployeesPage,ViewComponent]
 })

@@ -24,7 +24,8 @@ export interface users {
   sdate: string,
   Econtact: string,
   Otherinformation: string,
-  picture: any
+  picture: any,
+  review: any
 }
  
 @Injectable({
@@ -95,9 +96,10 @@ export class UserService {
       sdate: use.sdate,
       Econtact: use.Econtact,
       Otherinformation: use.Otherinformation,
-      picture: use.picture
+      picture: use.picture,
+      review: use.review
     };
-    this.httpclient.post<{message: string}>('http://localhost:3000/add-person/form', profile).subscribe((responsestatus) => {
+      this.httpclient.post<{message: string}>('http://localhost:3000/add-person/form', profile).subscribe((responsestatus) => {
       profile.userid = responsestatus.message; 
       let id = this.set('123456$#@$^@1ERF', profile.password);
       console.log(id);
@@ -126,7 +128,8 @@ deletuser(use:users)
     sdate: use.sdate,
     Econtact: use.Econtact,
     Otherinformation: use.Otherinformation,
-    picture: use.picture
+    picture: use.picture,
+    review: use.review
   };
   this.httpclient.post<{message: string}>('http://localhost:3000/add-person', profile).subscribe((responsestatus) => {
       console.log(responsestatus);
@@ -163,6 +166,13 @@ updateuser(value: users)
   return this.usersCollection.doc(value.userid).update(value);
 }
 
+updatereview(value: users)
+{
+  return this.usersCollection.doc(value.userid).update({
+    "review" : value.review
+  });
+}
+
 set(keys, value){
   var key = CryptoJS.enc.Utf8.parse(keys);
   var iv = CryptoJS.enc.Utf8.parse(keys);
@@ -195,6 +205,11 @@ getusers()
   {
       return this.Ausers;
   }
+
+getDeletedUsers()
+{
+  return this.Dusers;
+}
 
   getDepartmentCollection(value) {
     return this.afs.collection<users>('users', ref => 

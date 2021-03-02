@@ -1,8 +1,11 @@
 import { DatePipe } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { Component, EventEmitter, Input, OnInit, Output, VERSION } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { users, UserService } from '../../add-person/users.service';
+import { AvailabilityService } from '../../dashboard/availability.service';
 import { ViewComponent } from '../view/view.component';
 
 enum colurs {
@@ -37,25 +40,29 @@ export class ActiveEmployeesPage implements OnInit {
     sdate: '',
     Econtact: '',
     Otherinformation: '',
-    picture: ''
-  }
-
-  @Input() rating: number ;
-
-  @Output() ratingChange: EventEmitter<number> = new EventEmitter();;
+    picture: '',
+    review: ''
+  } 
 
   pipe = new DatePipe('en-US'); 
 
-  constructor(private user: UserService, private modal: ModalController, private alertCtrl: AlertController) { }
+  constructor(private user: UserService, private modal: ModalController, private toast: ToastController, 
+    private alertCtrl: AlertController, private auth: AngularFireAuth, private availability: AvailabilityService) { }
 
   public employees : Observable<users[]>;
-  public list;
-
+  
   department;
   selectedDate;
   formatedDate;
+  closedate = false;
+  term;
+  uid;
+  reviewvalue = 0;
 
   ngOnInit() {
+    this.auth.authState.subscribe(data=> {
+      this.uid = data.uid;
+   })
     this.getallemployees();
   }
 
@@ -65,6 +72,7 @@ export class ActiveEmployeesPage implements OnInit {
    if(this.department == "All")
    {
      this.getallemployees();
+     this.department == null;
    }else
    {
    this.employees = this.user.getDepartmentCollection(this.department);
@@ -73,11 +81,16 @@ export class ActiveEmployeesPage implements OnInit {
 
   getByDate()
   {
-    const myFormattedDate = this.pipe.transform(this.selectedDate, 'shortDate');
+    const myFormattedDate = this.pipe.transform(this.selectedDate, 'mediumDate');
     this.formatedDate= myFormattedDate;
     console.log(this.formatedDate);
     this.employees = this.user.getDateCollection(this.formatedDate);
   } 
+
+  removedate()
+  {
+    this.selectedDate = null;
+  }
 
   getallemployees()
   {
@@ -136,58 +149,42 @@ export class ActiveEmployeesPage implements OnInit {
     await alert.present();
   }
 
-  //it doesnt work
+ 
   filterusers(evt)
-  {
-    /*
-  const search = evt.srcElement.value;
-  console.log(search);
-  if(!search)
-  {
-    return;
+  {  
+  this.term = evt.srcElement.value;
   }
 
-  this.employees = this.employees.filter(currentgoal =>
-    {
-    if(currentgoal.FName && search)
-    {
-      if(currentgoal.FName.toLowerCase().indexof(search.toLowerCase()) > -1)
-      {
-        return true;
-      }
-      return false;
-    }
+  async succesToast() {
+    const toast = await this.toast.create({
+      message: 'Your review of the user has been successfully counted',
+      duration: 3000  
     });
-    */
+    toast.present();
   }
 
-
-  
-rate(index: number) {
-this.rating = index;
-this.ratingChange.emit(this.rating);
-console.log(this.rating);
+rate(data, userid) {
+  this.user.getform(userid).subscribe(profile => {  
+  console.log(profile);
+  //this is to add the values
+  profile.review = data.newValue;
+  this.succesToast();
+  console.log(profile.review);
+  this.user.updatereview(profile);
+  this.reviewvalue = 0;
+});
 }
 
-getColor(index: number) {
-if(this.isAboveRating(index)){
-  return colurs.grey
-} 
-switch(this.rating){
-  case 1:
-  case 2:
-    return colurs.red;
-  case 3: 
-    return colurs.yellow;
-  case 4:
-  case 5:
-    return colurs.green;
-  default:
-    return colurs.grey;
-}
-}
+status : any;
 
-isAboveRating(index: number): boolean {
-return index> this.rating
+// does not work need to look into it (takes a lot of time)
+getstatus(id)
+{
+  console.log(id);
+  this.availability.presense(id).subscribe(data => {
+    this.status = data;
+    console.log(this.status);
+  });
+  console.log("does not work");
 }
 }

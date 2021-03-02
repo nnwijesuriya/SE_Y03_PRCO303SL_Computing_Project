@@ -60,7 +60,8 @@ export class VerifyFormDepartureComponent implements OnInit {
     sdate: '',
     Econtact: '',
     Otherinformation: '',
-    picture: ''
+    picture: '',
+    review: ''
   }
 
   email;

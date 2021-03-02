@@ -17,10 +17,6 @@ const routes: Routes = [
         loadChildren: () => import('../inactive-employees/inactive-employees.module').then( m => m.InactiveEmployeesPageModule)
       },
       {
-        path: 'employees',
-        loadChildren: () => import('../employees/employees.module').then( m => m.EmployeesPageModule)
-      },
-      {
         path: 'recruiting',
         loadChildren: () => import('../recruiting/recruiting.module').then( m => m.RecruitingPageModule)
       }

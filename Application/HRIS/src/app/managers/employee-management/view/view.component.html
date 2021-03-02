@@ -96,6 +96,16 @@
         </ion-row>
         <ion-row>
           <ion-col>
+            <ion-item>
+            <div>
+              <ion-label>Employees overall review</ion-label>
+              <star-rating value="5" [totalstars]="5" [value] ="form.review" checkedcolor="yellow" uncheckedcolor="white" size="24px" readonly="false"></star-rating>
+            </div>
+          </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
             <ion-item style="padding-top: 10px;">
               <ion-label position="floating">Emergency Contact</ion-label>
               <ion-input [(ngModel)]="form.Econtact" placeholder="{{form.Econtact}}"></ion-input>

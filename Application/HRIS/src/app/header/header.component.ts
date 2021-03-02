@@ -32,7 +32,8 @@ export class HeaderComponent implements OnInit {
     sdate: '',
     Econtact: '',
     Otherinformation: '',
-    picture: ''
+    picture: '',
+    review: ''
   }
 
   constructor(private auth: AngularFireAuth, private service: LoginService, private users: UserService) { }
@@ -57,3 +58,4 @@ export class HeaderComponent implements OnInit {
     this.service.signout();
   }
 }
+ 

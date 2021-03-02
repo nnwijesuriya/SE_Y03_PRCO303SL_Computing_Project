@@ -30,7 +30,8 @@ export class FormPage implements OnInit {
     sdate: '',
     Econtact: '',
     Otherinformation: '',
-    picture: ''
+    picture: '',
+    review: ''
   }
   password = "";
 
@@ -47,7 +48,7 @@ export class FormPage implements OnInit {
 
   ngOnInit() {
     const now = Date.now();
-    const myFormattedDate = this.pipe.transform(now, 'short');
+    const myFormattedDate = this.pipe.transform(now, 'mediumDate');
     this.form.sdate= myFormattedDate;
     this.form.picture = "https://firebasestorage.googleapis.com/v0/b/hris-project-9b070.appspot.com/o/images0.5205803502471043%5Bobject%20File%5D?alt=media&token=1b793545-17a2-46b8-a195-5b71ac3c0235"
   }
@@ -95,6 +96,7 @@ export class FormPage implements OnInit {
     this.form.role = "";
     this.form.Econtact = "";
     this.form.Otherinformation = "";
+    this.form.review ="";
     this.router.navigateByUrl('add-person')
   }
 

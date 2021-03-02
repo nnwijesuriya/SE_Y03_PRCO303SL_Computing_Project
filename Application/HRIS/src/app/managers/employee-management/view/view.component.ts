@@ -27,7 +27,8 @@ export class ViewComponent implements OnInit {
     sdate: '',
     Econtact: '',
     Otherinformation: '',
-    picture: ''
+    picture: '',
+    review: ''
   }
 
   constructor(private modal: ModalController, private users: UserService,public navprams: NavParams) { }
@@ -53,7 +54,8 @@ export class ViewComponent implements OnInit {
     this.users.updateuser(this.form);
     this.closemodal();
   }
-
+  
+  
   
   closemodal()
   {

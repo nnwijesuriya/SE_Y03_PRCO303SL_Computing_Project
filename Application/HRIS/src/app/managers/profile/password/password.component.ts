@@ -33,7 +33,8 @@ export class PasswordComponent implements OnInit {
     sdate: '',
     Econtact: '',
     Otherinformation: '',
-    picture: ''
+    picture: '',
+    review: ''
   }
   password = "";
   oldpassword = "";

@@ -47,7 +47,8 @@ export class VerifyFormComponent implements OnInit {
     sdate: '',
     Econtact: '',
     Otherinformation: '',
-    picture: ''
+    picture: '',
+    review: ''
   }
 
   email;

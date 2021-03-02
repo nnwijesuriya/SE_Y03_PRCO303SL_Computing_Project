@@ -32,7 +32,8 @@ export class ProfilePage implements OnInit {
   sdate: '',
   Econtact: '',
   Otherinformation: '',
-  picture: ''
+  picture: '',
+  review: ''
  } 
 
   constructor(private user: UserService, private auth: AngularFireAuth, private toast:ToastController, private modal: ModalController, private storage: AngularFireStorage) { }
