@@ -36,7 +36,8 @@ export class InactiveEmployeesPage implements OnInit {
     Econtact: '',
     Otherinformation: '',
     picture: '',
-    review: ''
+    review: '',
+    rCounter: ''
   }
 
   public employees : Observable<users[]>;

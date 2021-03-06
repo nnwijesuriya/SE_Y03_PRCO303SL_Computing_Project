@@ -33,7 +33,8 @@ export class HeaderComponent implements OnInit {
     Econtact: '',
     Otherinformation: '',
     picture: '',
-    review: ''
+    review: '',
+    rCounter: ''
   }
 
   constructor(private auth: AngularFireAuth, private service: LoginService, private users: UserService) { }

@@ -28,7 +28,8 @@ export class ViewComponent implements OnInit {
     Econtact: '',
     Otherinformation: '',
     picture: '',
-    review: ''
+    review: '',
+    rCounter: '',
   }
 
   constructor(private modal: ModalController, private users: UserService,public navprams: NavParams) { }

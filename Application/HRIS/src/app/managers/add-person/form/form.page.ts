@@ -31,7 +31,8 @@ export class FormPage implements OnInit {
     Econtact: '',
     Otherinformation: '',
     picture: '',
-    review: ''
+    review: '',
+    rCounter: ''
   }
   password = "";
 
@@ -97,6 +98,7 @@ export class FormPage implements OnInit {
     this.form.Econtact = "";
     this.form.Otherinformation = "";
     this.form.review ="";
+    this.form.rCounter = "";
     this.router.navigateByUrl('add-person')
   }
 

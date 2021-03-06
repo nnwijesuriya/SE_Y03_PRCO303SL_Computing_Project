@@ -41,7 +41,8 @@ export class ActiveEmployeesPage implements OnInit {
     Econtact: '',
     Otherinformation: '',
     picture: '',
-    review: ''
+    review: '',
+    rCounter: ''
   } 
 
   pipe = new DatePipe('en-US'); 
@@ -167,7 +168,15 @@ rate(data, userid) {
   this.user.getform(userid).subscribe(profile => {  
   console.log(profile);
   //this is to add the values
-  profile.review = data.newValue;
+  var counter = +profile.rCounter + 1;
+  console.log(counter);
+  //calculation to get the review
+  var calvalue = data.newValue;
+  var calreview = profile.review;
+  var caltotal = +calvalue + +calreview
+  var final = caltotal/counter;
+  profile.rCounter = counter;
+  profile.review = final;
   this.succesToast();
   console.log(profile.review);
   this.user.updatereview(profile);

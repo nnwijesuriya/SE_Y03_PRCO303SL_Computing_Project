@@ -34,7 +34,8 @@ export class PasswordComponent implements OnInit {
     Econtact: '',
     Otherinformation: '',
     picture: '',
-    review: ''
+    review: '',
+    rCounter: ''
   }
   password = "";
   oldpassword = "";

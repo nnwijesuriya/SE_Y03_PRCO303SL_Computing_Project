@@ -25,7 +25,8 @@ export interface users {
   Econtact: string,
   Otherinformation: string,
   picture: any,
-  review: any
+  review: any,
+  rCounter: any
 }
  
 @Injectable({
@@ -97,7 +98,8 @@ export class UserService {
       Econtact: use.Econtact,
       Otherinformation: use.Otherinformation,
       picture: use.picture,
-      review: use.review
+      review: use.review,
+      rCounter: use.rCounter
     };
       this.httpclient.post<{message: string}>('http://localhost:3000/add-person/form', profile).subscribe((responsestatus) => {
       profile.userid = responsestatus.message; 
@@ -129,7 +131,8 @@ deletuser(use:users)
     Econtact: use.Econtact,
     Otherinformation: use.Otherinformation,
     picture: use.picture,
-    review: use.review
+    review: use.review,
+    rCounter: use.rCounter
   };
   this.httpclient.post<{message: string}>('http://localhost:3000/add-person', profile).subscribe((responsestatus) => {
       console.log(responsestatus);
@@ -169,7 +172,8 @@ updateuser(value: users)
 updatereview(value: users)
 {
   return this.usersCollection.doc(value.userid).update({
-    "review" : value.review
+    "review" : value.review,
+    "rCounter" : value.rCounter
   });
 }
 
