@@ -22,6 +22,7 @@ export class AttendanceReportPage implements OnInit {
     date: '',
     ddate: '',
     hoursw: '',
+    totalhours: '',
     minw: '',
     worktype: '',
     status: ''

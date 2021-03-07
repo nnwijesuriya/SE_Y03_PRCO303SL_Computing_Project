@@ -28,7 +28,7 @@
             </ion-col>
             <ion-col>
             <ion-item>
-              <ion-datetime displayFormat="MMM/DD/YYYY" placeholder="Start date" #name [(ngModel)]="selectedDate" (ionChange)="getByDate()">
+              <ion-datetime displayFormat="MMM/DD/YYYY" placeholder="Start date" [(ngModel)]="selectedDate" (ionChange)="getByDate()">
               </ion-datetime>    
             </ion-item>
             <ion-item *ngIf="selectedDate" (click)="removedate()">
@@ -66,7 +66,7 @@
               </ion-item>
             </div>
             </ion-col>
-            <ion-col>
+            <ion-col size-md="1.5">
               <ion-item (click)="editemployee(users.id);">
                 <ion-icon name="pencil-outline"></ion-icon>
                 <ion-label> Edit</ion-label>

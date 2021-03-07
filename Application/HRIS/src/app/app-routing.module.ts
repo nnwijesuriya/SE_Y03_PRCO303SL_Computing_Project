@@ -54,6 +54,10 @@ const routes: Routes = [
   {
     path: 'etabs',
     loadChildren: () => import('./managers/employee-management/e-tabs/e-tabs.module').then( m => m.ETabsPageModule)
+  },
+  {
+    path: 'stabs',
+    loadChildren: () => import('./managers/salaries/stabs/stabs.module').then( m => m.StabsPageModule)
   }
 ];
 

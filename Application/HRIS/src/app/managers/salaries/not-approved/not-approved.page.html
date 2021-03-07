@@ -1,0 +1,97 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col  size-md="10" offset-md="1">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+             <ion-card style="padding-top: 20px; padding-bottom: 20px;">
+              <ion-card-title style="text-align: center; font-weight: bolder;">Rs. {{totalSalary}}</ion-card-title>
+              <br>
+              <ion-card-subtitle style="text-align: center;">Total Salary For Employeees</ion-card-subtitle>
+             </ion-card>
+            </ion-col>
+            <ion-col>
+             <ion-card style="padding-top: 20px; padding-bottom: 20px;">
+              <ion-card-title style="text-align: center; font-weight: bolder;">{{noEmployees}}</ion-card-title>
+              <br>
+              <ion-card-subtitle style="text-align: center;">Total Number Of Employees </ion-card-subtitle>
+             </ion-card>
+            </ion-col>
+            <ion-col *ngIf="status">
+              <ion-card style="padding-top: 20px; padding-bottom: 20px;">
+                <ion-card-title style="text-align: center; font-weight: bolder;">All Approved</ion-card-title>
+                <br>
+                <ion-card-subtitle style="text-align: center;">Status</ion-card-subtitle>
+              </ion-card>
+            </ion-col>
+            <ion-col *ngIf="!status">
+              <ion-card style="padding-top: 20px; padding-bottom: 20px;">
+                <ion-card-title style="text-align: center; font-weight: bolder;">Not Approved</ion-card-title>
+                <br>
+                <ion-card-subtitle style="text-align: center;">Status</ion-card-subtitle>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid *ngIf="status">
+          <br>
+          <br>
+          <br>
+          <ion-row>
+            <ion-col size-md="8" offset-md="2">
+              <ion-item>
+                <ion-title style="text-align: center; padding-top: 10px; padding-bottom: 10px;">All the current employees salaries <br> have been approved</ion-title>
+              </ion-item>     
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid>
+          <ion-card *ngFor="let users of (salary | async)">
+          <ion-row> 
+            <ion-col>
+              <ion-item>
+                  <ion-avatar style="height: 140px; width: 130px;">
+                    <ion-img  src={{users.picture}}></ion-img>
+                  </ion-avatar>
+              </ion-item>   
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>Name: {{users.Fname}} {{users.Lname}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>E-mail: {{users.Eemail}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Department: {{users.department}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Role:  {{users.role}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>Started date: {{users.sdate}}</ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col size-md="2">
+              <ion-item (click)="updatepayment(users.userId)">
+                <ion-icon name="pencil-outline"></ion-icon>
+                <ion-label> Update payments</ion-label>
+              </ion-item> 
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>Status: {{users.status}}</ion-label>
+              </ion-item> 
+              <ion-item>
+                <ion-label>Approved Date: {{users.approvedDate}}</ion-label>
+              </ion-item> 
+            </ion-col>
+          </ion-row>
+          </ion-card>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-content>
+  

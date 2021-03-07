@@ -34,6 +34,7 @@ export class FormPage implements OnInit {
     review: '',
     rCounter: ''
   }
+
   password = "";
 
   showpassword= false;

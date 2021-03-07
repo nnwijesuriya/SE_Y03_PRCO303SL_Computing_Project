@@ -4,6 +4,7 @@ import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import * as CryptoJS from 'crypto-js';
+import { SalariesService, user } from '../salaries/salaries.service';
  
 export interface users {
   id?: string, 
@@ -40,7 +41,7 @@ export class UserService {
   private Dusers: Observable<users[]>;
   private DusersCollection: AngularFirestoreCollection<users>;
 
-  constructor(private afs: AngularFirestore, private httpclient: HttpClient) {
+  constructor(private afs: AngularFirestore, private httpclient: HttpClient, private salaryservice: SalariesService) {
 
     this.usersCollection = this.afs.collection<users>('users');
     this.Ausers = this.usersCollection.snapshotChanges().pipe(
@@ -107,6 +108,29 @@ export class UserService {
       console.log(id);
       profile.password = id;
       this.usersCollection.doc(profile.userid).set(profile); 
+
+      // to add salary for employee
+      const salary : user ={
+         userId: profile.userid,
+         Fname: profile.Fname,
+         Mname: profile.Mname,
+         Lname: profile.Lname,
+         Eemail: profile.Eemail,
+         rating: profile.review,
+         sdate: profile.sdate, 
+         department: profile.department,
+         role: profile.Rdepartment,
+         bank: '',
+         accountNo : '',
+         hoursw: '',
+         salary: '',
+         bonus: '',
+         paymentDate: profile.sdate,
+         status: "Not Approved",
+         approvedDate: '',
+         picture: profile.picture
+      }
+      this.salaryservice.addNotApprovedUser(salary);
     });   
 }
 

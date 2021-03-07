@@ -12,6 +12,7 @@ export interface mark {
     date: any,
     ddate: any,
     hoursw: any,
+    totalhours: any,
     minw: any,
     worktype: string,
     status: string

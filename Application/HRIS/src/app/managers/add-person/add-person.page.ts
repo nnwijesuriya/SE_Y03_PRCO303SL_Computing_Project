@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
+import { SalariesService } from '../salaries/salaries.service';
 import { users, UserService } from './users.service';
 
 @Component({
@@ -33,7 +34,7 @@ export class AddPersonPage implements OnInit {
     rCounter: ''
   }
 
-  constructor(private nav: NavController, private user: UserService, private toastCtrl: ToastController) { }
+  constructor(private nav: NavController, private user: UserService, private toastCtrl: ToastController, private salary: SalariesService) { }
 
   public Muse : Observable<users[]>;
 
@@ -81,6 +82,8 @@ export class AddPersonPage implements OnInit {
        console.log(this.form);
        this.user.addDeletedUser(this.form);
        this.user.deletuser(this.form);    
+       this.salary.removeNotApprovedUser(this.form.userid);
+       this.salary.removeApprovedUser(this.form.userid);
        this.succesToast();  
      });
     }

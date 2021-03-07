@@ -24,6 +24,7 @@ export class VerifyFormDepartureComponent implements OnInit {
     date: '',
     ddate: '',
     hoursw: '',
+    totalhours: '',
     minw: '',
     worktype: '',
     status: ''
@@ -37,6 +38,7 @@ export class VerifyFormDepartureComponent implements OnInit {
     date: '',
     ddate: '',
     hoursw: '',
+    totalhours: '',
     minw: '',
     worktype: '',
     status: ''
@@ -168,6 +170,9 @@ export class VerifyFormDepartureComponent implements OnInit {
       let diffH = this.gethoursDiff(new Date(adate), new Date(dedate));
       let diffM = this.getminDiff(new Date(adate), new Date(dedate));
       this.attendeees.hoursw = diffH; 
+      //saves the total working hours
+      let totalhours = this.attend.totalhours;
+      this.attendeees.totalhours = +diffH  + +totalhours; 
       this.attendeees.minw = diffM;
       //have to calculate number of hours worked 
       if(diffH<=5)

@@ -27,6 +27,7 @@ export class AttendanceInfoPage implements OnInit {
     date: '',
     ddate: '',
     hoursw: '',
+    totalhours: '',
     minw: '',
     worktype: '',
     status: ''

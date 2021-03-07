@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Edit Profile
+      Edit Employee Payments
    </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="closemodal()">
@@ -17,8 +17,8 @@
         <ion-row>
           <ion-col>
             <ion-item style="padding-top: 10px;">
-              <ion-label position="stacked">First Name</ion-label>
-              <ion-input [(ngModel)]="form.Fname" placeholder="{{form.Fname}}"></ion-input>
+              <ion-label position="floating">First Name</ion-label>
+              <ion-input placeholder="{{profile.Fname}}" readonly></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -26,7 +26,7 @@
           <ion-col>
             <ion-item style="padding-top: 10px;"> 
               <ion-label position="floating">Middle Name</ion-label>
-              <ion-input [(ngModel)]="form.Mname" placeholder="{{form.Mname}}"></ion-input>
+              <ion-input placeholder="{{profile.Mname}}" readonly></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -34,89 +34,97 @@
           <ion-col>
             <ion-item style="padding-top: 10px;">
               <ion-label position="floating">Last Name</ion-label>
-              <ion-input [(ngModel)]="form.Lname" placeholder="{{form.Lname}}"></ion-input>
+              <ion-input  placeholder="{{profile.Lname}}" readonly></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-item style="padding-top: 10px;">
-              <ion-label position="floating">Mobile Number</ion-label>
-              <ion-input [(ngModel)]="form.phone" placeholder="{{form.phone}}"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-item style="padding-top: 10px;">
-              <ion-label position="floating">Home Number</ion-label>
-              <ion-input [(ngModel)]="form.Hphone" placeholder="{{form.Hphone}}"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-item style="padding-top: 10px;">
-              <ion-label position="floating">Home Address</ion-label>
-              <ion-input [(ngModel)]="form.addressH" placeholder="{{form.addressH}}"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-item style="padding-top: 10px;">
-              <ion-label position="floating">Employee Personal Email</ion-label>
-              <ion-input [(ngModel)]="form.Pemail" placeholder="{{form.Pemail}}"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-item style="padding-top: 10px;">
-              <ion-label position="floating">Employee email</ion-label>
-              <ion-input [(ngModel)]="form.Eemail" placeholder="{{form.Eemail}}"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-item style="padding-top: 10px;">
-              <ion-label position="floating">Department</ion-label>
-              <ion-input [(ngModel)]="form.department" placeholder="{{form.department}}"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-item style="padding-top: 10px;">
-              <ion-label position="floating">Department Role</ion-label>
-              <ion-input [(ngModel)]="form.Rdepartment" placeholder="{{form.Rdepartment}}"></ion-input>
+              <ion-label position="floating" >Employee Email</ion-label>
+              <ion-input  placeholder="{{profile.Eemail}}" readonly></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-item>
-            <div>
-              <ion-label>Employees overall review</ion-label>
-              <star-rating value="5" [totalstars]="5" [value] ="form.review" checkedcolor="yellow" uncheckedcolor="white" size="24px" readonly="false"></star-rating>
-            </div>
-          </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-item style="padding-top: 10px;">
-              <ion-label position="floating">Emergency Contact</ion-label>
-              <ion-input [(ngModel)]="form.Econtact" placeholder="{{form.Econtact}}"></ion-input>
+              <div>
+                <ion-label>Employees overall review</ion-label>
+                <star-rating value="5" [totalstars]="5" [value] ="profile.rating" checkedcolor="yellow" uncheckedcolor="white" size="24px" readonly="false"></star-rating>
+              </div>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-item style="padding-top: 10px;">
-              <ion-label position="floating">Additional Information</ion-label>
-              <ion-input [(ngModel)]="form.Otherinformation" placeholder="{{form.Otherinformation}}"></ion-input>
+              <ion-label position="floating">Started date</ion-label>
+              <ion-input  placeholder="{{profile.sdate}}" readonly></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">department</ion-label>
+              <ion-input  placeholder="{{profile.department}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">role</ion-label>
+              <ion-input  placeholder="{{profile.role}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Employees Account Number</ion-label>
+              <ion-input  [(ngModel)]="profile.accountNo"  placeholder="{{profile.accountNo}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Salary</ion-label>
+              <ion-input  [(ngModel)]="profile.salary"  placeholder="{{profile.salary}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Salary</ion-label>
+              <ion-input  [(ngModel)]="profile.salary"  placeholder="{{profile.salary}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Hours Worked</ion-label>
+              <ion-input  [(ngModel)]="profile.hoursw"  placeholder="{{profile.hoursw}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Bonus</ion-label>
+              <ion-input  [(ngModel)]="profile.bonus"  placeholder="{{profile.bonus}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Payment Date</ion-label>
+              <ion-datetime  [(ngModel)]="profile.paymentDate" placeholder="{{profile.paymentDate}}"></ion-datetime>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -126,7 +134,7 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-button expand="block" (click)="update()">Update employee</ion-button>
+          <ion-button expand="block" (click)="save()">Save Payments</ion-button>
         </ion-col>
       </ion-row>
       <ion-row>

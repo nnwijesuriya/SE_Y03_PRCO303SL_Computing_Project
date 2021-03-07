@@ -24,6 +24,7 @@ export class VerifyFormComponent implements OnInit {
     date: '',
     ddate: '',
     hoursw: '',
+    totalhours: '',
     minw: '',
     worktype: '',
     status: ''

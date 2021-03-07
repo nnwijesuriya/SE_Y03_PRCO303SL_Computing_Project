@@ -6,6 +6,7 @@ import { AlertController, ModalController, ToastController } from '@ionic/angula
 import { Observable } from 'rxjs';
 import { users, UserService } from '../../add-person/users.service';
 import { AvailabilityService } from '../../dashboard/availability.service';
+import { SalariesService } from '../../salaries/salaries.service';
 import { ViewComponent } from '../view/view.component';
 
 enum colurs {
@@ -48,7 +49,7 @@ export class ActiveEmployeesPage implements OnInit {
   pipe = new DatePipe('en-US'); 
 
   constructor(private user: UserService, private modal: ModalController, private toast: ToastController, 
-    private alertCtrl: AlertController, private auth: AngularFireAuth, private availability: AvailabilityService) { }
+    private alertCtrl: AlertController, private auth: AngularFireAuth, private availability: AvailabilityService, private salary: SalariesService) { }
 
   public employees : Observable<users[]>;
   
@@ -122,6 +123,8 @@ export class ActiveEmployeesPage implements OnInit {
     this.form = profiles;   
     this.user.addDeletedUser(profiles);
     this.removeemployee(this.form);
+    this.salary.removeNotApprovedUser(this.form.userid);
+    this.salary.removeApprovedUser(this.form.userid);
   });
   }
 
@@ -162,7 +165,7 @@ export class ActiveEmployeesPage implements OnInit {
       duration: 3000  
     });
     toast.present();
-  }
+  } 
 
 rate(data, userid) {
   this.user.getform(userid).subscribe(profile => {  
@@ -180,6 +183,7 @@ rate(data, userid) {
   this.succesToast();
   console.log(profile.review);
   this.user.updatereview(profile);
+  this.salary.updatereview(profile.review, profile.userid);
   this.reviewvalue = 0;
 });
 }

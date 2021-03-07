@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Update Payments
+   </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closemodal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="8" offset-md="2">
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">First Name</ion-label>
+              <ion-input placeholder="{{profile.Fname}}" readonly></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;"> 
+              <ion-label position="floating">Middle Name</ion-label>
+              <ion-input placeholder="{{profile.Mname}}" readonly></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Last Name</ion-label>
+              <ion-input  placeholder="{{profile.Lname}}" readonly></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating" >Employee Email</ion-label>
+              <ion-input  placeholder="{{profile.Eemail}}" readonly></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Started date</ion-label>
+              <ion-input  placeholder="{{profile.sdate}}" readonly></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">department</ion-label>
+              <ion-input  placeholder="{{profile.department}}" readonly></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">role</ion-label>
+              <ion-input  placeholder="{{profile.role}}" readonly></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Bank Name</ion-label>
+              <ion-input  [(ngModel)]="profile.bank"  placeholder="{{profile.bank}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Employees Account Number</ion-label>
+              <ion-input  [(ngModel)]="profile.accountNo"  placeholder="{{profile.accountNo}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Salary</ion-label>
+              <ion-input  [(ngModel)]="profile.salary"  placeholder="{{profile.salary}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Payment Date</ion-label>
+              <ion-datetime  [(ngModel)]="profile.paymentDate" placeholder="{{profile.paymentDate}}"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+    </ion-col>
+    </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="approve()">Approve Payment</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="closemodal()">Cancel</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>
