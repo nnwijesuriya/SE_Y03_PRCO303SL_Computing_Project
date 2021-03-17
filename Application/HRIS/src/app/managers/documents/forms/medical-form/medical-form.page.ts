@@ -51,7 +51,7 @@ pipe = new DatePipe('en-US');
   addform()
   {
     this.medicalser.addform(this.form).then(f =>{
-      this.nav.navigateRoot('documents');
+      this.nav.navigateRoot('managers/documents');
     })
   }
 
@@ -70,7 +70,7 @@ pipe = new DatePipe('en-US');
     this.form.limits = '';
     this.form.sdate = '';
     this.form.status = '';
-    this.nav.navigateRoot('documents')
+    this.nav.navigateRoot('managers/documents')
   }
 
 }

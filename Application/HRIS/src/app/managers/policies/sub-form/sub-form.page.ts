@@ -86,6 +86,6 @@ export class SubFormPage implements OnInit {
   this.form.Pstatements = "",
   this.form.Pdetails = "",
   this.form.Pstatus = ""
-  this.route.navigateByUrl('policies');
+  this.route.navigateByUrl('managers/policies');
   }
 }

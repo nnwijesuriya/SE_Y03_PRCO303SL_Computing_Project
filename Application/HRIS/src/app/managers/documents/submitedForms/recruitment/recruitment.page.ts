@@ -58,7 +58,7 @@ export class RecruitmentPage implements OnInit {
   delete()
   {
     this.recruit.deleteIdea(this.form.id).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
       this.succesToast();
     }, err => {
       this.failToast();
@@ -69,7 +69,7 @@ export class RecruitmentPage implements OnInit {
   {
     this.form.status="Accepted";
     this.recruit.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -77,7 +77,7 @@ export class RecruitmentPage implements OnInit {
   {
     this.form.status="Decline";
     this.recruit.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -95,7 +95,7 @@ export class RecruitmentPage implements OnInit {
     this.form.address = '';
     this.form.status = '';
     this.form.sdate =  '';
-    this.nav.navigateRoot('documents')
+    this.nav.navigateRoot('managers/documents')
   }
 
 }

@@ -54,7 +54,7 @@ export class DisciplinaryFormPage implements OnInit {
 
   addfom(){
     this.disci.addform(this.form).then(f =>{
-      this.nav.navigateRoot('documents');
+      this.nav.navigateRoot('managers/documents');
    })
 }
   cancel()
@@ -76,7 +76,7 @@ export class DisciplinaryFormPage implements OnInit {
     this.form.comments = '',
     this.form.sdate = ''
     this.form.status = '';
-    this.nav.navigateRoot('documents')
+    this.nav.navigateRoot('managers/documents')
   }
 
 }

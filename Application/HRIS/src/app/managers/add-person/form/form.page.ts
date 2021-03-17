@@ -100,7 +100,7 @@ export class FormPage implements OnInit {
     this.form.Otherinformation = "";
     this.form.review ="";
     this.form.rCounter = "";
-    this.router.navigateByUrl('add-person')
+    this.router.navigateByUrl('managers/add-person')
   }
 
   togglepassword()

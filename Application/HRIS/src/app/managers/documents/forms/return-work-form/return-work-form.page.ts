@@ -51,7 +51,7 @@ export class ReturnWorkFormPage implements OnInit {
   addform()
   {
     this.rworkService.addform(this.form).then(f =>{
-      this.nav.navigateRoot('documents');
+      this.nav.navigateRoot('managers/documents');
     })
   }
 
@@ -69,7 +69,7 @@ export class ReturnWorkFormPage implements OnInit {
     this.form.position = '';
     this.form.sdate = '';
     this.form.status = '';
-    this.nav.navigateRoot('documents');
+    this.nav.navigateRoot('managers/documents');
   }
 
 }

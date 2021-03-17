@@ -64,7 +64,7 @@ export class ComplainPage implements OnInit {
   delete()
   {
     this.complain.deleteIdea(this.form.id).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
       this.succesToast();
     }, err => {
       this.failToast();
@@ -75,7 +75,7 @@ export class ComplainPage implements OnInit {
   {
     this.form.status="Accepted";
     this.complain.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
  
@@ -83,7 +83,7 @@ export class ComplainPage implements OnInit {
   {
     this.form.status="Decline";
     this.complain.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -107,7 +107,7 @@ export class ComplainPage implements OnInit {
     this.form.comments= '';
     this.form.status = '';
     this.form.sdate = '';
-    this.nav.navigateRoot('documents');
+    this.nav.navigateRoot('managers/documents');
   }
 
 }

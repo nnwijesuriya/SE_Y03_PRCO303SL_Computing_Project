@@ -59,7 +59,7 @@ export class PtoRequestPage implements OnInit {
   delete()
   {
     this.ptoser.deleteIdea(this.form.id).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
       this.succesToast();
     }, err => {
       this.failToast();
@@ -70,7 +70,7 @@ export class PtoRequestPage implements OnInit {
   {
     this.form.status="Accepted";
     this.ptoser.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -78,7 +78,7 @@ export class PtoRequestPage implements OnInit {
   {
     this.form.status="Decline";
     this.ptoser.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -98,6 +98,6 @@ export class PtoRequestPage implements OnInit {
     this.form.comments = '';
     this.form.status = '';
     this.form.sdate = '';
-    this.nav.navigateRoot('documents');
+    this.nav.navigateRoot('managers/documents');
   }
 }

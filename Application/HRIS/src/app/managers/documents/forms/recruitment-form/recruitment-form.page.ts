@@ -51,7 +51,7 @@ export class RecruitmentFormPage implements OnInit {
   addform()
   {
     this.recruitser.addform(this.form).then(f =>{
-      this.nav.navigateRoot('documents');
+      this.nav.navigateRoot('managers/documents');
   })
 }
 
@@ -69,7 +69,7 @@ export class RecruitmentFormPage implements OnInit {
     this.form.address = '';
     this.form.status = '';
     this.form.sdate =  '';
-    this.nav.navigateRoot('documents');
+    this.nav.navigateRoot('managers/documents');
   }
 
 }

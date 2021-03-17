@@ -55,7 +55,7 @@ export class EmployeeReleaseFormPage implements OnInit {
   addform()
   {
     this.release.addform(this.form).then(f =>{
-      this.nav.navigateRoot('documents');
+      this.nav.navigateRoot('managers/documents');
     })
   }
 
@@ -77,7 +77,7 @@ export class EmployeeReleaseFormPage implements OnInit {
     this.form.status = '';
     this.form.comments = '';
     this.form.sdate = '';
-    this.nav.navigateRoot('documents');
+    this.nav.navigateRoot('managers/documents');
   }
 
 }

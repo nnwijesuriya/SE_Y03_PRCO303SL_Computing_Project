@@ -20,76 +20,76 @@ export class DocumentTypesComponent implements OnInit {
   async leave(){
     await this.modals.dismiss().then(nav=>
       {
-      this.route.navigateByUrl('documents/leave-request')
+      this.route.navigateByUrl('managers/documents/leave-request')
       });
   }
 
   async accident(){
     await this.modals.dismiss().then(nav=>
       {
-      this.route.navigateByUrl('documents/accidentreport-form')
+      this.route.navigateByUrl('managers/documents/accidentreport-form')
       });
   }
 
   async disiplinary(){
     await this.modals.dismiss().then(nav=>
       {
-      this.route.navigateByUrl('documents/disciplinary-form')
+      this.route.navigateByUrl('managers/documents/disciplinary-form')
       });
   }
 
   async employeeReview(){
     await this.modals.dismiss().then(nav=>
       {
-      this.route.navigateByUrl('documents/employee-review-form')
+      this.route.navigateByUrl('managers/documents/employee-review-form')
       });
   }
   async recruitment(){
     await this.modals.dismiss().then(nav=>
       {
-      this.route.navigateByUrl('documents/recruitment-form')
+      this.route.navigateByUrl('managers/documents/recruitment-form')
       });
   }
 
   async medicalform(){
     await this.modals.dismiss().then(nav=>
       {
-      this.route.navigateByUrl('documents/medical-form')
+      this.route.navigateByUrl('managers/documents/medical-form')
       });
   }
   
   async complain(){
     await this.modals.dismiss().then(nav=>
       {
-      this.route.navigateByUrl('documents/complain-form')
+      this.route.navigateByUrl('managers/documents/complain-form')
       });
   }
 
   async disciplinary(){
     await this.modals.dismiss().then(nav=>
       {
-      this.route.navigateByUrl('documents/disciplinary-form')
+      this.route.navigateByUrl('managers/documents/disciplinary-form')
       });
   }
 
   async returnwork(){
     await this.modals.dismiss().then(nav=>
       {
-      this.route.navigateByUrl('documents/return-work-form')
+      this.route.navigateByUrl('managers/documents/return-work-form')
       });
   }
 
   async ptorequest(){
     await this.modals.dismiss().then(nav=>
       {
-      this.route.navigateByUrl('documents/ptorequest-form')
+      this.route.navigateByUrl('managers/documents/ptorequest-form')
       });
   }
 
   async release(){
     await this.modals.dismiss().then(nav=>
       {
-      this.route.navigateByUrl('documents/employee-release-form')
+      this.route.navigateByUrl('managers/documents/employee-release-form')
       });
   }
 }

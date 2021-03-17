@@ -51,7 +51,7 @@ export class AddPersonPage implements OnInit {
 
   adduser()
   {
-    this.nav.navigateRoot('add-person/form');
+    this.nav.navigateRoot('managers/add-person/form');
   }
 
   searchManagers(role){

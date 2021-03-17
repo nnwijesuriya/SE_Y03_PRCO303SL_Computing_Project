@@ -60,7 +60,7 @@ export class DisciplinaryPage implements OnInit {
   delete()
   {
     this.dis.deleteIdea(this.form.id).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
       this.succesToast();
     }, err => {
       this.failToast();
@@ -71,7 +71,7 @@ export class DisciplinaryPage implements OnInit {
   {
     this.form.status="Accepted";
     this.dis.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -79,7 +79,7 @@ export class DisciplinaryPage implements OnInit {
   {
     this.form.status="Decline";
     this.dis.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
   
@@ -102,7 +102,7 @@ export class DisciplinaryPage implements OnInit {
     this.form.comments = '',
     this.form.status= '';
     this.form.sdate = ''
-    this.nav.navigateRoot('documents')
+    this.nav.navigateRoot('managers/documents')
   }
 
   ngOnInit() {

@@ -58,7 +58,7 @@ export class EmployeeReviewFormPage implements OnInit {
   {
    
     this.revi.addform(this.form).then(f =>{
-      this.nav.navigateRoot('documents');
+      this.nav.navigateRoot('managers/documents');
   })
 }
   cancel()
@@ -82,7 +82,7 @@ export class EmployeeReviewFormPage implements OnInit {
     this.form.comments = '';
     this.form.sdate = '';
     this.form.status = '';
-    this.nav.navigateRoot('documents');
+    this.nav.navigateRoot('managers/documents');
   }
 
 }

@@ -59,7 +59,7 @@ export class ReturnWorkPage implements OnInit {
   delete()
   {
     this.retunW.deleteIdea(this.form.id).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
       this.succesToast();
     }, err => {
       this.failToast();
@@ -70,7 +70,7 @@ export class ReturnWorkPage implements OnInit {
   {
     this.form.status="Accepted";
     this.retunW.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -78,7 +78,7 @@ export class ReturnWorkPage implements OnInit {
   {
     this.form.status="Decline";
     this.retunW.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -96,7 +96,7 @@ export class ReturnWorkPage implements OnInit {
     this.form.position = '';
     this.form.status = '';
     this.form.sdate = '';
-    this.nav.navigateRoot('documents');
+    this.nav.navigateRoot('managers/documents');
   }
 
 }

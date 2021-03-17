@@ -61,7 +61,7 @@ export class AccidentFormPage implements OnInit {
   delete()
   {
     this.acc.deleteIdea(this.form.id).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
       this.succesToast();
     }, err => {
       this.failToast();
@@ -72,7 +72,7 @@ export class AccidentFormPage implements OnInit {
   {
     this.form.status="Accepted";
     this.acc.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -80,7 +80,7 @@ export class AccidentFormPage implements OnInit {
   {
     this.form.status="Decline";
     this.acc.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
  
@@ -102,6 +102,6 @@ export class AccidentFormPage implements OnInit {
     this.form.Idetails = '';
     this.form.status = '';
     this.form.sdate ='';
-    this.nav.navigateRoot('documents')
+    this.nav.navigateRoot('managers/documents')
   }
 }

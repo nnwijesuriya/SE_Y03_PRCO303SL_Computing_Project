@@ -61,7 +61,7 @@ form : medicalForm ={
   delete()
   {
     this.medical.deleteIdea(this.form.id).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
       this.succesToast();
     }, err => {
       this.failToast();
@@ -72,7 +72,7 @@ form : medicalForm ={
   {
     this.form.status="Accepted";
     this.medical.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -80,7 +80,7 @@ form : medicalForm ={
   {
     this.form.status="Decline";
     this.medical.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -100,7 +100,7 @@ form : medicalForm ={
     this.form.limits = '';
     this.form.status = '';
     this.form.sdate = '';
-    this.nav.navigateRoot('documents')
+    this.nav.navigateRoot('managers/documents')
   }
 
 }

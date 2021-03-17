@@ -48,7 +48,7 @@ export class NoticesPage implements OnInit {
   submit()
   {
     this.noticeService.addnotice(this.notice, this.notice.priority).then(() => {
-      this.router.navigateByUrl('dashboard');
+      this.router.navigateByUrl('managers/dashboard');
       this.succesToast();
     }, err => {
       this.failToast();

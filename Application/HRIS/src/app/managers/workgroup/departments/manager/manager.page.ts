@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
 import { ChatService, Message } from '../chat.service';
 
 @Component({
-  selector: 'app-managers',
-  templateUrl: './managers.page.html',
-  styleUrls: ['./managers.page.scss'],
+  selector: 'app-manager',
+  templateUrl: './manager.page.html',
+  styleUrls: ['./manager.page.scss'],
 })
-export class ManagersPage implements OnInit {
+export class ManagerPage implements OnInit {
 
   
   constructor(private chat: ChatService, private auth: AngularFireAuth) { }

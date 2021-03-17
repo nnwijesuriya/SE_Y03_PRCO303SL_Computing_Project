@@ -28,11 +28,11 @@ import { first } from 'rxjs/operators';
           if(userCredential) {
             if(this.isfound= email.includes("@managers"))
             {
-              this.navctrl.navigateRoot(['dashboard']);
+              this.navctrl.navigateRoot(['managers/dashboard']);
             }else
             {
+              this.navctrl.navigateRoot(['employees/dashboard']);
               //need to change for customers
-              this.route.navigate(['login']);
             }
           }
         })

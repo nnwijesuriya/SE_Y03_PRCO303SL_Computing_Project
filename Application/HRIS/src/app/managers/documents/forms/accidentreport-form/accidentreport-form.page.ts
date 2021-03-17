@@ -53,7 +53,7 @@ export class AccidentreportFormPage implements OnInit {
   addform()
   {
     this.accidentservice.addform(this.form).then(f =>{
-      this.nav.navigateRoot('documents');
+      this.nav.navigateRoot('managers/documents');
     })
   }
 
@@ -74,7 +74,7 @@ export class AccidentreportFormPage implements OnInit {
     this.form.Idetails = '';
     this.form.status = '';
     this.form.sdate ='';
-    this.nav.navigateRoot('documents')
+    this.nav.navigateRoot('managers/documents')
   }
 
 }

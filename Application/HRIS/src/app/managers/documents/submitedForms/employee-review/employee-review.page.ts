@@ -65,7 +65,7 @@ export class EmployeeReviewPage implements OnInit {
   delete()
   {
     this.employr.deleteIdea(this.form.id).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
       this.succesToast();
     }, err => {
       this.failToast();
@@ -76,7 +76,7 @@ export class EmployeeReviewPage implements OnInit {
   {
     this.form.status="Accepted";
     this.employr.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -84,7 +84,7 @@ export class EmployeeReviewPage implements OnInit {
   {
     this.form.status="Decline";
     this.employr.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -109,6 +109,6 @@ export class EmployeeReviewPage implements OnInit {
     this.form.comments = '';
     this.form.status = '';
     this.form.sdate = '';
-    this.nav.navigateRoot('documents');
+    this.nav.navigateRoot('managers/documents');
   }
 }

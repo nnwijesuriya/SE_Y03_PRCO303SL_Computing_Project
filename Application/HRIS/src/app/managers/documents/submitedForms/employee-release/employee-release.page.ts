@@ -63,7 +63,7 @@ export class EmployeeReleasePage implements OnInit {
   delete()
   {
     this.release.deleteIdea(this.form.id).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
       this.succesToast();
     }, err => {
       this.failToast();
@@ -74,7 +74,7 @@ export class EmployeeReleasePage implements OnInit {
   {
     this.form.status="Accepted";
     this.release.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -82,7 +82,7 @@ export class EmployeeReleasePage implements OnInit {
   {
     this.form.status="Decline";
     this.release.updateIdea(this.form).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -106,7 +106,7 @@ export class EmployeeReleasePage implements OnInit {
     this.form.comments = '';
     this.form.status= '';
     this.form.sdate = '';
-    this.nav.navigateRoot('documents');
+    this.nav.navigateRoot('managers/documents');
   }
 
 }

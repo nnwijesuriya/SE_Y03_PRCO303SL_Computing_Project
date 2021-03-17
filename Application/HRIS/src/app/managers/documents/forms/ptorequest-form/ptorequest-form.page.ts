@@ -43,7 +43,7 @@ export class PTOrequestFormPage implements OnInit {
           console.log( this.form.userId)
         } else
         {
-           this.nav.navigateRoot('login');
+           this.nav.navigateRoot('managers/login');
         }
       });
   }
@@ -70,6 +70,6 @@ export class PTOrequestFormPage implements OnInit {
     this.form.comments = '';
     this.form.status = '';
     this.form.sdate = '';
-    this.nav.navigateRoot('documents');
+    this.nav.navigateRoot('managers/documents');
   }
 }

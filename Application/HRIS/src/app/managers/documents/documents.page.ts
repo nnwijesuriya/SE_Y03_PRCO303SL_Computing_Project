@@ -76,34 +76,34 @@ export class DocumentsPage implements OnInit {
   {
    if(type=="Leave Request")
    {
-     this.router.navigate(['/documents/request-leaves',id]);
+     this.router.navigate(['/managers/documents/request-leaves',id]);
    }else if(type == "Diciplinary Form")
    {
-    this.router.navigate(['/documents/disciplinary',id]);
+    this.router.navigate(['/managers/documents/disciplinary',id]);
    }else if(type == "Employee Review Form")
    {
-    this.router.navigate(['/documents/employee-review',id]);
+    this.router.navigate(['/managers/documents/employee-review',id]);
    }else if(type == "Accident Report")
    {
-    this.router.navigate(['/documents/accident-form',id]);
+    this.router.navigate(['/managers/documents/accident-form',id]);
    }else if(type == "Medical Form")
    {
-    this.router.navigate(['/documents/medical',id]);
+    this.router.navigate(['/managers/documents/medical',id]);
    }else if(type == "Release Form")
    {
-    this.router.navigate(['/documents/employee-release',id]);
+    this.router.navigate(['/managers/documents/employee-release',id]);
    }else if(type == "Complain Form")
    {
-    this.router.navigate(['/documents/complain',id]);
+    this.router.navigate(['/managers/documents/complain',id]);
    }else if(type == "PTO Request")
    {
-    this.router.navigate(['/documents/pto-request',id]);
+    this.router.navigate(['/managers/documents/pto-request',id]);
    }else if(type == "Recruitment Form")
    {
-    this.router.navigate(['/documents/recruitment',id]);
+    this.router.navigate(['/managers/documents/recruitment',id]);
    }else if(type == "Return To Work Form")
    {
-    this.router.navigate(['/documents/return-work',id]);
+    this.router.navigate(['/managers/documents/return-work',id]);
    }
   }
 }

@@ -53,7 +53,7 @@ export class DashboardPage implements OnInit {
   getnotice(types)
   {
     this.notices = this.noticeservice.getnotice(types);
-    this.navctrl.navigateRoot('dashboard');
+    this.navctrl.navigateRoot('managers/dashboard');
   }
 
   async addnotes()

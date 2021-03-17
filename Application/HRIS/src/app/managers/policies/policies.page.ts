@@ -27,7 +27,7 @@ export class PoliciesPage implements OnInit {
 
   addpolices()
   {
-  this.route.navigateByUrl('policies/form');
+  this.route.navigateByUrl('managers/policies/form');
   }
 
   searchpolicyactive(status)
@@ -42,6 +42,6 @@ export class PoliciesPage implements OnInit {
 
   getdocument(id)
   {
-    this.route.navigate(['/policies/form',id]);
+    this.route.navigate(['/managers/policies/form',id]);
   }
 }

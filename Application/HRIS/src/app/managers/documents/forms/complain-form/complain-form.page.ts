@@ -55,7 +55,7 @@ export class ComplainFormPage implements OnInit {
   addform()
   {
     this.complService.addform(this.form).then(f =>{
-      this.nav.navigateRoot('documents');
+      this.nav.navigateRoot('managers/documents');
     })
   }
 
@@ -78,7 +78,7 @@ export class ComplainFormPage implements OnInit {
     this.form.comments= '';
     this.form.status = '';
     this.form.sdate = '';
-    this.nav.navigateRoot('documents');
+    this.nav.navigateRoot('managers/documents');
   }
 
 }

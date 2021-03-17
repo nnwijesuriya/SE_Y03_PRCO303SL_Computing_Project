@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="0.5">
+          <img style="height: 50px; width: 50px;" src="../../assets/images/logo.png">
+        </ion-col>
+        <ion-col>
+          <ion-title style="padding-top: 10px;">
+            Human Resourse Information System
+          </ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div slot="end" style="padding-right: 20px;">
+      <ion-avatar>
+        <img src={{form.picture}}>
+      </ion-avatar>
+    </div>
+    <div slot="end">
+      <ion-icon name="log-out-outline"  style="padding-right: 10px;" size="large" (click)="signout()"></ion-icon>
+    </div>  
+  </ion-toolbar>
+</ion-header>
+

@@ -29,12 +29,12 @@ const routes: Routes = [
     loadChildren: () => import('./purchasing/purchasing.module').then( m => m.PurchasingPageModule)
   },
   {
-    path: 'managers',
-    loadChildren: () => import('./managers/managers.module').then( m => m.ManagersPageModule)
-  },
-  {
     path: 'hrmanagers',
     loadChildren: () => import('./hrmanagers/hrmanagers.module').then( m => m.HRmanagersPageModule)
+  },
+  {
+    path: 'manager',
+    loadChildren: () => import('./manager/manager.module').then( m => m.ManagerPageModule)
   }
 ];
 

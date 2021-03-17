@@ -59,7 +59,7 @@ export class RequestLeavesPage implements OnInit {
   delete()
   {
     this.leaveservice.deleteIdea(this.leave.id).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
       this.succesToast();
     }, err => {
       this.failToast();
@@ -70,7 +70,7 @@ export class RequestLeavesPage implements OnInit {
   {
     this.leave.status="Accepted";
     this.leaveservice.updateIdea(this.leave).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -78,7 +78,7 @@ export class RequestLeavesPage implements OnInit {
   {
     this.leave.status="Decline";
     this.leaveservice.updateIdea(this.leave).then(() => {
-      this.route.navigateByUrl('documents');
+      this.route.navigateByUrl('managers/documents');
     })
   }
 
@@ -96,7 +96,7 @@ export class RequestLeavesPage implements OnInit {
    this.leave.comments = '';
    this.leave.status = '';
    this.leave.sdate = '';
-   this.nav.navigateRoot('documents');
+   this.nav.navigateRoot('managers/documents');
   }
 }
 
