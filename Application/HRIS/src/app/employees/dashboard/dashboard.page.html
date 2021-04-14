@@ -2,49 +2,125 @@
 <ion-content>
             <ion-grid >
                 <ion-row>
-                    <ion-col size-md="11" offset-md="0.5">
-                        <ion-card>
-                            <img src="./madison.jpg" />
-                            <ion-card-header>
-                              <ion-card-title>Details of user</ion-card-title>
-                            </ion-card-header>
-                          </ion-card> 
+                    <ion-col size-md="8" offset-md="2">
+                        <ion-card style="border: 2px;">
+                            <ion-grid>
+                                <ion-row>
+                                    <ion-col size-md="11">
+                                    <ion-card-content>
+                                       <ion-grid>
+                                           <ion-row>
+                                               <ion-col>
+                                                   <ion-avatar style="height: 200px; width:200px;">
+                                                       <img src="{{profile.picture}}">
+                                                   </ion-avatar>
+                                               </ion-col>
+                                               <ion-col size-md="6">
+                                                 <ion-card>
+                                                     <ion-card-content>
+                                                        <strong> User Name: </strong> {{profile.Eemail}}
+                                                         <br>
+                                                         <br>
+                                                        <strong> Department: </strong> {{profile.department}}
+                                                         <br>
+                                                         <br>
+                                                        <strong> Role: </strong>{{profile.Rdepartment}}
+                                                         <br>
+                                                         <br>
+                                                        <strong> Started Date: </strong> {{profile.sdate}}
+                                                         <br>
+                                                     </ion-card-content>
+                                                 </ion-card>
+                                               </ion-col>
+                                               <ion-col  size-md="3">
+                                                   <br>
+                                                   <ion-button expand="block">
+                                                       Profile
+                                                   </ion-button>
+                                               </ion-col>
+                                           </ion-row>
+                                       </ion-grid>
+                                    </ion-card-content>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-card> 
                     </ion-col>
                 </ion-row>
                     <ion-row>
-                        <ion-col size-md="11" offset-md="0.5">
+                        <ion-col size-md="13" offset-md="0.5">
                         <ion-grid>
                             <ion-row>
                                 <ion-col>
                                     <ion-card>
-                                        <img src="./madison.jpg" />
-                                        <ion-card-header>
-                                          <ion-card-title>Notices</ion-card-title>
-                                        </ion-card-header>
+                                        <ion-card-content>
+                                            <ion-grid>
+                                            <div style="height: 400px; overflow-y: auto;">
+                                                <ion-row>
+                                                    <ion-col size-md="11" offset-md="0.5">
+                                                        <ion-grid>
+                                                          <ion-row>
+                                                            <ion-col>
+                                                              <ion-item>
+                                                                <ion-header position="stacked">Company Notices</ion-header>
+                                                                <ion-item slot="end">
+                                                                  <ion-select placeholder="Formal Notice" [(ngModel)]="typen" (ionChange)="getnotice(typen)">
+                                                                    <ion-select-option value="Urgent Notice">Urgent Notice</ion-select-option>
+                                                                    <ion-select-option value="Important Notice">Important Notice</ion-select-option>
+                                                                    <ion-select-option value="Formal Notice">Formal Notice</ion-select-option>
+                                                                  </ion-select>
+                                                                </ion-item>
+                                                              </ion-item>     
+                                                            </ion-col>
+                                                          </ion-row>
+                                                        </ion-grid>  
+                                                        <ion-list *ngFor="let notice of (notices | async)">
+                                                        <ion-item>
+                                                          <ion-grid>
+                                                            <ion-row>
+                                                              <ion-col>
+                                                                {{notice.description}}
+                                                              </ion-col>
+                                                              <ion-col size-md="3">
+                                                                {{notice.date}}
+                                                              </ion-col>
+                                                            </ion-row>
+                                                            </ion-grid>  
+                                                        </ion-item>
+                                                      </ion-list>
+                                                      </ion-col>
+                                                </ion-row>
+                                                </div>
+                                            </ion-grid>
+                                        </ion-card-content>
                                       </ion-card> 
                                 </ion-col>
                                 <ion-col>
                                     <ion-grid>
-                                        <ion-row>
-                                            <ion-col>
+                                    <ion-row>
+                                        <ion-col size-md="6" offset-md="1.5">
+                                            <div>
                                                 <ion-card>
-                                                    <img src="./madison.jpg" />
+                                                        <img src="../../../assets/images/chatEmp.jpg">
                                                     <ion-card-header>
-                                                      <ion-card-title>Profile</ion-card-title>
+                                                      <ion-card-title style="text-align: center;">Chat</ion-card-title>
                                                     </ion-card-header>
                                                   </ion-card>
-                                            </ion-col>
-                                        </ion-row>
-                                        <ion-row>
-                                            <ion-col>
-                                                <ion-card  routerLink="/employees/calendar">
-                                                    <img src="./madison.jpg" />
+                                            </div>
+                                        </ion-col>
+                                    </ion-row>
+                                    <ion-row>
+                                        <ion-col size-md="6" offset-md="1.5">
+                                            <div>
+                                                <ion-card>
+                                                        <img src="../../../assets/images/attendance.png">
                                                     <ion-card-header>
-                                                      <ion-card-title>Attendance</ion-card-title>
+                                                      <ion-card-title style="text-align: center;">Attendance</ion-card-title>
                                                     </ion-card-header>
                                                   </ion-card>
-                                            </ion-col>
-                                        </ion-row>
+                                            </div>
+                                        </ion-col>
+                                    </ion-row>
                                     </ion-grid>                  
                                 </ion-col>
                             </ion-row>
@@ -54,27 +130,31 @@
                 <ion-row>
                     <ion-grid>
                         <ion-row>
-                            <ion-col  size-md="10" offset-md="1">
+                            <ion-col  size-md="10" offset-md="2">
                                 <ion-grid>
                                     <ion-row>
-                                        <ion-col>
-                                            <ion-card>
-                                                <img src="./madison.jpg" />
-                                                <ion-card-header>
-                                                  <ion-card-title>Event Calendar</ion-card-title>
-                                                </ion-card-header>
-                                              </ion-card>
+                                 <ion-col size-md="4">
+                                            <div>
+                                                <ion-card>
+                                                        <img src="../../../assets/images/event.png">
+                                                    <ion-card-header>
+                                                      <ion-card-title style="text-align: center;">Event Calendar</ion-card-title>
+                                                    </ion-card-header>
+                                                  </ion-card>
+                                            </div>
                                         </ion-col>
-                                        <ion-col>
-                                            <ion-card>
-                                                <img src="./madison.jpg" />
-                                                <ion-card-header>
-                                                  <ion-card-title>Chat</ion-card-title>
-                                                </ion-card-header>
-                                              </ion-card>
+                                        <ion-col size-md="4" offset-md="1.5">
+                                            <div>
+                                                <ion-card>
+                                                        <img src="../../../assets/images/profile.jpg" width="100%">
+                                                    <ion-card-header>
+                                                      <ion-card-title style="text-align: center;">Profile</ion-card-title>
+                                                    </ion-card-header>
+                                                  </ion-card>
+                                            </div>
                                         </ion-col>
                                     </ion-row>
-                                </ion-grid>
+                                </ion-grid> 
                                 </ion-col>
                         </ion-row>
                     </ion-grid>
@@ -82,84 +162,64 @@
                 <ion-row>
                     <ion-grid>
                         <ion-row>
-                            <ion-col  size-md="10" offset-md="1">
+                            <ion-col  size-md="10" offset-md="2">
                                 <ion-grid>
                                     <ion-row>
-                                        <ion-col>
-                                            <ion-card>
-                                                <img src="./madison.jpg" />
-                                                <ion-card-header>
-                                                  <ion-card-title>Documents</ion-card-title>
-                                                </ion-card-header>
-                                              </ion-card>
+                                 <ion-col size-md="4">
+                                            <div>
+                                                <ion-card>
+                                                        <img src="../../../assets/images/doc.png" width="100%">
+                                                    <ion-card-header>
+                                                      <ion-card-title style="text-align: center;">Documents</ion-card-title>
+                                                    </ion-card-header>
+                                                  </ion-card>
+                                            </div>
                                         </ion-col>
-                                        <ion-col>
-                                            <ion-card>
-                                                <img src="./madison.jpg" />
-                                                <ion-card-header>
-                                                  <ion-card-title>Policies</ion-card-title>
-                                                </ion-card-header>
-                                              </ion-card>
+                                        <ion-col size-md="4" offset-md="1.5">
+                                            <div>
+                                                <ion-card>
+                                                        <img src="../../../assets/images/policies.png"  width="100%">
+                                                    <ion-card-header>
+                                                      <ion-card-title style="text-align: center;">Polices</ion-card-title>
+                                                    </ion-card-header>
+                                                  </ion-card>
+                                            </div>
                                         </ion-col>
                                     </ion-row>
                                 </ion-grid>
-                                </ion-col>
+                            </ion-col>
                         </ion-row>
                     </ion-grid>
                 </ion-row>
                 <ion-row>
                     <ion-grid>
                         <ion-row>
-                            <ion-col  size-md="10" offset-md="1">
+                            <ion-col  size-md="10" offset-md="2">
                                 <ion-grid>
                                     <ion-row>
-                                        <ion-col>
-                                            <ion-card>
-                                                <img src="./madison.jpg" />
-                                                <ion-card-header>
-                                                  <ion-card-title>Review Employees</ion-card-title>
-                                                </ion-card-header>
-                                              </ion-card>
+                                 <ion-col size-md="4">
+                                            <div>
+                                                <ion-card>
+                                                        <img src="../../../assets/images/review.png"width="100%">
+                                                    <ion-card-header>
+                                                      <ion-card-title style="text-align: center;">Review Employees</ion-card-title>
+                                                    </ion-card-header>
+                                                  </ion-card>
+                                            </div>
                                         </ion-col>
-                                        <ion-col>
-                                            <ion-card>
-                                                <img src="./madison.jpg" />
-                                                <ion-card-header>
-                                                  <ion-card-title>Sureveys</ion-card-title>
-                                                </ion-card-header>
-                                              </ion-card>
+                                        <ion-col size-md="4" offset-md="1.5">
+                                            <div>
+                                                <ion-card>
+                                                        <img src="../../../assets/images/info.png" width="100%">
+                                                    <ion-card-header>
+                                                      <ion-card-title style="text-align: center;">About System</ion-card-title>
+                                                    </ion-card-header>
+                                                  </ion-card>
+                                            </div>
                                         </ion-col>
                                     </ion-row>
                                 </ion-grid>
-                                </ion-col>
-                        </ion-row>
-                    </ion-grid>
-                </ion-row>
-                <ion-row>
-                    <ion-grid>
-                        <ion-row>
-                            <ion-col  size-md="10" offset-md="1">
-                                <ion-grid>
-                                    <ion-row>
-                                        <ion-col>
-                                            <ion-card>
-                                                <img src="./madison.jpg" />
-                                                <ion-card-header>
-                                                  <ion-card-title>Employement Details</ion-card-title>
-                                                </ion-card-header>
-                                              </ion-card>
-                                        </ion-col>
-                                        <ion-col>
-                                            <ion-card>
-                                                <img src="./madison.jpg" />
-                                                <ion-card-header>
-                                                  <ion-card-title>About US</ion-card-title>
-                                                </ion-card-header>
-                                              </ion-card>
-                                        </ion-col>
-                                    </ion-row>
-                                </ion-grid>
-                                </ion-col>
+                            </ion-col>
                         </ion-row>
                     </ion-grid>
                 </ion-row>
