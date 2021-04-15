@@ -89,4 +89,17 @@ getrecord()
 {
   return this.Rusers;
 }
+
+
+getDateCollection(value) {
+  return this.afs.collection<mark>('attendance/employees/present employees', ref => 
+      ref.where(
+          'userid','==', value 
+      )).snapshotChanges().pipe(
+          map(actions => actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+      })))
+}
 }

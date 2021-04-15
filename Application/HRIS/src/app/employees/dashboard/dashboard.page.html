@@ -6,7 +6,7 @@
                         <ion-card style="border: 2px;">
                             <ion-grid>
                                 <ion-row>
-                                    <ion-col size-md="11">
+                                    <ion-col size-md="8" offset-md="2">
                                     <ion-card-content>
                                        <ion-grid>
                                            <ion-row>
@@ -15,7 +15,7 @@
                                                        <img src="{{profile.picture}}">
                                                    </ion-avatar>
                                                </ion-col>
-                                               <ion-col size-md="6">
+                                               <ion-col size-md="7" offset-md="1">
                                                  <ion-card>
                                                      <ion-card-content>
                                                         <strong> User Name: </strong> {{profile.Eemail}}
@@ -32,11 +32,38 @@
                                                      </ion-card-content>
                                                  </ion-card>
                                                </ion-col>
-                                               <ion-col  size-md="3">
-                                                   <br>
-                                                   <ion-button expand="block">
-                                                       Profile
-                                                   </ion-button>
+                                               </ion-row>
+                                               <ion-row>
+                                               <ion-col size-md="12">
+                                                   <ion-grid>
+                                                       <ion-row>
+                                                        <ion-col>
+                                                               <ion-button expand="block">
+                                                                  My reviews 
+                                                                </ion-button>
+                                                                <br>
+                                                                <ion-button expand="block">
+                                                                    View my Details
+                                                                </ion-button>
+                                                           </ion-col>
+                                                           <ion-col  size-md="7">
+                                                            <ion-card>
+                                                                <ion-card-content>
+                                                                    <ion-label>
+                                                                        <strong> Atendance Info: </strong> 
+                                                                        <ion-label *ngIf="!attendanceMarked" style="font-weight: bolder; color: red;">Please Mark Attendance</ion-label>
+                                                                        <ion-label *ngIf="attendanceMarked" style="font-weight: bolder; color: green;">Attendance Marked</ion-label>
+                                                                    </ion-label>
+                                                                    <br>
+                                                                    <br>
+                                                                    <ion-label>
+                                                                        <strong>Number Of Holidays remaining: </strong> 2 Days
+                                                                    </ion-label>
+                                                                </ion-card-content>
+                                                               </ion-card>
+                                                           </ion-col>
+                                                       </ion-row>
+                                                   </ion-grid>
                                                </ion-col>
                                            </ion-row>
                                        </ion-grid>
@@ -145,7 +172,7 @@
                                         </ion-col>
                                         <ion-col size-md="4" offset-md="1.5">
                                             <div>
-                                                <ion-card>
+                                                <ion-card (click)="profileNavigate()">
                                                         <img src="../../../assets/images/profile.jpg" width="100%">
                                                     <ion-card-header>
                                                       <ion-card-title style="text-align: center;">Profile</ion-card-title>
@@ -209,7 +236,7 @@
                                         </ion-col>
                                         <ion-col size-md="4" offset-md="1.5">
                                             <div>
-                                                <ion-card>
+                                                <ion-card (click)="infoModal()">
                                                         <img src="../../../assets/images/info.png" width="100%">
                                                     <ion-card-header>
                                                       <ion-card-title style="text-align: center;">About System</ion-card-title>

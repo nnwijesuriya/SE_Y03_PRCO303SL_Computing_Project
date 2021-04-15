@@ -11,6 +11,9 @@ import { MedicalFormComponent } from '../documents/forms/medical-form/medical-fo
 import { PtorequestFormComponent } from '../documents/forms/ptorequest-form/ptorequest-form.component';
 import { ReturnWorkFormComponent } from '../documents/forms/return-work-form/return-work-form.component';
 import { DocumentTypeComponent } from '../documents/modals/document-type/document-type.component';
+import { InfoComponent } from '../info/info.component';
+import { DatePipe } from "@angular/common";
+import { MarkingService } from 'src/app/managers/attendance-tab/mark-attendance/verify-form/marking.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +22,7 @@ import { DocumentTypeComponent } from '../documents/modals/document-type/documen
 })
 export class DashboardPage implements OnInit {
 
-  constructor(private users: UserService,private modal: ModalController,  private auth: AngularFireAuth, private noticeservice: noticesService, private navctrl: NavController) { }
+  constructor(private users: UserService,private attendanceMark: MarkingService, private modal: ModalController,  private auth: AngularFireAuth, private noticeservice: noticesService, private navctrl: NavController) { }
 
   public notices:  Observable<notice[]>;
   
@@ -47,6 +50,11 @@ export class DashboardPage implements OnInit {
   };
   typen = "";
   uid;
+  pipe = new DatePipe("en-US");
+  date;
+  todayDate;
+  attendanceMarked = false;
+  allDates = new Array();
 
   ngOnInit() {
     console.log("happy new year");
@@ -54,8 +62,12 @@ export class DashboardPage implements OnInit {
     this.auth.authState.subscribe(data => {
       this.uid = data.uid;
       this.getuserDetails();
-      this.getnotice(this.typen)
+      this.getnotice(this.typen);
+      this.checkAttendance(this.uid);
     })
+    const now = Date.now()
+    const myFormattedDate = this.pipe.transform(now, "mediumDate");
+    this.todayDate = myFormattedDate;
   }
 
   getuserDetails()
@@ -192,5 +204,43 @@ export class DashboardPage implements OnInit {
   calendarNavigate()
   {
     this.navctrl.navigateBack('employees/calendar')
+  }
+
+  async infoModal()
+  {
+    const modal = await this.modal.create({
+      component: InfoComponent,
+      cssClass: 'my-custom-modal-css'
+    });
+   await modal.present();
+  }
+
+  profileNavigate()
+  {
+    this.navctrl.navigateForward('employees/profile')
+  }
+
+  checkAttendance(id)
+  {
+     id = "Lwv7MGMPvPTBjWWmoVZuxuzxhKg1";
+     this.attendanceMark.getDateCollection(id).subscribe(data => {
+      let values = Object.keys(data)
+      let length = values.length;
+      let counter = 0;
+      for(counter; counter < length; counter++)
+      {
+        let value = data[counter].date
+        const myFormattedDate = this.pipe.transform(value, "mediumDate");
+        this.date = myFormattedDate;
+        this.allDates.push(this.date);
+        console.log(this.allDates);
+      }     
+      if(this.allDates.includes(this.todayDate)) 
+      {
+       this.attendanceMarked= true;
+      } else{
+       this.attendanceMarked = false;
+      }
+     })
   }
 }
