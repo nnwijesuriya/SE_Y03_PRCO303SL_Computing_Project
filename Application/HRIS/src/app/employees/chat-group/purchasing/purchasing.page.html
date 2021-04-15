@@ -1,9 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>purchasing</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="employees/purchasing"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Purchasing & Customer chat</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <ion-grid>
+    <ion-row *ngFor="let message of messages | async">
+      <ion-col size-md="10" offset-md="1" class="message">
+        <b class="username">{{ message.from}}</b><br><br>
+        <span class="mes">{{message.msg}}
+          <div class="date ion-text-right"><br>{{ message.createdAt?.toMillis() | date:'short' }}</div>
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="10">
+        <ion-textarea autoGrow="true" class="message-input" rows="1" maxLength="500" [(ngModel)]="newMsg" >
+        </ion-textarea>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button expand="block" fill="clear" color="primary" [disabled]="newMsg ==''"
+          class="msg-btn" (click)="sendMessage()">
+          <ion-icon name="send" slot="icon-only" size="large"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

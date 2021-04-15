@@ -1,9 +1,34 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>policies</ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<app-header-employees></app-header-employees>
 <ion-content>
-
+<ion-grid style="padding-top: 40px;">
+  <ion-row>
+    <ion-col size-md="10" offset-md="1">
+      <br>
+      <ion-header>Policies of the company</ion-header>
+      <br>
+      <ion-list *ngFor="let policyA of (policiesA | async)">
+        <ion-item>
+       <ion-grid>
+           <ion-row>
+               <ion-col>
+                {{policyA.PName}}   
+               </ion-col>
+               <ion-col>
+                {{policyA.Cdate}}
+               </ion-col>
+               <ion-col>
+                {{policyA.purpose}}
+               </ion-col>
+               <ion-col>
+                <ion-item (click)="getdocument(policyA.id)" >
+                    <ion-icon name="eye-outline" slot="end"></ion-icon>
+                </ion-item>
+               </ion-col>
+           </ion-row>
+       </ion-grid>
+       </ion-item>
+       </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 </ion-content>

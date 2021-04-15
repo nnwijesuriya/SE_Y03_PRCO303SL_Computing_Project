@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
+import { HeaderEmployeesComponent } from 'src/app/header-employees/header-employees.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ProfilePage } from './profile.page';
     IonicModule,
     ProfilePageRoutingModule
   ],
-  declarations: [ProfilePage]
+  declarations: [ProfilePage, HeaderEmployeesComponent]
 })
 export class ProfilePageModule {}

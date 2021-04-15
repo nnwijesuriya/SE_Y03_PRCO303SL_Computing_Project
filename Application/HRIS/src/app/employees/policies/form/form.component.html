@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Policy Details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid style="padding-top: 30px;">
+    <ion-row>
+      <ion-col size-md="10" offset-md="1">
+        <h1 style="text-align: center; padding-bottom: 20px;"> Policies Form</h1>
+         <ion-row>
+            <ion-col>
+              <ion-item style="padding-top: 10px;">
+                <ion-label position="floating">Policy Name</ion-label>
+                <ion-input [(ngModel)]="form.PName"  placeholder="{{form.PName}}" readonly></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item style="padding-top: 10px;">
+                <ion-label position="floating">Policy Applied From</ion-label>
+                <ion-datetime [(ngModel)]="form.Pstart" placeholder="{{form.Pstart}}" readonly></ion-datetime>
+              </ion-item>
+            </ion-col>
+          </ion-row> 
+          <ion-row>
+            <ion-col>
+              <ion-item style="padding-top: 10px;">
+                <ion-label position="floating">Puropose</ion-label>
+                <ion-textarea [(ngModel)]="form.purpose" placeholder="{{form.purpose}}" readonly></ion-textarea>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item style="padding-top: 10px;">
+                <ion-label position="floating">Introduction</ion-label>
+                <ion-textarea [(ngModel)]="form.Intro" placeholder="{{form.Intro}}" readonly></ion-textarea>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item style="padding-top: 10px;">
+                <ion-label position="floating">Policy Statements</ion-label>
+                <ion-textarea [(ngModel)]="form.Pstatements" placeholder="{{form.Pstatements}}" readonly></ion-textarea>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item style="padding-top: 10px;">
+                <ion-label position="floating">Additional Details</ion-label>
+                <ion-textarea [(ngModel)]="form.Pdetails" placeholder="{{form.Pdetails}}" readonly></ion-textarea>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+      </ion-col>
+    </ion-row>
+    </ion-grid>
+      <ion-grid style="padding-bottom: 10px;">
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-row>
+              <ion-col>
+                <ion-button expand="block" shape="round" (click)="cancel()">Close</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </ion-content>
+  

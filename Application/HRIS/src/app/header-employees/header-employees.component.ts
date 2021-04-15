@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoginService } from '../login/login.service';
 import { users, UserService } from '../managers/add-person/users.service';
@@ -36,7 +37,7 @@ export class HeaderEmployeesComponent implements OnInit {
     rCounter: ''
   }
 
-  constructor(private auth: AngularFireAuth, private service: LoginService, private users: UserService) { }
+  constructor(private auth: AngularFireAuth, private service: LoginService, private users: UserService, private router: Router) { }
 
   ngOnInit() {
     this.auth.authState.subscribe(data=> {
@@ -56,5 +57,9 @@ export class HeaderEmployeesComponent implements OnInit {
 
   signout(){
     this.service.signout();
+  }
+
+  home(){
+    this.router.navigateByUrl('employees/dashboard');
   }
 }

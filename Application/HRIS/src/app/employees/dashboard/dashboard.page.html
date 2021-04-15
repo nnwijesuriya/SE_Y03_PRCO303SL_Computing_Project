@@ -100,7 +100,7 @@
                                     <ion-row>
                                         <ion-col size-md="6" offset-md="1.5">
                                             <div>
-                                                <ion-card>
+                                                <ion-card (click)="chat(profile.department)">
                                                         <img src="../../../assets/images/chatEmp.jpg">
                                                     <ion-card-header>
                                                       <ion-card-title style="text-align: center;">Chat</ion-card-title>
@@ -135,7 +135,7 @@
                                     <ion-row>
                                  <ion-col size-md="4">
                                             <div>
-                                                <ion-card>
+                                                <ion-card (click)="calendarNavigate()">
                                                         <img src="../../../assets/images/event.png">
                                                     <ion-card-header>
                                                       <ion-card-title style="text-align: center;">Event Calendar</ion-card-title>
@@ -167,7 +167,7 @@
                                     <ion-row>
                                  <ion-col size-md="4">
                                             <div>
-                                                <ion-card>
+                                                <ion-card (click)="selectDocumentmodal()">
                                                         <img src="../../../assets/images/doc.png" width="100%">
                                                     <ion-card-header>
                                                       <ion-card-title style="text-align: center;">Documents</ion-card-title>
@@ -177,7 +177,7 @@
                                         </ion-col>
                                         <ion-col size-md="4" offset-md="1.5">
                                             <div>
-                                                <ion-card>
+                                                <ion-card (click)="policiesNavigate()">
                                                         <img src="../../../assets/images/policies.png"  width="100%">
                                                     <ion-card-header>
                                                       <ion-card-title style="text-align: center;">Polices</ion-card-title>

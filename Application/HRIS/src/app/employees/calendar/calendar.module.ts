@@ -9,6 +9,7 @@ import { CalendarPageRoutingModule } from './calendar-routing.module';
 import { CalendarPage } from './calendar.page';
 
 import { NgCalendarModule } from 'ionic2-calendar';
+import { HeaderEmployeesComponent } from 'src/app/header-employees/header-employees.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { NgCalendarModule } from 'ionic2-calendar';
     CalendarPageRoutingModule,
     NgCalendarModule 
   ],
-  declarations: [CalendarPage]
+  declarations: [CalendarPage, HeaderEmployeesComponent]
 })
 export class CalendarPageModule {}
