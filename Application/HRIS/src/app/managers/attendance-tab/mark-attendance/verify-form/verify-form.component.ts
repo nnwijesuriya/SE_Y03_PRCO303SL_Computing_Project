@@ -50,7 +50,10 @@ export class VerifyFormComponent implements OnInit {
     Otherinformation: '',
     picture: '',
     review: '',
-    rCounter: ''
+    rCounter: '',
+    holidaysPerYear: '',
+    employeeReview: '',
+    employeeReviewCounter: ''
   }
 
   email;

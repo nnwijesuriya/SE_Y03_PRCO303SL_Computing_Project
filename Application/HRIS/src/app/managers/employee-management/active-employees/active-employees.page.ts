@@ -43,7 +43,10 @@ export class ActiveEmployeesPage implements OnInit {
     Otherinformation: '',
     picture: '',
     review: '',
-    rCounter: ''
+    rCounter: '',
+    holidaysPerYear: '',
+    employeeReview: '',
+    employeeReviewCounter: ''
   } 
 
   pipe = new DatePipe('en-US'); 

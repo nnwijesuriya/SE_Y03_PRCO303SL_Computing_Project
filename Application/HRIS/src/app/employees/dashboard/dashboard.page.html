@@ -38,11 +38,11 @@
                                                    <ion-grid>
                                                        <ion-row>
                                                         <ion-col>
-                                                               <ion-button expand="block">
+                                                               <ion-button expand="block" (click)="reviewsModal()">
                                                                   My reviews 
                                                                 </ion-button>
                                                                 <br>
-                                                                <ion-button expand="block">
+                                                                <ion-button expand="block" (click)="salaryModal()">
                                                                     View my Details
                                                                 </ion-button>
                                                            </ion-col>
@@ -57,7 +57,7 @@
                                                                     <br>
                                                                     <br>
                                                                     <ion-label>
-                                                                        <strong>Number Of Holidays remaining: </strong> 2 Days
+                                                                        <strong>Number Of Holidays remaining: </strong> {{profile.holidaysPerYear }} Days
                                                                     </ion-label>
                                                                 </ion-card-content>
                                                                </ion-card>
@@ -226,7 +226,7 @@
                                     <ion-row>
                                  <ion-col size-md="4">
                                             <div>
-                                                <ion-card>
+                                                <ion-card (click)="reviewNavigate()">
                                                         <img src="../../../assets/images/review.png"width="100%">
                                                     <ion-card-header>
                                                       <ion-card-title style="text-align: center;">Review Employees</ion-card-title>
@@ -235,7 +235,7 @@
                                             </div>
                                         </ion-col>
                                         <ion-col size-md="4" offset-md="1.5">
-                                            <div>
+                                            <div> 
                                                 <ion-card (click)="infoModal()">
                                                         <img src="../../../assets/images/info.png" width="100%">
                                                     <ion-card-header>

@@ -14,6 +14,10 @@ import { DocumentTypeComponent } from '../documents/modals/document-type/documen
 import { InfoComponent } from '../info/info.component';
 import { DatePipe } from "@angular/common";
 import { MarkingService } from 'src/app/managers/attendance-tab/mark-attendance/verify-form/marking.service';
+import { Router } from '@angular/router';
+import { MyReviewsComponent } from './my-reviews/my-reviews.component';
+import { MySalaryDetailsComponent } from '../my-salary-details/my-salary-details.component';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +26,7 @@ import { MarkingService } from 'src/app/managers/attendance-tab/mark-attendance/
 })
 export class DashboardPage implements OnInit {
 
-  constructor(private users: UserService,private attendanceMark: MarkingService, private modal: ModalController,  private auth: AngularFireAuth, private noticeservice: noticesService, private navctrl: NavController) { }
+  constructor(private users: UserService,private router: Router, private attendanceMark: MarkingService, private modal: ModalController,  private auth: AngularFireAuth, private noticeservice: noticesService, private navctrl: NavController) { }
 
   public notices:  Observable<notice[]>;
   
@@ -46,7 +50,10 @@ export class DashboardPage implements OnInit {
     Otherinformation: '',
     picture: '',
     review: '',
-    rCounter: ''
+    rCounter: '',
+    holidaysPerYear: '',
+    employeeReview: '',
+    employeeReviewCounter: ''
   };
   typen = "";
   uid;
@@ -54,6 +61,7 @@ export class DashboardPage implements OnInit {
   date;
   todayDate;
   attendanceMarked = false;
+  department;
   allDates = new Array();
 
   ngOnInit() {
@@ -74,8 +82,27 @@ export class DashboardPage implements OnInit {
   {
     let id = this.uid;
     this.users.getform(id).subscribe(profiles => {
-      this.profile = profiles;   
+      this.profile = profiles;  
+      this.department = profiles.department 
     });
+  }
+
+  async reviewsModal()
+  {
+    const pmodal = await this.modal.create({
+      component: MyReviewsComponent,
+      cssClass: 'my-review-modal-css'
+    });
+    await pmodal.present();
+  }
+
+  async salaryModal()
+  {
+    const modal = await this.modal.create({
+      component: MySalaryDetailsComponent,
+      cssClass: 'my-custom-modal-css'
+    });
+   await modal.present();
   }
 
   getnotice(types)
@@ -220,6 +247,12 @@ export class DashboardPage implements OnInit {
     this.navctrl.navigateForward('employees/profile')
   }
 
+  reviewNavigate()
+  {
+    this.router.navigate(['employees/review/', this.department])
+  }
+
+  checkHolidayValue
   checkAttendance(id)
   {
      id = "Lwv7MGMPvPTBjWWmoVZuxuzxhKg1";
@@ -240,6 +273,16 @@ export class DashboardPage implements OnInit {
        this.attendanceMarked= true;
       } else{
        this.attendanceMarked = false;
+       //if the hours are more than 8 then it runs (uses 24 hours format)
+       let dateTimeH = new Date().getHours();
+       if(dateTimeH > 8)
+       {
+         let initialHolidayDays = this.profile.holidaysPerYear;
+         let remainingHolidays = initialHolidayDays - 1;
+         console.log(remainingHolidays); 
+         this.profile.holidaysPerYear = remainingHolidays;
+         this.users.updateEmployeeHoliday(this.profile)
+       }
       }
      })
   }

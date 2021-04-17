@@ -22,6 +22,7 @@ export class PaymentUpdateComponent implements OnInit {
     userId: '',
     Eemail: '',
     rating: '',
+    employeeRating: '',
     sdate: '',
     department: '',
     role: '',

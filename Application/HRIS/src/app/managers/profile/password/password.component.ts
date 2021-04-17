@@ -35,7 +35,10 @@ export class PasswordComponent implements OnInit {
     Otherinformation: '',
     picture: '',
     review: '',
-    rCounter: ''
+    rCounter: '',
+    holidaysPerYear: '',
+    employeeReview: '',
+    employeeReviewCounter: ''
   }
   password = "";
   oldpassword = "";

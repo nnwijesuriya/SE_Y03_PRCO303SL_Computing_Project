@@ -34,7 +34,10 @@ export class EditProfileComponent implements OnInit {
     Otherinformation: '',
     picture: '',
     review: '',
-    rCounter: ''
+    rCounter: '',
+    holidaysPerYear: '',
+    employeeReview: '',
+    employeeReviewCounter: '' 
   }
 
   uid;

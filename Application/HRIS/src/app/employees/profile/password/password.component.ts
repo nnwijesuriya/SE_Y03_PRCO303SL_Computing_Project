@@ -36,11 +36,14 @@ export class PasswordComponent implements OnInit {
     Otherinformation: '',
     picture: '',
     review: '',
-    rCounter: ''
+    rCounter: '',
+    holidaysPerYear: '',
+    employeeReview: '',
+    employeeReviewCounter: ''
   }
   password = "";
-  oldpassword = "";
-  newpassword = "";
+  oldpassword = ""; 
+  newpassword = ""; 
 
   constructor(private modal: ModalController,private login: LoginService, private users: UserService, private auth: AngularFireAuth, private httpclient: HttpClient) { }
 

@@ -32,7 +32,10 @@ export class FormPage implements OnInit {
     Otherinformation: '',
     picture: '',
     review: '',
-    rCounter: ''
+    rCounter: '',
+    holidaysPerYear: '',
+    employeeReview: '',
+    employeeReviewCounter: ''
   }
 
   password = "";
@@ -100,6 +103,9 @@ export class FormPage implements OnInit {
     this.form.Otherinformation = "";
     this.form.review ="";
     this.form.rCounter = "";
+    this.form.holidaysPerYear = "";
+    this.form.employeeReview = "";
+    this.form.employeeReviewCounter= ""
     this.router.navigateByUrl('managers/add-person')
   }
 

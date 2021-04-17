@@ -4,22 +4,22 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DashboardPageRoutingModule } from './dashboard-routing.module';
+import { ReviewPageRoutingModule } from './review-routing.module';
 
-import { DashboardPage } from './dashboard.page';
+import { ReviewPage } from './review.page';
 import { HeaderEmployeesComponent } from 'src/app/header-employees/header-employees.component';
 import { RatingModule } from 'ng-starrating';
-import { MyReviewsComponent } from './my-reviews/my-reviews.component';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DashboardPageRoutingModule,
+    ReviewPageRoutingModule,
+    Ng2SearchPipeModule,
     RatingModule
   ],
-  declarations: [DashboardPage, HeaderEmployeesComponent, MyReviewsComponent]
+  declarations: [ReviewPage, HeaderEmployeesComponent]
 })
-export class DashboardPageModule {}
+export class ReviewPageModule {}

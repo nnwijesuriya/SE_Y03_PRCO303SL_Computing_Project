@@ -27,7 +27,10 @@ export interface users {
   Otherinformation: string,
   picture: any,
   review: any,
-  rCounter: any
+  rCounter: any,
+  holidaysPerYear: any
+  employeeReview: any,
+  employeeReviewCounter: any
 }
  
 @Injectable({
@@ -100,7 +103,10 @@ export class UserService {
       Otherinformation: use.Otherinformation,
       picture: use.picture,
       review: use.review,
-      rCounter: use.rCounter
+      rCounter: use.rCounter,
+      holidaysPerYear: use.holidaysPerYear,
+      employeeReview: use.employeeReview,
+      employeeReviewCounter: use.employeeReviewCounter
     };
       this.httpclient.post<{message: string}>('http://localhost:3000/add-person/form', profile).subscribe((responsestatus) => {
       profile.userid = responsestatus.message; 
@@ -117,6 +123,7 @@ export class UserService {
          Lname: profile.Lname,
          Eemail: profile.Eemail,
          rating: profile.review,
+         employeeRating: profile.employeeReview,
          sdate: profile.sdate, 
          department: profile.department,
          role: profile.Rdepartment,
@@ -156,7 +163,10 @@ deletuser(use:users)
     Otherinformation: use.Otherinformation,
     picture: use.picture,
     review: use.review,
-    rCounter: use.rCounter
+    rCounter: use.rCounter,
+    holidaysPerYear: use.holidaysPerYear,
+    employeeReview: use.employeeReview,
+    employeeReviewCounter: use.employeeReviewCounter
   };
   this.httpclient.post<{message: string}>('http://localhost:3000/add-person', profile).subscribe((responsestatus) => {
       console.log(responsestatus);
@@ -198,6 +208,21 @@ updatereview(value: users)
   return this.usersCollection.doc(value.userid).update({
     "review" : value.review,
     "rCounter" : value.rCounter
+  });
+}
+
+updateEmployeeReview(value: users)
+{
+  return this.usersCollection.doc(value.userid).update({
+    "employeeReview" : value.employeeReview,
+    "employeeReviewCounter" : value.employeeReviewCounter
+  });
+}
+
+updateEmployeeHoliday(value: users)
+{
+  return this.usersCollection.doc(value.userid).update({
+    "holidaysPerYear" : value.holidaysPerYear
   });
 }
 

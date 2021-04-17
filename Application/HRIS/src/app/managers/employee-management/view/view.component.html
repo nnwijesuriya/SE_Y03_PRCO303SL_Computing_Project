@@ -98,7 +98,7 @@
           <ion-col>
             <ion-item>
             <div>
-              <ion-label>Employees overall review</ion-label>
+              <ion-label>Employee overall review</ion-label>
               <star-rating value="5" [totalstars]="5" [value] ="form.review" checkedcolor="yellow" uncheckedcolor="white" size="24px" readonly="false"></star-rating>
             </div>
           </ion-item>
@@ -106,9 +106,27 @@
         </ion-row>
         <ion-row>
           <ion-col>
+            <ion-item>
+            <div>
+              <ion-label>Other employees review of user</ion-label>
+              <star-rating [totalstars]="5" [value] ="form.employeeReview" checkedcolor="yellow" uncheckedcolor="white" size="24px" readonly="false"></star-rating>
+            </div>
+          </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col> 
             <ion-item style="padding-top: 10px;">
               <ion-label position="floating">Emergency Contact</ion-label>
               <ion-input [(ngModel)]="form.Econtact" placeholder="{{form.Econtact}}"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item style="padding-top: 10px;">
+              <ion-label position="floating">Availabe Holidays Per Year</ion-label>
+              <ion-input [(ngModel)]="form.Otherinformation" placeholder="{{form.holidaysPerYear}}"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>

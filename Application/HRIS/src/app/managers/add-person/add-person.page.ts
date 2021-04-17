@@ -31,7 +31,10 @@ export class AddPersonPage implements OnInit {
     Otherinformation: '',
     picture: '',
     review: '',
-    rCounter: ''
+    rCounter: '',
+    holidaysPerYear: '',
+    employeeReview: '',
+    employeeReviewCounter: ''
   }
 
   constructor(private nav: NavController, private user: UserService, private toastCtrl: ToastController, private salary: SalariesService) { }

@@ -37,7 +37,10 @@ export class InactiveEmployeesPage implements OnInit {
     Otherinformation: '',
     picture: '',
     review: '',
-    rCounter: ''
+    rCounter: '',
+    holidaysPerYear: '',
+    employeeReview: '',
+    employeeReviewCounter: ''
   }
 
   public employees : Observable<users[]>;

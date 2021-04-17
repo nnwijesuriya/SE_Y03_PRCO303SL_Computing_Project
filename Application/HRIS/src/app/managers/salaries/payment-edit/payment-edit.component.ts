@@ -18,6 +18,7 @@ export class PaymentEditComponent implements OnInit {
     userId: '',
     Eemail: '',
     rating: '',
+    employeeRating: '',
     sdate: '',
     department: '',
     role: '',

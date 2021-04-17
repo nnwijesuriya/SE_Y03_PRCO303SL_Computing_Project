@@ -55,6 +55,10 @@ const routes: Routes = [
   {
     path: 'policies',
     loadChildren: () => import('./policies/policies.module').then( m => m.PoliciesPageModule)
+  },
+  {
+    path: 'review/:department',
+    loadChildren: () => import('./review/review.module').then( m => m.ReviewPageModule)
   }
 ];
 

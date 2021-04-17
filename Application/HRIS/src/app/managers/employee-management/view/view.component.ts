@@ -30,6 +30,9 @@ export class ViewComponent implements OnInit {
     picture: '',
     review: '',
     rCounter: '',
+    holidaysPerYear: '',
+    employeeReview: '',
+    employeeReviewCounter: ''
   }
 
   constructor(private modal: ModalController, private users: UserService,public navprams: NavParams) { }

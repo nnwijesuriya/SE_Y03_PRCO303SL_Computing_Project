@@ -10,6 +10,7 @@ export interface user {
   Mname: string,
   Lname: string,
   rating: any,
+  employeeRating: any,
   userId: any,
   Eemail: string,
   sdate: any,
@@ -104,6 +105,13 @@ export class SalariesService {
 {
   return this.approvedCollection.doc(id).update({
     "rating" : value
+  });
+}
+
+updateEmployeeReview(value,id)
+{
+  return this.approvedCollection.doc(id).update({
+    "employeeRating" : value
   });
 }
 

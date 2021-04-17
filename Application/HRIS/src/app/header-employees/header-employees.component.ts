@@ -34,7 +34,10 @@ export class HeaderEmployeesComponent implements OnInit {
     Otherinformation: '',
     picture: '',
     review: '',
-    rCounter: ''
+    rCounter: '',
+    holidaysPerYear: '',
+    employeeReview: '',
+    employeeReviewCounter: ''
   }
 
   constructor(private auth: AngularFireAuth, private service: LoginService, private users: UserService, private router: Router) { }
