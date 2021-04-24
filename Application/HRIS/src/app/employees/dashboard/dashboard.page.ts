@@ -233,11 +233,16 @@ export class DashboardPage implements OnInit {
     this.navctrl.navigateBack('employees/calendar')
   }
 
+  attendanceNav()
+  {
+    this.navctrl.navigateBack('employees/attendance')
+  }
+
   async infoModal()
   {
     const modal = await this.modal.create({
       component: InfoComponent,
-      cssClass: 'my-custom-modal-css'
+      cssClass: 'my-review-modal-css'
     });
    await modal.present();
   }

@@ -46,6 +46,16 @@ export class AttendanceService {
       );
     }
 
+    getCodeDateOrder(value) {
+      return this.afs.collection<employee>('attendance/code/QRCode', ref => 
+          ref.orderBy('date').limit(1)).snapshotChanges().pipe(
+              map(actions => actions.map(a => {
+              const data = a.payload.doc.data();
+              const id = a.payload.doc.id;
+              return { id, ...data };
+          })))
+    }
+
     addcode(code : employee){ 
         return this.usersCollection.doc(code.qrcode).set(code);
     }
