@@ -19,6 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {BarcodeScanner} from '@ionic-native/barcode-scanner/ngx';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import {IonicStorageModule} from '@ionic/storage-angular';
+
 
 
 
@@ -37,7 +39,8 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,

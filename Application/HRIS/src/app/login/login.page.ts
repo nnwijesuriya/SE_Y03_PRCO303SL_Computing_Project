@@ -29,5 +29,6 @@ export class LoginPage implements OnInit {
   login() 
   {
     this.auth.login(this.email, this.password);
+    
   }
 }

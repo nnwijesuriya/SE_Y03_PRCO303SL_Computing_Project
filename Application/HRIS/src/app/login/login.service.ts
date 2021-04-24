@@ -3,9 +3,11 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { BehaviorSubject } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { Storage } from '@ionic/storage';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { filter, first } from 'rxjs/operators';
 
+const Token_Key = 'user-access-token'
 @Injectable({
     providedIn: 'root'
   })
@@ -14,11 +16,35 @@ import { first } from 'rxjs/operators';
     private eventAuthError = new BehaviorSubject<string>("");
     eventAuthError$ = this.eventAuthError.asObservable();
     newUser;
-    constructor(private afAuth: AngularFireAuth, private route: Router, private navctrl: NavController, private db: AngularFireDatabase) { }
+    constructor(private afAuth: AngularFireAuth,private storage: Storage ,private route: Router, private navctrl: NavController, private db: AngularFireDatabase) {
+      this.loadUser();
+      this.user = this.authstate.asObservable().pipe(
+        filter(response => response)
+      );
+     }
   
     isfound;
+    user: Observable<any>;
+    authstate = new BehaviorSubject(null)
+
+
+    loadUser()
+    {
+      this.storage.create();
+      this.storage.get(Token_Key).then(data =>{
+        console.log(data)
+        if(data)
+        {
+          this.authstate.next(data);
+        }else
+        {
+          this.authstate.next({ email: null, role: null})
+        }
+      })
+    }
   
-    login( email: string, password: string) {
+    login( email: string, password: string){
+      let user = null;
       this.afAuth.signInWithEmailAndPassword(email, password)
         .catch(error => {
           this.eventAuthError.next(error);
@@ -29,12 +55,19 @@ import { first } from 'rxjs/operators';
             if(this.isfound= email.includes("@managers"))
             {
               this.navctrl.navigateRoot(['managers/dashboard']);
+              user = {email, role:'managers'}
             }else
             {
               this.navctrl.navigateRoot(['employees/dashboard']);
-              //need to change for customers
+              user = {email, role:'employees'}
             }
           }
+
+          this.authstate.next(user);
+
+          this.storage.create()
+          this.storage.set(Token_Key, user)
+          console.log(user)
         })
     }
 
@@ -56,6 +89,8 @@ import { first } from 'rxjs/operators';
     signout(){
       this.afAuth.signOut().then(exit =>{
         this.setavailability('offline');
+        this.storage.set(Token_Key, null);
+        this.authstate.next(null);
         this.route.navigateByUrl('login');
       })
     }
