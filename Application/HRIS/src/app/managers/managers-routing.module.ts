@@ -55,7 +55,11 @@ const routes: Routes = [
   {
     path: 'stabs',
     loadChildren: () => import('./salaries/stabs/stabs.module').then( m => m.StabsPageModule)
+  },  {
+    path: 'graphs',
+    loadChildren: () => import('./graphs/graphs.module').then( m => m.GraphsPageModule)
   }
+
 ];
 
 @NgModule({

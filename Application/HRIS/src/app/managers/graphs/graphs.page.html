@@ -1,0 +1,82 @@
+<app-header></app-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col  size-md="8" offset-md="2">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Salaries</ion-card-title>
+            <ion-card-subtitle>Total salary of each department</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #barChart></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-title>Attendance</ion-card-title>
+                  <ion-card-subtitle>Each department's attendance today</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content>
+                  <canvas #horizontalLine></canvas>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col>
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-title>Departments</ion-card-title>
+                  <ion-card-subtitle>Number of employees in each department</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content>
+                  <canvas #doughnutCanvas></canvas>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-title>Total users</ion-card-title>
+                  <ion-card-subtitle>Number of users in the system</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content>
+                  <canvas #piechart></canvas>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col>
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-title>Total policies</ion-card-title>
+                  <ion-card-subtitle>Number of policies created for each year</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content>
+                  <canvas #doughnutPolicyChart></canvas>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
