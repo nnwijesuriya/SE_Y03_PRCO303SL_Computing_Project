@@ -1,26 +1,42 @@
 <ion-content>
-<Div style="text-align: center; margin-top: 110px;">
-  <img src="../../assets/images/logo.png">
-</Div>
-<ion-grid>
+<ion-grid style="margin-top: 110px;">
   <ion-row>
     <ion-col size-md="6" offset-md="3">
+      <form [formGroup]="loginform" (ngSubmit)="login()">
       <ion-list>
+        <Div style="text-align: center;">
+          <img src="../../assets/images/logo.png">
+        </Div>
         <ion-item *ngIf="authError">
           <ion-label style="text-align: center; color: red">{{ authError?.message }}</ion-label>
         </ion-item>
-        <ion-item>
+        <ion-item style="margin-left: 60px; margin-right: 60px;">
          <ion-label position="floating">Username</ion-label>
-         <ion-input type="text" [(ngModel)]="email" required ></ion-input>
+         <ion-input type="email" formControlName="emailControl" required></ion-input>
         </ion-item>
-        <ion-item>
+         <div *ngIf="email.touched && email.invalid" style="margin-left: 60px; margin-right: 60px;">
+          <ion-label style="color: red;" position="stacked">Please enter a valid email address</ion-label>
+          <br>
+         </div>
+        <br>
+        <ion-item style="margin-left: 60px; margin-right: 60px;">
           <ion-label position="floating">Password</ion-label>
-          <ion-input type="password" [(ngModel)]="password" required></ion-input>
+          <ion-input type="password"  formControlName="passwordControl" required [type]="showpassword ? 'text' : 'password'"></ion-input>
+          <ion-icon slot="end" [name]="passwordtoggleicon" (click)="togglepassword()"></ion-icon>
          </ion-item>
+         <div *ngIf="password.touched && password.invalid" style="margin-left: 60px; margin-right: 60px;">
+          <ion-label style="color: red;" position="stacked">Password is required</ion-label>
+          <br>
+        </div>
+        <div *ngIf="password.errors?.minlength && password.touched " style="margin-left: 60px; margin-right: 60px;">
+          <ion-label style="color: red;" position="stacked">Password needs atleast 8 characters</ion-label>
+          <br>
+        </div>
+         <br>
          <ion-item>
          <ion-grid>
            <Div style="margin-left: 60px;">
-            <ion-radio-group [(ngModel)]="user">
+            <ion-radio-group formControlName="userControl" required>
            <ion-row>
              <ion-col>
                <ion-item>
@@ -39,13 +55,20 @@
           </Div>
          </ion-grid>
         </ion-item>
+        <br>
+        <br>
+        <ion-item>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+              <ion-button color="success" expand="block"  type="submit" [disabled]="loginform.invalid"><strong>Login</strong></ion-button>
+              </ion-col>
+                </ion-row>
+          </ion-grid>
+        </ion-item>
       </ion-list>
+    </form>
     </ion-col>
-  </ion-row>
-  <ion-row>
-<ion-col size-md="6" offset-md="3">
-<ion-button color="success" expand="block" (click)="login()">Login</ion-button>
-</ion-col>
   </ion-row>
 </ion-grid>
 </ion-content>
