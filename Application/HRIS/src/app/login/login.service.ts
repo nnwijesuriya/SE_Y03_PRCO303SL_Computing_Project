@@ -87,8 +87,8 @@ const Token_Key = 'user-access-token'
     }
     
     signout(){
+      this.setavailability('offline');
       this.afAuth.signOut().then(exit =>{
-        this.setavailability('offline');
         this.storage.set(Token_Key, null);
         this.authstate.next(null);
         this.route.navigateByUrl('login');

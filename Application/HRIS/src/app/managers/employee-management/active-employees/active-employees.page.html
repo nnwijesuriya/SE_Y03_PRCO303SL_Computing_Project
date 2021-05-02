@@ -44,7 +44,7 @@
     <ion-row>
       <ion-col size-md="11" offset-md="0.5">
         <ion-grid>
-          <ion-card *ngFor="let users of (employees | async |filter:term)">
+          <ion-card *ngFor="let users of (employees |filter:term)">
           <ion-row> 
             <ion-col>
               <ion-item>
@@ -58,12 +58,35 @@
                 <ion-label>Name: {{users.Fname}} {{users.Lname}}</ion-label>
               </ion-item>
               <ion-item>
-                <ion-label>Role: {{users.role}}</ion-label>
+                <ion-label>Role: {{users.role}}</ion-label> 
               </ion-item>
               <div>
-              <ion-item (click)="getstatus(users.id)">
-                <ion-label>Status: {{status}}</ion-label>
-              </ion-item>
+              <div *ngIf="users.status!=null">
+                <div *ngIf="users.status=='online'">
+                  <ion-item>
+                    Status:
+                    <ion-label style="color: green; padding-left: 10px;"><strong>{{users.status}}</strong></ion-label>
+                </ion-item>
+                </div>
+                <div  *ngIf="users.status=='offline'">
+                  <ion-item>
+                    Status:
+                    <ion-label style="color: red; padding-left: 10px;"><strong>{{users.status}}</strong></ion-label>
+                </ion-item>
+                </div>
+                <div  *ngIf="users.status=='away'">
+                  <ion-item>
+                    Status:
+                    <ion-label style="color: yellow; padding-left: 10px;"><strong>{{users.status}}</strong></ion-label>
+                </ion-item>
+                </div>
+              </div>
+              <div *ngIf="users.status==null">
+                <ion-item>
+                    Status:
+                    <ion-label style="color: red; padding-left: 10px;"><strong>offline</strong></ion-label>
+                </ion-item>
+                </div>
             </div>
             </ion-col>
             <ion-col size-md="1.5">

@@ -54,7 +54,32 @@ export class ActiveEmployeesPage implements OnInit {
   constructor(private user: UserService, private modal: ModalController, private toast: ToastController, 
     private alertCtrl: AlertController, private auth: AngularFireAuth, private availability: AvailabilityService, private salary: SalariesService) { }
 
-  public employees : Observable<users[]>;
+  public employees : {
+    userid: '',
+    Fname: '',
+    Mname: '',
+    Lname: '',
+    DOB: '',
+    Pemail: '',
+    Eemail: '',
+    password: '',
+    Hphone: '',
+    phone : '',
+    addressH: '',
+    department : '',
+    Rdepartment: '',
+    role: '',
+    sdate: '',
+    Econtact: '',
+    Otherinformation: '',
+    picture: '',
+    review: '',
+    rCounter: '',
+    holidaysPerYear: '',
+    employeeReview: '',
+    employeeReviewCounter: ''
+    status: ''
+  };
   
   department;
   selectedDate;
@@ -63,6 +88,10 @@ export class ActiveEmployeesPage implements OnInit {
   term;
   uid;
   reviewvalue = 0;
+  status : any;
+  statusOnline = false;
+  statusOffline = false;
+  statusAway = false;
 
   ngOnInit() {
     this.auth.authState.subscribe(data=> {
@@ -80,7 +109,9 @@ export class ActiveEmployeesPage implements OnInit {
      this.department == null;
    }else
    {
-   this.employees = this.user.getDepartmentCollection(this.department);
+   this.user.getDepartmentCollection(this.department).subscribe((val: any)=>{
+     this.employees = val;
+   });
    }
   }
 
@@ -89,7 +120,9 @@ export class ActiveEmployeesPage implements OnInit {
     const myFormattedDate = this.pipe.transform(this.selectedDate, 'mediumDate');
     this.formatedDate= myFormattedDate;
     console.log(this.formatedDate);
-    this.employees = this.user.getDateCollection(this.formatedDate);
+    this.user.getDateCollection(this.formatedDate).subscribe((val: any)=>{
+      this.employees = val;
+    });
   } 
 
   removedate()
@@ -99,7 +132,17 @@ export class ActiveEmployeesPage implements OnInit {
 
   getallemployees()
   {
-    this.employees = this.user.getusers();
+    this.user.getusers().subscribe((val: any)=>{
+      this.employees = val;
+      let value = Object.keys(this.employees)
+      let length = value.length;
+      let counter = 0;
+    for(counter; counter < length; counter++)
+    {
+      let id = this.employees[counter].userid;
+      this.getstatus(id, counter)
+    }
+    });
   }
 
   async editemployee(id)
@@ -191,16 +234,23 @@ rate(data, userid) {
 });
 }
 
-status : any;
-
-// does not work need to look into it (takes a lot of time)
-getstatus(id)
+getstatus(id, counter)
 {
-  console.log(id);
-  this.availability.presense(id).subscribe(data => {
-    this.status = data;
+  this.availability.presense(id).subscribe((data:presence) => {
+    this.status = data.status;
     console.log(this.status);
+    this.employees[counter].status = this.status;
+    if(this.status=="online")
+    {
+      console.log("VDsvsd");
+      this.statusOnline == true
+    }else if(this.status == "offline")
+    {
+      this.statusOffline == true;
+    }
+    else{
+      this.statusOffline == true;
+    }
   });
-  console.log("does not work");
 }
 }

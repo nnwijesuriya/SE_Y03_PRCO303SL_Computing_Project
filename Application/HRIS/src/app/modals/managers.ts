@@ -1,0 +1,4 @@
+interface presence
+{
+    status: string
+}
