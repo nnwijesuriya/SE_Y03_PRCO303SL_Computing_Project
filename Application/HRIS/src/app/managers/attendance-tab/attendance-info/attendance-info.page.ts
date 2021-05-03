@@ -39,7 +39,7 @@ export class AttendanceInfoPage implements OnInit {
     qrcode: ''
   }
   qrdata= "managers";
-  elementType = 'url';
+  elementType = 'canvas';
   temp;
 
   constructor(private barcodescanner: BarcodeScanner, private httpclient: HttpClient, private modal: ModalController, private attendance: AttendanceService, private userservice: UserService, private mark: MarkingService) { }
@@ -86,5 +86,34 @@ removedata()
     let response = responsestatus.message; 
     console.log(response);
   });   
+}
+
+download()
+{
+  const canvas = document.querySelector('canvas') as HTMLCanvasElement;
+  const imageData = canvas.toDataURL('image/jpeg').toString();
+
+  let blobData = this.convertBase64ToBlob(imageData);
+  if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+    window.navigator.msSaveOrOpenBlob(blobData, 'Qrcode');
+  } else {
+    const blob = new Blob([blobData], { type: "image/png" });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Qrcode';
+    link.click();
+  }
+}
+ convertBase64ToBlob(Base64Image: any) {
+  const parts = Base64Image.split(',');
+  let link = parts[1]
+  const imageType = parts[0].split(':')[1];
+  const decodedData = window.atob(parts[1]);
+  const uInt8Array = new Uint8Array(decodedData.length);
+  for (let i = 0; i < decodedData.length; ++i) {
+    uInt8Array[i] = decodedData.charCodeAt(i);
+  }
+  return new Blob([uInt8Array], { type: imageType });
 }
 }
