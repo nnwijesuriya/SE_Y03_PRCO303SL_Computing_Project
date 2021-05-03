@@ -17,6 +17,7 @@ import { MarkingService } from 'src/app/managers/attendance-tab/mark-attendance/
 import { Router } from '@angular/router';
 import { MyReviewsComponent } from './my-reviews/my-reviews.component';
 import { MySalaryDetailsComponent } from '../my-salary-details/my-salary-details.component';
+import { AvailabilityService } from 'src/app/managers/dashboard/availability.service';
 
 
 @Component({
@@ -26,7 +27,7 @@ import { MySalaryDetailsComponent } from '../my-salary-details/my-salary-details
 })
 export class DashboardPage implements OnInit {
 
-  constructor(private users: UserService,private router: Router, private attendanceMark: MarkingService, private modal: ModalController,  private auth: AngularFireAuth, private noticeservice: noticesService, private navctrl: NavController) { }
+  constructor(private users: UserService,private availability: AvailabilityService, private router: Router, private attendanceMark: MarkingService, private modal: ModalController,  private auth: AngularFireAuth, private noticeservice: noticesService, private navctrl: NavController) { }
 
   public notices:  Observable<notice[]>;
   
@@ -65,13 +66,12 @@ export class DashboardPage implements OnInit {
   allDates = new Array();
 
   ngOnInit() {
-    console.log("happy new year");
-    console.log("it works!!!!");
     this.auth.authState.subscribe(data => {
       this.uid = data.uid;
       this.getuserDetails();
       this.getnotice(this.typen);
       this.checkAttendance(this.uid);
+      this.availability.presense(this.uid)
     })
     const now = Date.now()
     const myFormattedDate = this.pipe.transform(now, "mediumDate");
@@ -260,7 +260,6 @@ export class DashboardPage implements OnInit {
   checkHolidayValue
   checkAttendance(id)
   {
-     id = "Lwv7MGMPvPTBjWWmoVZuxuzxhKg1";
      this.attendanceMark.getDateCollection(id).subscribe(data => {
       let values = Object.keys(data)
       let length = values.length;

@@ -238,11 +238,9 @@ getstatus(id, counter)
 {
   this.availability.presense(id).subscribe((data:presence) => {
     this.status = data.status;
-    console.log(this.status);
     this.employees[counter].status = this.status;
     if(this.status=="online")
     {
-      console.log("VDsvsd");
       this.statusOnline == true
     }else if(this.status == "offline")
     {
