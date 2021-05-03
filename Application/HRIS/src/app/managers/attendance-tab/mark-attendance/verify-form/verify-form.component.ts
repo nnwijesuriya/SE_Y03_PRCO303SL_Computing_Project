@@ -82,7 +82,7 @@ export class VerifyFormComponent implements OnInit {
 
     const checkdate= this.pipe.transform(now, 'shortDate');
     // The time below is the start time of the organization
-    this.checkdate = checkdate + ", 08:30 AM";
+    this.checkdate = checkdate + ", 09:00 AM";
     console.log(this.checkdate);
 }
 
@@ -154,8 +154,8 @@ export class VerifyFormComponent implements OnInit {
       this.attendeees.minw ="";
       this.attendeees.worktype = "";
       this.attendeees.date = this.date;
-      let adate = this.attendeees.date;
-      let bdate = this.checkdate;
+      let adate = new Date(this.attendeees.date);
+      let bdate = new Date(this.checkdate);
       console.log(bdate);
       console.log(adate);
       
@@ -165,7 +165,7 @@ export class VerifyFormComponent implements OnInit {
         let diffM = this.getminDiff(new Date(bdate), new Date(adate));
         this.attendeees.status = "Late by " + diffH + " Hrs " + diffM + " Min";
     
-      }else // this does not work only detects lateness have to fix this
+      }else 
       {
         let diffH = this.gethoursDiff(new Date(adate), new Date(bdate));
         let diffM = this.getminDiff(new Date(adate), new Date(bdate));
