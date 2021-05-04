@@ -63,10 +63,7 @@ export class EditProfileComponent implements OnInit {
 
   closemodal()
   {
-    this.modal.dismiss().then( val => {
-      // reloads the page to get new information
-    window.location.reload();
-    })
+    this.modal.dismiss();
   }
 
   update()
@@ -74,6 +71,7 @@ export class EditProfileComponent implements OnInit {
     let id = this.uid;
     console.log(this.form);
     this.users.updateuser(this.form);
+    this.users.filter(this.form)
     this.closemodal();
   }
 

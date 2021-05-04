@@ -40,7 +40,11 @@ export class ProfilePage implements OnInit {
   employeeReviewCounter: ''
  } 
 
-  constructor(private user: UserService, private auth: AngularFireAuth, private toast:ToastController, private modal: ModalController, private storage: AngularFireStorage) { }
+  constructor(private user: UserService, private auth: AngularFireAuth, private toast:ToastController, private modal: ModalController, private storage: AngularFireStorage) {
+    this.user.listen().subscribe((data: any) =>{
+      this.profile = data;
+    })
+   }
 
   uid;
   path:string;

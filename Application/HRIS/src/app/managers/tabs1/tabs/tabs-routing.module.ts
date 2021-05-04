@@ -11,11 +11,7 @@ const routes: Routes = [
           {
             path: 'notices',
             loadChildren: () => import('../notices/notices.module').then( m => m.NoticesPageModule)
-          },
-          {
-            path: 'survey',
-            loadChildren: () => import('../survey/survey.module').then( m => m.SurveyPageModule)
-          },
+          }
         ]
       },
     {

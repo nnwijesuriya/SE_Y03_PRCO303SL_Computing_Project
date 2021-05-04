@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { Chart } from 'chart.js';
+import { UserService } from '../add-person/users.service';
 import { user } from '../salaries/salaries.service';
 import { GraphService } from './graph.service';
 
@@ -59,7 +60,10 @@ export class GraphsPage implements OnInit {
   userData1 = 0;
   userData2 = 0;
 
-  constructor(private graph: GraphService, public loadingCtrl: LoadingController) { }
+  useradded1 = 0;
+  useradded2 = 0;
+
+  constructor(private graph: GraphService, public loadingCtrl: LoadingController, private users: UserService) { }
 
   ngOnInit() {
   }
@@ -70,7 +74,7 @@ export class GraphsPage implements OnInit {
     this.getAttendanceData();
     this.getEmployees();
     this.totalUsers();
-    this.doughnutChartPolicy();
+    this.usersAdded()
   } 
 
   getSalaryData()
@@ -455,26 +459,27 @@ export class GraphsPage implements OnInit {
     });
   }
 
+  usersAdded()
+  {
+    this.users.getusers().subscribe(val =>{
+      this.useradded2 = val.length
+    })
+  }
+
   doughnutChartPolicy() {
     this.doughnutPolicy = new Chart(this.policyChart.nativeElement, {
       type: 'doughnut',
       data: {
-        labels: ['BJP', 'Congress', 'AAP', 'CPM', 'SP'],
+        labels: ['2020','2021'],
         datasets: [{
-          data: [50, 29, 15, 10, 7],
+          data: [this.useradded1, this.useradded2],
           backgroundColor: [
-            'red',
-            'blue',
-            'green',
-            'yellow',
-            'grey'
+            '#DBF70C',
+            '#0CF759',
           ],
           hoverBackgroundColor: [
-            '#FFCE56',
-            '#FF6384',
             '#36A2EB',
-            '#FFCE56',
-            '#FF6384'
+            '#FFCE56'
           ]
         }]
       }
@@ -492,6 +497,7 @@ export class GraphsPage implements OnInit {
         this.horizontalBarChart();
         this.doughnutChartMethod();
         this.pieChart();
+        this.doughnutChartPolicy();
       });
     });
   }

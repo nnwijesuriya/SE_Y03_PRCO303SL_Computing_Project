@@ -15,10 +15,6 @@ const routes: Routes = [
       {
         path: 'inactive-employees',
         loadChildren: () => import('../inactive-employees/inactive-employees.module').then( m => m.InactiveEmployeesPageModule)
-      },
-      {
-        path: 'recruiting',
-        loadChildren: () => import('../recruiting/recruiting.module').then( m => m.RecruitingPageModule)
       }
     ]
   },

@@ -6,17 +6,19 @@
       <ion-grid>
         <ion-row>
           <ion-col>
+          <div>
            <ion-card style="height: 180px; width: 250px;">
             <img style="height: 100%;" src={{profile.picture}}>
            </ion-card>
            <hr>
            <ion-input type="file" (change)="upload($event)" accept="*.png.jpg"></ion-input>
            <ion-button expand="block" (click)="imageUpload()">Change Profile Picture</ion-button>
+          </div>
            <br>
            <br>
            <br>
-           <br>
-           <ion-title>Actions</ion-title>
+           <div>
+           <ion-label style="font-size: larger; font-weight: bold; padding-left: 20px;">Actions</ion-label>
            <ion-card>
              <ion-card-content>
                <ion-button expand="block" (click)="editprofilemodal()">Edit Profile</ion-button>
@@ -24,6 +26,7 @@
                <ion-button expand="block" (click)="passwordmodal()">Change Password</ion-button>
              </ion-card-content>
            </ion-card>
+          </div>
           </ion-col>
           <ion-col size-md="8" offset-md="0.5">
             <ion-card>

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import * as CryptoJS from 'crypto-js';
 import { SalariesService, user } from '../salaries/salaries.service';
+import { Subject } from 'rxjs';
  
 export interface users {
   id?: string, 
@@ -201,6 +202,16 @@ removeDeleteduser(id: string)
 updateuser(value: users)
 {
   return this.usersCollection.doc(value.userid).update(value);
+}
+
+private listeners = new Subject<any>();
+listen():Observable<any>{
+  return this.listeners.asObservable();
+}
+
+filter(filterBy)
+{
+ this.listeners.next(filterBy);
 }
 
 updatereview(value: users)

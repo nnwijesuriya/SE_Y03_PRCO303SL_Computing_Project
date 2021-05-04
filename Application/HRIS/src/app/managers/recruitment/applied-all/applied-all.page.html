@@ -1,0 +1,86 @@
+<app-header></app-header>
+<ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="10" offset-md="1">
+         <ion-grid>
+             <ion-row>
+                 <ion-col>
+                    <ion-header style="font-size: xx-large; padding-top: 10px; font-weight: bold;">
+                        Applied Candidates
+                        <ion-button style="float: right;" (click)="addCandidateModal()">Add New Candidates</ion-button>
+                     </ion-header>
+                 </ion-col>
+             </ion-row>
+         </ion-grid>
+          <ion-grid>
+            <ion-row> 
+              <ion-col>
+                <ion-item>
+                  <ion-searchbar (ionInput)="filterusers($event)"></ion-searchbar> 
+                </ion-item> 
+              </ion-col>
+              <ion-col>
+              <ion-item>
+                <ion-datetime displayFormat="MMM/DD/YYYY" placeholder="Start date" [(ngModel)]="selectedDate" (ionChange)="getByDate()">
+                </ion-datetime>    
+              </ion-item>
+              <ion-item *ngIf="selectedDate" (click)="removedate()">
+                <ion-icon name="close-outline" slot="end"></ion-icon>
+              </ion-item>   
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="11" offset-md="0.5">
+          <ion-grid>
+            <ion-card *ngFor="let users of (users | async |filter:term)">
+            <ion-row> 
+              <ion-col>
+                <ion-item>
+                    <ion-avatar style="height: 140px; width: 130px;">
+                      <ion-img  src="../../../../assets/images/empty_profile.png"></ion-img>
+                    </ion-avatar>
+                </ion-item>   
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label>Name: {{users.firstName}} {{users.lastName}}</ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Appling Job: {{users.applingJob}}</ion-label> 
+                </ion-item>
+              </ion-col>
+              <ion-col size-md="1.5">
+                <ion-item (click)="editemployee(users.email);">
+                  <ion-icon name="pencil-outline"></ion-icon>
+                  <ion-label> Edit</ion-label>
+                </ion-item> 
+                <ion-item (click)="alertConfirm(users.id);">
+                  <ion-icon name="trash-outline"></ion-icon>
+                  <ion-label> Remove</ion-label>
+                </ion-item> 
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label>E-mail: {{users.email}}</ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Mobile number: {{users.phone}}</ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Added date: {{users.addedDate}}</ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            </ion-card>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  
