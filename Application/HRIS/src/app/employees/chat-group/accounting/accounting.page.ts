@@ -38,7 +38,7 @@ export class AccountingPage implements OnInit {
   sendMessage() {
     this.chat.addChatMessage(this.newMsg, this.email, this.date, this.department).then(() => {
       this.newMsg = '';
-      this.content.scrollToBottom();
+      this.content.scrollToBottom(1500);
       console.log(this.email)
     });
   }

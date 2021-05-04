@@ -9,23 +9,41 @@
 <ion-content>
   <ion-grid>
     <ion-row *ngFor="let message of messages | async">
-      <ion-col size-md="10" offset-md="1" class="message">
-        <b class="username">{{ message.from}}</b><br><br>
-        <span class="mes">{{message.msg}}
-          <div class="date ion-text-right"><br>{{ message.createdAt?.toMillis() | date:'short' }}</div>
-        </span>
-      </ion-col> 
+      <ion-col *ngIf="message.from != email" size-md="7" offset="4">
+      <ion-card class="message" >
+        <ion-grid>
+            <ion-col>
+              <b class="username">{{ message.from}}</b><br><br>
+              <span class="mes">{{message.msg}}
+                <div class="date ion-text-right"><br>{{ message.createdAt?.toMillis() | date:'short' }}</div>
+              </span>  
+            </ion-col>
+        </ion-grid>
+      </ion-card>
+      </ion-col>
+        <ion-col *ngIf="message.from == email" size="8" offset-md="1">
+          <ion-card class="myMessage">
+            <ion-grid>
+                <ion-col>
+                  <b class="username">{{ message.from}}</b><br><br>
+                  <span class="mes">{{message.msg}}
+                    <div class="date ion-text-right"><br>{{ message.createdAt?.toMillis() | date:'short' }}</div>
+                  </span>
+                </ion-col>
+            </ion-grid>
+          </ion-card>
+        </ion-col>
     </ion-row>
-  </ion-grid> 
+  </ion-grid>
 </ion-content>
 <ion-footer>
   <ion-toolbar color="light">
     <ion-row class="ion-align-items-center">
-      <ion-col size="10">
-        <ion-textarea autoGrow="true" class="message-input" rows="1" maxLength="500" [(ngModel)]="newMsg" >
+      <ion-col size="10"  offset-md="1">
+        <ion-textarea autoGrow="true" class="message-input" rows="1" maxLength="500" [(ngModel)]="newMsg" style="background-color: white; color: black;">
         </ion-textarea>
       </ion-col>
-      <ion-col size="2">
+      <ion-col size="1">
         <ion-button expand="block" fill="clear" color="primary" [disabled]="newMsg ==''"
           (click)="sendMessage()">
           <ion-icon name="send" slot="icon-only" size="large"></ion-icon>
