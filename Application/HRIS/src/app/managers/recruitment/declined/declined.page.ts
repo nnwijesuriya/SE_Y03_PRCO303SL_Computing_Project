@@ -19,7 +19,6 @@ export class DeclinedPage implements OnInit {
     address: '',
     email: '',
     phone: '',
-    linkedinProfile: '', 
     skills: '',
     certificates: '',
     experience: '',

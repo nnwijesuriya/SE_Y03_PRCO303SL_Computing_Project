@@ -23,9 +23,10 @@ export class AddJobPage implements OnInit {
     Experience: '',
     Level: '',
     salary: '',
-    skill: '',
+    skill: '', 
     workingHours: '',
     description: '',
+    numberOfVacencies: '',
     requestedDate: '',
     finalDate: ''
   };

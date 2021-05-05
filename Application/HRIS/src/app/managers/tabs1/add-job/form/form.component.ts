@@ -25,10 +25,11 @@ export class FormComponent implements OnInit {
     skill: '',
     workingHours: '',
     description: '',
+    numberOfVacencies: '',
     requestedDate: '',
     finalDate: ''
   };
-
+ 
 
   ngOnInit() {
     const now = Date.now();
@@ -73,6 +74,7 @@ export class FormComponent implements OnInit {
     this.job.skill="";
     this.job.workingHours="";
     this.job.description="";
+    this.job.numberOfVacencies= "";
     this.job.requestedDate="";
     this.job.finalDate="";
     this.modal.dismiss();

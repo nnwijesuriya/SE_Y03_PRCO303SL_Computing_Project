@@ -54,6 +54,12 @@
           <br>
           <br>
           <ion-item>
+            <ion-label position="stacked">Number Of Vacencies</ion-label>
+            <ion-input [(ngModel)]="job.numberOfVacencies"></ion-input>
+          </ion-item>
+          <br>
+          <br>
+          <ion-item>
             <ion-label position="stacked">Last CV Approval Date</ion-label>
             <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MMM DD YYYY" [(ngModel)]="job.finalDate"></ion-datetime>
           </ion-item>    

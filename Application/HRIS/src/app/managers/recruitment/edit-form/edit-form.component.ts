@@ -18,7 +18,6 @@ export class EditFormComponent implements OnInit {
     address: '',
     email: '',
     phone: '',
-    linkedinProfile: '', 
     skills: '',
     certificates: '',
     experience: '',

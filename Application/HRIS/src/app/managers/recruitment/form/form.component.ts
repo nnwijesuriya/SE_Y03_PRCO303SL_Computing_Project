@@ -18,7 +18,6 @@ export class FormComponent implements OnInit {
     address: '',
     email: '',
     phone: '',
-    linkedinProfile: '', 
     skills: '',
     certificates: '',
     experience: '',

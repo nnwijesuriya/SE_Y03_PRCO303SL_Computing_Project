@@ -20,7 +20,6 @@ export class ShortListedPage implements OnInit {
     address: '',
     email: '',
     phone: '',
-    linkedinProfile: '', 
     skills: '',
     certificates: '',
     experience: '',

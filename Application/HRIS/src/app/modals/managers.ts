@@ -12,7 +12,6 @@ interface recruitment
     address: string,
     email: string,
     phone: string,
-    linkedinProfile: string, 
     skills: string,
     certificates: string,
     experience: string,
@@ -32,6 +31,7 @@ interface jobs
     salary: string,
     workingHours: string,
     description: string,
+    numberOfVacencies: string,
     requestedDate: string,
     finalDate: string
 }

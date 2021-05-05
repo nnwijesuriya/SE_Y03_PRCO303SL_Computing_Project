@@ -21,7 +21,6 @@ export class ApprovedPage implements OnInit {
     address: '',
     email: '',
     phone: '',
-    linkedinProfile: '', 
     skills: '',
     certificates: '',
     experience: '',
