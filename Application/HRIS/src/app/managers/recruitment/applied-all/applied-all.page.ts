@@ -4,6 +4,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { EditFormComponent } from '../edit-form/edit-form.component';
 import { FormComponent } from '../form/form.component';
+import { JobsAvailableComponent } from '../jobs-available/jobs-available.component';
 import { RecruitmentService } from '../recruitment.service';
 
 @Component({
@@ -88,8 +89,20 @@ export class AppliedAllPage implements OnInit {
    await modal.present();
   }
 
-  async alertConfirm(id) {
-    console.log(id);
+  async availableJobs(email)
+  {
+    const modal = await this.modal.create({
+      component: JobsAvailableComponent,
+      cssClass: 'my-custom-modal-css',
+      componentProps: {
+        'userId': email
+      }
+    });
+   await modal.present();
+  }
+
+  async alertConfirm(email) {
+    console.log(email);
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
       header: 'Confirmation',
@@ -105,11 +118,35 @@ export class AppliedAllPage implements OnInit {
         }, {
           text: 'Confirm',
           handler: () => {
-            this.recruitment.removeCandidate(id);
+            this.recruitment.removeCandidate(email);
           }
         }
       ]
     });
     await alert.present();
+  }
+
+  addShortlist(email)
+  {
+   this.recruitment.getform(email).subscribe((val:recruitment) =>
+   {
+     this.form = val;
+     console.log(this.form);
+     this.recruitment.addformS(this.form).then(data => {
+      this.recruitment.removeCandidate(this.form.email);
+     })
+   })
+  }
+
+  declineCandidate(email)
+  {
+    this.recruitment.getform(email).subscribe((val:recruitment) =>
+    {
+      this.form = val;
+      console.log(this.form);
+      this.recruitment.addformD(this.form).then(data => {
+       this.recruitment.removeCandidate(this.form.email);
+      })
+    })
   }
 }

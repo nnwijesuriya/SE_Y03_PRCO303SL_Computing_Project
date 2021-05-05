@@ -42,6 +42,7 @@ export class EditFormComponent implements OnInit {
     console.log(this.userEmail);
     this.recruitment.getform(this.userEmail).subscribe(profiles => {
     this.form = profiles;
+    console.log(profiles);
     const myFormattedDate = this.pipe.transform(this.form.DOB, 'mediumDate');
     let formatedDate= myFormattedDate;
     this.DOB = formatedDate;

@@ -11,6 +11,7 @@ import { HeaderComponent } from 'src/app/header/header.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormComponent } from '../form/form.component';
 import { EditFormComponent } from '../edit-form/edit-form.component';
+import { JobsAvailableComponent } from '../jobs-available/jobs-available.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { EditFormComponent } from '../edit-form/edit-form.component';
     AppliedAllPageRoutingModule,
     Ng2SearchPipeModule,
   ],
-  declarations: [AppliedAllPage, HeaderComponent,FormComponent, EditFormComponent],
+  declarations: [AppliedAllPage, HeaderComponent,FormComponent, EditFormComponent, JobsAvailableComponent],
   entryComponents: [FormComponent, EditFormComponent]
 })
 export class AppliedAllPageModule {}

@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DeclinedPageRoutingModule } from './declined-routing.module';
+import { ApprovedPageRoutingModule } from './approved-routing.module';
 
-import { DeclinedPage } from './declined.page';
+import { ApprovedPage } from './approved.page';
 import { HeaderComponent } from 'src/app/header/header.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
@@ -15,9 +15,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     CommonModule,
     FormsModule,
     IonicModule,
-    DeclinedPageRoutingModule,
+    ApprovedPageRoutingModule,
     Ng2SearchPipeModule
   ],
-  declarations: [DeclinedPage, HeaderComponent]
+  declarations: [ApprovedPage, HeaderComponent]
 })
-export class DeclinedPageModule {}
+export class ApprovedPageModule {}

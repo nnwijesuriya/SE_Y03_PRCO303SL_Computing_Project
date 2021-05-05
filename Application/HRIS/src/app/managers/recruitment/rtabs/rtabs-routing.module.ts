@@ -19,7 +19,11 @@ const routes: Routes = [
       {
         path: 'declined',
         loadChildren: () => import('../declined/declined.module').then( m => m.DeclinedPageModule)
-      }
+      },
+      {
+        path: 'approved',
+        loadChildren: () => import('../approved/approved.module').then( m => m.ApprovedPageModule)
+      },
     ]
   },
   {

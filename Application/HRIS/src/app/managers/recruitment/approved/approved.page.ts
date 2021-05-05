@@ -6,12 +6,13 @@ import { EditFormComponent } from '../edit-form/edit-form.component';
 import { RecruitmentService } from '../recruitment.service';
 
 @Component({
-  selector: 'app-short-listed',
-  templateUrl: './short-listed.page.html',
-  styleUrls: ['./short-listed.page.scss'],
+  selector: 'app-approved',
+  templateUrl: './approved.page.html',
+  styleUrls: ['./approved.page.scss'],
 })
-export class ShortListedPage implements OnInit {
-  
+export class ApprovedPage implements OnInit {
+
+
   public form : recruitment = {
     firstName: '',
     middleName: '',
@@ -46,7 +47,7 @@ export class ShortListedPage implements OnInit {
 
   getusers()
   {
-    this.users = this.recruitment.getShortListedUsers();
+    this.users = this.recruitment.getApprovedUsers();
   }
 
   getByDate()
@@ -54,7 +55,7 @@ export class ShortListedPage implements OnInit {
     const myFormattedDate = this.pipe.transform(this.selectedDate, 'mediumDate');
     this.formatedDate= myFormattedDate;
     console.log(this.formatedDate);
-    this.users = this.recruitment.getDateCollectionShortListed(this.formatedDate);
+    this.users = this.recruitment.getDateCollectionApproved(this.formatedDate);
   }
 
   removedate()
@@ -67,27 +68,28 @@ export class ShortListedPage implements OnInit {
   this.term = evt.srcElement.value;
   }
 
-  addDeclinelist(email)
-  {
-   this.recruitment.getformShortListed(email).subscribe((val:recruitment) =>
-   {
-     this.form = val;
-     console.log(this.form);
-     this.recruitment.addformD(this.form).then(data => {
-      this.recruitment.removeCandidateShortListed(this.form.email);
-     })
-   })
-  }
-
-  addApprovedlist(email)
-  {
-   this.recruitment.getformShortListed(email).subscribe((val:recruitment) =>
-   {
-     this.form = val;
-     console.log(this.form);
-     this.recruitment.addformApproved(this.form).then(data => {
-      this.recruitment.removeCandidateShortListed(this.form.email);
-     })
-   })
+  async alertConfirm(email) {
+    console.log(email);
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirmation',
+      message: '<strong>Are you sure you want to delete the approved candidate records</strong>',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (user) => {
+            console.log('Confirm Cancel: user');
+          }
+        }, {
+          text: 'Confirm',
+          handler: () => {
+            this.recruitment.removeCandidateApproved(email);
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }

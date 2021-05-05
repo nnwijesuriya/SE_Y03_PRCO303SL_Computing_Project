@@ -11,6 +11,10 @@ const routes: Routes = [
           {
             path: 'notices',
             loadChildren: () => import('../notices/notices.module').then( m => m.NoticesPageModule)
+          },
+          {
+            path: 'add-job',
+            loadChildren: () => import('../add-job/add-job.module').then( m => m.AddJobPageModule)
           }
         ]
       },

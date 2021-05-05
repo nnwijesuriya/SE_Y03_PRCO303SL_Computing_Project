@@ -4,20 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DeclinedPageRoutingModule } from './declined-routing.module';
+import { AddJobPageRoutingModule } from './add-job-routing.module';
 
-import { DeclinedPage } from './declined.page';
+import { AddJobPage } from './add-job.page';
 import { HeaderComponent } from 'src/app/header/header.component';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DeclinedPageRoutingModule,
-    Ng2SearchPipeModule
+    AddJobPageRoutingModule
   ],
-  declarations: [DeclinedPage, HeaderComponent]
+  declarations: [AddJobPage, HeaderComponent, FormComponent]
 })
-export class DeclinedPageModule {}
+export class AddJobPageModule {}

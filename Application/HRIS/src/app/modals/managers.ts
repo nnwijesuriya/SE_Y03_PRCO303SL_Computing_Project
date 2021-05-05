@@ -21,3 +21,17 @@ interface recruitment
     HROpinion: string,
     addedDate: string
 }
+
+interface jobs
+{
+    position: string,
+    qualification: string,
+    Experience: string,
+    Level: string,
+    skill: string,
+    salary: string,
+    workingHours: string,
+    description: string,
+    requestedDate: string,
+    finalDate: string
+}

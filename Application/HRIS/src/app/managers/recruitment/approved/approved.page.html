@@ -7,7 +7,7 @@
              <ion-row>
                  <ion-col>
                     <div style="font-size: xx-large; padding-top: 10px; font-weight: bold;">
-                        Declined Candidates
+                        Approved Candidates
                     </div>
                  </ion-col>
              </ion-row>
@@ -69,14 +69,6 @@
                 </ion-item>
                 <ion-item>
                   <ion-label>Added date: {{users.addedDate}}</ion-label>
-                </ion-item>
-              </ion-col>
-              <ion-col> 
-                <ion-item>
-                    <ion-button expand="block" shape="round" color="success" (click)="addShortlist(users.email)">Add to short list</ion-button>
-                </ion-item>
-                <ion-item>
-                    <ion-button expand="block" shape="round" color="warning" (click)="addToAllCandidate(users.email)">Add backto all list</ion-button>      
                 </ion-item>
               </ion-col>
             </ion-row>
