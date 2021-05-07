@@ -242,7 +242,7 @@ export class DashboardPage implements OnInit {
   {
     const modal = await this.modal.create({
       component: InfoComponent,
-      cssClass: 'my-review-modal-css'
+      cssClass: 'my-ProfilePassword-modal-css'
     });
    await modal.present();
   }
