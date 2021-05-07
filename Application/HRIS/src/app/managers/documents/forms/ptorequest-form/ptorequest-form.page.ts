@@ -14,9 +14,9 @@ export class PTOrequestFormPage implements OnInit {
   form : ptoForm ={
    userId: '',
    formtype: 'PTO Request',
-    Fname: '',
+   Fname: '',
    Lname: '',
-   email: '',
+   Eemail: '',
    phone: '',
    Sname: '',
    department: '',
@@ -51,7 +51,7 @@ export class PTOrequestFormPage implements OnInit {
   addform()
   {
     this.ptoservice.addform(this.form).then(f =>{
-      this.nav.navigateRoot('documents');
+      this.cancel();
   })
 }
 
@@ -61,7 +61,7 @@ export class PTOrequestFormPage implements OnInit {
     this.form.formtype = '';
     this.form.Fname = '';
     this.form.Lname = '';
-    this.form.email = '';
+    this.form.Eemail = '';
     this.form.phone = '';
     this.form.Sname = '';
     this.form.department = '';

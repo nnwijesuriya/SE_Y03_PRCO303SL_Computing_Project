@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ComplainPageRoutingModule } from './complain-routing.module';
 
 import { ComplainPage } from './complain.page';
+import { HeaderComponent } from 'src/app/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ComplainPage } from './complain.page';
     IonicModule,
     ComplainPageRoutingModule
   ],
-  declarations: [ComplainPage]
+  declarations: [ComplainPage, HeaderComponent]
 })
 export class ComplainPageModule {}

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AccidentFormPageRoutingModule } from './accident-form-routing.module';
 
 import { AccidentFormPage } from './accident-form.page';
+import { HeaderComponent } from 'src/app/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { AccidentFormPage } from './accident-form.page';
     IonicModule,
     AccidentFormPageRoutingModule
   ],
-  declarations: [AccidentFormPage]
+  declarations: [AccidentFormPage, HeaderComponent]
 })
 export class AccidentFormPageModule {}

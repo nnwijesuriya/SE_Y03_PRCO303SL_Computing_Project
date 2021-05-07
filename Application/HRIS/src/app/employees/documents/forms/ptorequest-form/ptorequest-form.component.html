@@ -9,12 +9,12 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <h1 style="text-align: center;">Paid Time Off Request Form</h1>
+  <h1 style="text-align: center; font-weight: bold;">Paid Time Off Request Form</h1>
 <ion-grid>
 <ion-row>
   <ion-col size-md="8" offset-md="2">
     <ion-row>
-      <ion-header>Details of the Employees</ion-header>
+      <ion-label style="font-size: large; font-weight: bold;">Details of the Employees</ion-label>
     </ion-row>
 <ion-item style="padding-top: 20px;">
     <ion-row>
@@ -38,7 +38,7 @@
       <ion-col>
         <ion-item style="padding-top: 10px;">
           <ion-label position="floating">Email</ion-label>
-          <ion-input [(ngModel)]="form.email"></ion-input>
+          <ion-input readonly [(ngModel)]="form.Eemail"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -73,7 +73,7 @@
   <ion-row>
     <ion-col size-md="8" offset-md="2">
       <ion-row>
-        <ion-header>Details of the PTO request</ion-header>
+        <ion-label style="font-size: large; font-weight: bold;">Details of the PTO request</ion-label>
       </ion-row>
       <ion-row>
         <ion-col>

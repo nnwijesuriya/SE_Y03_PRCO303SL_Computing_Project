@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { RequestLeavesPageRoutingModule } from './request-leaves-routing.module';
 
 import { RequestLeavesPage } from './request-leaves.page';
+import { HeaderComponent } from 'src/app/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { RequestLeavesPage } from './request-leaves.page';
     IonicModule,
     RequestLeavesPageRoutingModule
   ],
-  declarations: [RequestLeavesPage]
+  declarations: [RequestLeavesPage, HeaderComponent]
 })
 export class RequestLeavesPageModule {}

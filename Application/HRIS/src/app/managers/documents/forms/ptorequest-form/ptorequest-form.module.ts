@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PTOrequestFormPageRoutingModule } from './ptorequest-form-routing.module';
 
 import { PTOrequestFormPage } from './ptorequest-form.page';
+import { HeaderComponent } from 'src/app/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { PTOrequestFormPage } from './ptorequest-form.page';
     IonicModule,
     PTOrequestFormPageRoutingModule
   ],
-  declarations: [PTOrequestFormPage]
+  declarations: [PTOrequestFormPage, HeaderComponent]
 })
 export class PTOrequestFormPageModule {}

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { MedicalPageRoutingModule } from './medical-routing.module';
 
 import { MedicalPage } from './medical.page';
+import { HeaderComponent } from 'src/app/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { MedicalPage } from './medical.page';
     IonicModule,
     MedicalPageRoutingModule
   ],
-  declarations: [MedicalPage]
+  declarations: [MedicalPage, HeaderComponent]
 })
 export class MedicalPageModule {}

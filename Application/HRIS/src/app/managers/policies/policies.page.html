@@ -3,10 +3,11 @@
 <ion-grid style="padding-top: 40px;">
   <ion-row>
     <ion-col size-md="10" offset-md="1">
-      <ion-button expand="block" (click)="addpolices()">Add New Polices</ion-button>
+      <ion-button expand="block" shape="round" (click)="addpolices()">Add New Polices</ion-button>
       <br>
       <br>
-      <ion-header>Active Policies</ion-header>
+      <ion-label style="font-size: larger; font-weight: bold;">Active Policies</ion-label>
+      <br>
       <br>
       <ion-list *ngFor="let policyA of (policiesA | async)">
         <ion-item>
@@ -34,7 +35,8 @@
   </ion-row>
   <ion-row style="padding-top: 20px;">
     <ion-col size-md="10" offset-md="1">
-      <ion-header>Removed Policies</ion-header>
+      <ion-label style="font-size: larger; font-weight: bold;">Removed Policies</ion-label>
+      <br>
       <br>
       <ion-list *ngFor="let policyD of (policiesD | async)">
         <ion-item>

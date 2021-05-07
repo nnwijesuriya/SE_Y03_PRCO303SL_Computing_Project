@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { EmployeeReviewFormPageRoutingModule } from './employee-review-form-routing.module';
 
 import { EmployeeReviewFormPage } from './employee-review-form.page';
+import { HeaderComponent } from 'src/app/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { EmployeeReviewFormPage } from './employee-review-form.page';
     IonicModule,
     EmployeeReviewFormPageRoutingModule
   ],
-  declarations: [EmployeeReviewFormPage]
+  declarations: [EmployeeReviewFormPage, HeaderComponent]
 })
 export class EmployeeReviewFormPageModule {}

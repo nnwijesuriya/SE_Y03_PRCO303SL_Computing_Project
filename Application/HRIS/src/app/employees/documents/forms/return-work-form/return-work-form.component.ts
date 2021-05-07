@@ -36,6 +36,7 @@ export class ReturnWorkFormComponent implements OnInit {
     this.form.sdate= myFormattedDate;
 
     this.auth.authState.subscribe(data=> {
+      this.form.Eemail = data.email;
       if(data.uid)
         {
           this.form.userId = data.uid;
@@ -49,8 +50,8 @@ export class ReturnWorkFormComponent implements OnInit {
 
   addform()
   {
-    this.rworkService.addform(this.form).then(f =>{
-      this.nav.navigateRoot('managers/documents');
+    this.rworkService.addformEmployee(this.form).then(f =>{
+      this.cancel();
     })
   }
 

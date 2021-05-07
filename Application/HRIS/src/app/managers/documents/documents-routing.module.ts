@@ -87,6 +87,26 @@ const routes: Routes = [
   {
     path: 'return-work/:id',
     loadChildren: () => import('./submitedForms/return-work/return-work.module').then( m => m.ReturnWorkPageModule)
+  },
+  {
+    path: 'complain-form-employee/:id',
+    loadChildren: () => import('./employeesForms/complain-form/complain-form.module').then( m => m.ComplainFormPageModule)
+  },
+  {
+    path: 'leave-request-form-employee/:id',
+    loadChildren: () => import('./employeesForms/leave-request-form/leave-request-form.module').then( m => m.LeaveRequestFormPageModule)
+  },
+  {
+    path: 'medical-form-employee/:id',
+    loadChildren: () => import('./employeesForms/medical-form/medical-form.module').then( m => m.MedicalFormPageModule)
+  },
+  {
+    path: 'pto-request-form-employee/:id',
+    loadChildren: () => import('./employeesForms/pto-request-form/pto-request-form.module').then( m => m.PtoRequestFormPageModule)
+  },
+  {
+    path: 'return-work-form-employee/:id',
+    loadChildren: () => import('./employeesForms/return-work-form/return-work-form.module').then( m => m.ReturnWorkFormPageModule)
   }
 ];
 

@@ -29,9 +29,23 @@ export class MedicalService {
   private leave: Observable<medicalForm[]>;
   private leaveCollection: AngularFirestoreCollection<medicalForm>;
 
+  private leaveE: Observable<medicalForm[]>;
+  private leaveCollectionE: AngularFirestoreCollection<medicalForm>;
+
   constructor(private afs : AngularFirestore){
     this.leaveCollection = this.afs.collection<medicalForm>('documents/managers/forms');
     this.leave = this.leaveCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+
+    this.leaveCollectionE = this.afs.collection<medicalForm>('documents/employees/forms');
+    this.leaveE = this.leaveCollectionE.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -46,6 +60,11 @@ export class MedicalService {
       return this.leaveCollection.add(review);
     }
 
+  addformEmployee(review : medicalForm): Promise<DocumentReference> { 
+    return this.leaveCollectionE.add(review);
+  }
+
+
 //to get the form data with each id
   getform(id: string): Observable<medicalForm> {
       return this.leaveCollection.doc<medicalForm>(id).valueChanges().pipe(
@@ -57,8 +76,23 @@ export class MedicalService {
       );
     }
 
+    getformEmployee(id: string): Observable<medicalForm> {
+      return this.leaveCollectionE.doc<medicalForm>(id).valueChanges().pipe(
+        take(1),
+        map(lform => {
+          lform.id = id;
+          return lform
+        })
+      );
+    }
+
+
     deleteIdea(id: string): Promise<void> {
       return this.leaveCollection.doc(id).delete();
+  }
+
+  deleteIdeaEmployee(id: string): Promise<void> {
+    return this.leaveCollectionE.doc(id).delete();
   }
   
   updateIdea(doc: medicalForm): Promise<void> {

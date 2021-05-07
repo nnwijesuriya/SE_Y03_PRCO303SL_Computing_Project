@@ -62,6 +62,18 @@ getCollection(value) {
       })))
 }
 
+getCollectionEmployees(value) {
+  return this.afs.collection<documents>('documents/employees/forms', ref => 
+      ref.where(
+          'status', '==', value
+      )).snapshotChanges().pipe(
+          map(actions => actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+      })))
+}
+
 getIdea(id: string): Observable<documents> {
   return this.docsCollection.doc<documents>(id).valueChanges().pipe(
     take(1),

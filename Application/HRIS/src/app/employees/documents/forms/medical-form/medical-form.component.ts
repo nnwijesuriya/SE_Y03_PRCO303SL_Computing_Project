@@ -37,6 +37,7 @@ export class MedicalFormComponent implements OnInit {
       this.form.sdate= myFormattedDate;
   
       this.auth.authState.subscribe(data=> {
+        this.form.Eemail = data.email;
         if(data.uid)
           {
             this.form.userId = data.uid;
@@ -50,8 +51,8 @@ export class MedicalFormComponent implements OnInit {
   
     addform()
     {
-      this.medicalser.addform(this.form).then(f =>{
-        this.nav.navigateRoot('managers/documents');
+      this.medicalser.addformEmployee(this.form).then(f =>{
+        this.cancel();
       })
     }
   

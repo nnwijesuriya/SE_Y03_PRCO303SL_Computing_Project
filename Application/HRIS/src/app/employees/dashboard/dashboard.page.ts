@@ -116,7 +116,7 @@ export class DashboardPage implements OnInit {
   {
     const modal = await this.modal.create({
       component: DocumentTypeComponent,
-      cssClass: 'my-document-modal-css'
+      cssClass: 'my-employeeDocument-modal-css'
     });
 
     modal.onDidDismiss()

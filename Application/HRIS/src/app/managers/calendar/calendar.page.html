@@ -29,7 +29,7 @@
       <ion-button fill="clear" (click)="next()">
         <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
       </ion-button>
-      <ion-button (click)="gobottom()">Add Event</ion-button>
+      <ion-button (click)="gobottom()" shape="round">Add Event</ion-button>
     </ion-col>
   </ion-row>
   <calendar
@@ -74,7 +74,7 @@
         <ion-label>All Day</ion-label>
         <ion-checkbox [(ngModel)]="form.allday"></ion-checkbox>
       </ion-item>
-      <ion-button fill="outline" expand="block" (click)="addevent()" [disabled]="form.title == ''">Add Event</ion-button>
+      <ion-button fill="outline" expand="block" shape="round" (click)="addevent()" [disabled]="form.title == ''">Add Event</ion-button>
     </ion-card-content>
   </ion-card>
 

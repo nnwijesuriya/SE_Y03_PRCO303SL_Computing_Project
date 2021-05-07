@@ -16,6 +16,6 @@ import {HeaderComponent} from '../../../../header/header.component'
     IonicModule,
     LeaveRequestPageRoutingModule
   ],
-  declarations: [LeaveRequestPage]
+  declarations: [LeaveRequestPage, HeaderComponent]
 })
 export class LeaveRequestPageModule {}

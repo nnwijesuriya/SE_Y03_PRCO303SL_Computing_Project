@@ -13,9 +13,9 @@ export class PtoRequestPage implements OnInit {
   form : ptoForm ={
     userId: '',
    formtype: '',
-    Fname: '',
+   Fname: '',
    Lname: '',
-   email: '',
+   Eemail: '',
    phone: '',
    Sname: '',
    department: '',
@@ -89,7 +89,7 @@ export class PtoRequestPage implements OnInit {
     this.form.formtype = '';
     this.form.Fname = '';
     this.form.Lname = '';
-    this.form.email = '';
+    this.form.Eemail = '';
     this.form.phone = '';
     this.form.Sname = '';
     this.form.department = '';

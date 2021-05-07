@@ -49,7 +49,8 @@ export class DocumentsPage implements OnInit {
 
   async openModalDT(){
     const modal = await this.modals.create({
-      component: DocumentTypesComponent
+      component: DocumentTypesComponent,
+      cssClass: 'my-documentSelect-modal-css'
     });
     return await modal.present();
   }
@@ -64,16 +65,16 @@ export class DocumentsPage implements OnInit {
   }
 
   searchDocumnetpending(status){
-    this.docsP = this.noticedoc.getCollection(status);
+    this.docsP = this.noticedoc.getCollectionEmployees(status);
   }
 
   searchDocumnetdecline(status){
     this.docsD = this.noticedoc.getCollection(status);
   }
 
-
   getdocument(id, type)
   {
+    console.log(id);
    if(type=="Leave Request")
    {
      this.router.navigate(['/managers/documents/request-leaves',id]);
@@ -104,6 +105,27 @@ export class DocumentsPage implements OnInit {
    }else if(type == "Return To Work Form")
    {
     this.router.navigate(['/managers/documents/return-work',id]);
+   }
+  }
+
+  getdocumentemployee(id, type)
+  {
+    console.log(id);
+   if(type=="Leave Request")
+   {
+     this.router.navigate(['/managers/documents/leave-request-form-employee',id]);
+   }else if(type == "Medical Form")
+   {
+    this.router.navigate(['/managers/documents/medical-form-employee',id]);
+   }else if(type == "Complain Form")
+   {
+    this.router.navigate(['/managers/documents/complain-form-employee',id]);
+   }else if(type == "PTO Request")
+   {
+    this.router.navigate(['/managers/documents/pto-request-form-employee',id]);
+   }else if(type == "Return To Work Form")
+   {
+    this.router.navigate(['/managers/documents/return-work-form-employee',id]);
    }
   }
 }

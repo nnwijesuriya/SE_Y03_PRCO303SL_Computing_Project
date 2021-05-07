@@ -3,14 +3,16 @@
   <ion-grid style="padding-top: 30px;">
     <ion-row style="text-align: center;">
         <ion-col  size-md="6" offset-md="3">  
-                <ion-button expand="block" (click)="adduser()" >Add new User</ion-button>
+                <ion-button expand="block" shape="round" (click)="adduser()" >Add new User</ion-button>
         </ion-col>
     </ion-row>   
 </ion-grid>
 <ion-grid style="padding-top: 30px;">
     <ion-row>
         <ion-col size-md="10" offset-md="1">
-            <ion-header style="padding-bottom: 15px;">HR Managers In The Organization</ion-header>
+            <ion-label style="padding-bottom: 15px; font-size: larger; font-weight: bold;">HR Managers In The Organization</ion-label>
+           <br>
+           <br>
             <ion-list *ngFor="let users of (Muse | async)">
                 <ion-item>
                <ion-grid>
@@ -42,7 +44,9 @@
 <ion-grid style="padding-top: 100px;">
     <ion-row>
         <ion-col size-md="10" offset-md="1">
-            <ion-header style="padding-bottom: 15px;">Employees In The Organization</ion-header>
+            <ion-label style="padding-bottom: 15px; font-size: larger; font-weight: bold;">Employees In The Organization</ion-label>
+            <br>
+            <br>
             <ion-list *ngFor="let users of (Euse | async)">
                 <ion-item>
                <ion-grid>

@@ -39,6 +39,7 @@ export class LeaveRequestFormComponent implements OnInit {
   
   
       this.auth.authState.subscribe(data=> {
+        this.form.Eemail = data.email;
         if(data.uid)
           {
             this.form.userId = data.uid;
@@ -51,8 +52,8 @@ export class LeaveRequestFormComponent implements OnInit {
       }
   
       addform(){
-        this.lform.addform(this.form).then(f =>{
-          this.nav.navigateRoot('managers/documents');
+        this.lform.addformEmployee(this.form).then(f =>{
+          this.cancel();
         })
       }
   

@@ -14,9 +14,9 @@ export class PtorequestFormComponent implements OnInit {
   form : ptoForm ={
     userId: '',
     formtype: 'PTO Request',
-     Fname: '',
+    Fname: '',
     Lname: '',
-    email: '',
+    Eemail: '',
     phone: '',
     Sname: '',
     department: '',
@@ -37,21 +37,22 @@ export class PtorequestFormComponent implements OnInit {
      this.form.sdate= myFormattedDate;
  
      this.auth.authState.subscribe(data=> {
+      this.form.Eemail = data.email;
        if(data.uid)
          {
            this.form.userId = data.uid;
            console.log( this.form.userId)
          } else
          {
-            this.nav.navigateRoot('managers/login');
+          this.nav.navigateRoot('login');
          }
        });
    }
  
    addform()
    {
-     this.ptoservice.addform(this.form).then(f =>{
-       this.nav.navigateRoot('documents');
+     this.ptoservice.addformEmployee(this.form).then(f =>{
+       this.cancel();
    })
  }
  
@@ -61,7 +62,7 @@ export class PtorequestFormComponent implements OnInit {
      this.form.formtype = '';
      this.form.Fname = '';
      this.form.Lname = '';
-     this.form.email = '';
+     this.form.Eemail = '';
      this.form.phone = '';
      this.form.Sname = '';
      this.form.department = '';

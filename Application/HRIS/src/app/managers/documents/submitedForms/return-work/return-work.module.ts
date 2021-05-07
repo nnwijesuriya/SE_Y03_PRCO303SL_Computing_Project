@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ReturnWorkPageRoutingModule } from './return-work-routing.module';
 
 import { ReturnWorkPage } from './return-work.page';
+import { HeaderComponent } from 'src/app/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ReturnWorkPage } from './return-work.page';
     IonicModule,
     ReturnWorkPageRoutingModule
   ],
-  declarations: [ReturnWorkPage]
+  declarations: [ReturnWorkPage, HeaderComponent]
 })
 export class ReturnWorkPageModule {}

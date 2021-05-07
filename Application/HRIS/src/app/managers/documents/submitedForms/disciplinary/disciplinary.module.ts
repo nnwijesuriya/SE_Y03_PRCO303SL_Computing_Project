@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DisciplinaryPageRoutingModule } from './disciplinary-routing.module';
 
 import { DisciplinaryPage } from './disciplinary.page';
+import { HeaderComponent } from 'src/app/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { DisciplinaryPage } from './disciplinary.page';
     IonicModule,
     DisciplinaryPageRoutingModule
   ],
-  declarations: [DisciplinaryPage]
+  declarations: [DisciplinaryPage, HeaderComponent]
 })
 export class DisciplinaryPageModule {}
