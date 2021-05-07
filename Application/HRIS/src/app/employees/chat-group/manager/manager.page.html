@@ -41,13 +41,13 @@
 <ion-footer>
   <ion-toolbar color="light">
     <ion-row class="ion-align-items-center">
-      <ion-col size="10"  offset-md="1">
-        <ion-textarea autoGrow="true" class="message-input" rows="1" maxLength="500" [(ngModel)]="newMsg" style="background-color: white; color: black;">
+      <ion-col size="9" offset-md="0.5">
+        <ion-textarea class="message-input" rows="1" maxLength="500" [(ngModel)]="newMsg" style="background-color: white; color: black;">
         </ion-textarea>
       </ion-col>
-      <ion-col size="1">
-        <ion-button expand="block" fill="clear" color="primary" [disabled]="newMsg ==''"
-          class="msg-btn" (click)="sendMessage()">
+      <ion-col size="2" style="padding-top: 8px;">
+        <ion-button expand="block" color="primary" [disabled]="newMsg ==''"
+          (click)="sendMessage()">
           <ion-icon name="send" slot="icon-only" size="large"></ion-icon>
         </ion-button>
       </ion-col>
