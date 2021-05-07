@@ -12,24 +12,28 @@
           <ion-col *ngIf="message.from != email" size-md="7" offset="4">
           <ion-card class="message" >
             <ion-grid>
+              <ion-row>
                 <ion-col>
                   <b class="username">{{ message.from}}</b><br><br>
                   <span class="mes">{{message.msg}}
                     <div class="date ion-text-right"><br>{{ message.createdAt?.toMillis() | date:'short' }}</div>
                   </span>  
                 </ion-col>
+              </ion-row>
             </ion-grid>
           </ion-card>
           </ion-col>
             <ion-col *ngIf="message.from == email" size="8" offset-md="1">
               <ion-card class="myMessage">
                 <ion-grid>
+                  <ion-row>
                     <ion-col>
                       <b class="username">{{ message.from}}</b><br><br>
                       <span class="mes">{{message.msg}}
                         <div class="date ion-text-right"><br>{{ message.createdAt?.toMillis() | date:'short' }}</div>
                       </span>
                     </ion-col>
+                  </ion-row>
                 </ion-grid>
               </ion-card>
             </ion-col>

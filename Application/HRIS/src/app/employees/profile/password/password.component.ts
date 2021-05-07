@@ -16,6 +16,12 @@ export class PasswordComponent implements OnInit {
 
   public user : Observable<users[]>;
 
+  showOldpassword= false;
+  passwordtoggleiconOld = 'eye';
+
+  showNewpassword= false;
+  passwordtoggleiconNew = 'eye';
+
   profile : users = {
     userid: '',
     Fname: '',
@@ -92,6 +98,32 @@ Updatepassword()
    window.alert('The password you entered was incorrect');
  }
 }
+
+toggleOldpassword()
+{
+  this.showOldpassword = !this.showOldpassword;
+
+  if(this.passwordtoggleiconOld == 'eye')
+  {
+    this.passwordtoggleiconOld = 'eye-off';
+  }else
+  {
+    this.passwordtoggleiconOld = 'eye';
+  }
+} 
+
+toggleNewpassword()
+{
+  this.showNewpassword = !this.showNewpassword;
+
+  if(this.passwordtoggleiconNew == 'eye')
+  {
+    this.passwordtoggleiconNew = 'eye-off';
+  }else
+  {
+    this.passwordtoggleiconNew = 'eye';
+  }
+} 
 
 closemodal()
 {

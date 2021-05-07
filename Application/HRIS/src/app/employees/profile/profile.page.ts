@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -40,7 +41,8 @@ export class ProfilePage implements OnInit {
     employeeReview: '',
     employeeReviewCounter: ''
    } 
-  
+   
+   pipe = new DatePipe('en-US'); 
     constructor(private user: UserService, private auth: AngularFireAuth, private toast:ToastController, private modal: ModalController, private storage: AngularFireStorage) { }
   
     uid;
@@ -59,6 +61,9 @@ export class ProfilePage implements OnInit {
       let id = this.uid;
       this.user.getform(id).subscribe(profiles => {
       this.profile = profiles;   
+      let date; 
+      date = this.pipe.transform(profiles.DOB, 'mediumDate');  
+      this.profile.DOB = date;
       });
     }
   
@@ -66,7 +71,7 @@ export class ProfilePage implements OnInit {
     {
       const modal = await this.modal.create({
         component: EditProfileComponent,
-        cssClass: 'my-custom-modal-css'
+        cssClass: 'my-editProfile-modal-css'
       });
      await modal.present();
     }
@@ -74,7 +79,8 @@ export class ProfilePage implements OnInit {
     async passwordmodal()
     {
       const pmodal = await this.modal.create({
-        component: PasswordComponent
+        component: PasswordComponent,
+        cssClass: 'my-ProfilePassword-modal-css'
       });
       await pmodal.present();
     }
