@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ModalController } from '@ionic/angular';
 import { CalendarComponent } from 'ionic2-calendar';
 import { IonContent } from '@ionic/angular';
+import { AddFormComponent } from './add-form/add-form.component';
 
 @Component({
   selector: 'app-calendar',
@@ -12,13 +13,11 @@ import { IonContent } from '@ionic/angular';
 })
 export class CalendarPage implements OnInit {
 
-  @ViewChild(IonContent, { static: false }) content: IonContent;
-
   form = {
     title: '',
     startTime: '',
     endTime: '',
-    allday: 'false'
+    allday: false
   }
   eventSource = [];
   titlecal: string;
@@ -64,34 +63,12 @@ export class CalendarPage implements OnInit {
     })
   }
 
-  addevent()
-  {
-    console.log(this.form.title);
-      let event = {
-      title: this.form.title,
-      startTime:  new Date(this.form.startTime),
-      endTime: new Date(this.form.endTime),
-      allDay: this.form.allday,
-    }
-    if (event.allDay) {
-      let start = event.startTime;
-      let end = event.endTime;
-      event.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
-      event.endTime = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate() + 1));
-    }
-    this.eventSource.push(event);
-    this.db.collection('events').add(this.form);
-    this.myCal.loadEvents();
-    this.resetEvent();
-    this.content.scrollToTop(1500);
-  }
-
   resetEvent() {
     this.form = {
       title: '',
       startTime: '',
       endTime: '',
-      allday : 'false'
+      allday : false
     };
   }
 
@@ -110,9 +87,13 @@ export class CalendarPage implements OnInit {
     this.titlecal = title;
   }
 
-  gobottom()
+  async addEvent()
   {
-    this.content.scrollToBottom(1500);
+    const modal = await this.modals.create({
+      component: AddFormComponent,
+      cssClass: 'my-calendar-modal-css'
+    });
+   await modal.present();
   }
 
 }

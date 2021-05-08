@@ -19,7 +19,7 @@ export class CalendarPage implements OnInit {
     title: '',
     startTime: '',
     endTime: '',
-    allday: 'false'
+    allday: false
   }
   eventSource = [];
   titlecal: string;
@@ -65,7 +65,7 @@ export class CalendarPage implements OnInit {
       title: '',
       startTime: '',
       endTime: '',
-      allday : 'false'
+      allday : false
     };
   }
 
@@ -83,6 +83,4 @@ export class CalendarPage implements OnInit {
   {
     this.titlecal = title;
   }
-
-
 }

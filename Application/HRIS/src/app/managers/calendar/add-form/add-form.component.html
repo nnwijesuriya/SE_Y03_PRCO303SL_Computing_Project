@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+    New Event
+   </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="resetEvent()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col style="padding-top: 40px;">
+        <ion-card>
+          <ion-card-header tappable>
+            <ion-card-title style="text-align: center;">Add New Event</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item>
+              <ion-label  position="floating">Event</ion-label>
+              <ion-input type="text" [(ngModel)]="form.title"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label  position="floating" >Start</ion-label>
+              <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM DD YYYY:HH:mm" [(ngModel)]="form.startTime"></ion-datetime>
+            </ion-item>
+            <ion-item> 
+              <ion-label  position="floating" >End</ion-label>
+              <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM DD YYYY:HH:mm" [(ngModel)]="form.endTime"></ion-datetime>
+            </ion-item>
+            <ion-item>
+              <ion-label>All Day</ion-label>
+              <ion-checkbox [(ngModel)]="form.allday"></ion-checkbox>
+            </ion-item>
+            <ion-button fill="outline" expand="block" shape="round" (click)="addevent()" [disabled]="form.title == ''">Add Event</ion-button>
+            <ion-button fill="outline" expand="block" shape="round" (click)="resetEvent()">Cancel</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

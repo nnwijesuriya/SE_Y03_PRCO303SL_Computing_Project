@@ -9,6 +9,7 @@ import { CalendarPage } from './calendar.page';
 import {HeaderComponent} from '../../header/header.component';
 
 import { NgCalendarModule } from 'ionic2-calendar';
+import { AddFormComponent } from './add-form/add-form.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { NgCalendarModule } from 'ionic2-calendar';
     CalendarPageRoutingModule,
     NgCalendarModule
   ],
-  declarations: [CalendarPage,HeaderComponent]
+  declarations: [CalendarPage,HeaderComponent,AddFormComponent],
+  entryComponents: [AddFormComponent]
 })
 export class CalendarPageModule {}

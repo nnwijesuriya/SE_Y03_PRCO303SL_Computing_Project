@@ -1,6 +1,5 @@
 <app-header></app-header>
 <ion-content>
-
   <ion-segment [(ngModel)]="calendar.mode">
     <ion-segment-button value="month">
       <ion-label>Month</ion-label>
@@ -29,7 +28,7 @@
       <ion-button fill="clear" (click)="next()">
         <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
       </ion-button>
-      <ion-button (click)="gobottom()" shape="round">Add Event</ion-button>
+      <ion-button (click)="addEvent()" shape="round">Add Event</ion-button>
     </ion-col>
   </ion-row>
   <calendar
@@ -43,7 +42,6 @@
     step="30"
     startingDayWeek="1">
   </calendar>
-
   <ng-template #template let-view="view" let-row="row" let-col="col">
     <div [class.with-event]="view.dates[row*7+col].events.length">
       {{view.dates[row*7+col].label}}
@@ -52,30 +50,4 @@
       </div>
     </div>
   </ng-template>
-
-  <ion-card>
-    <ion-card-header tappable>
-      <ion-card-title style="text-align: center;">Add New Event</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-        <ion-label  position="floating">Event</ion-label>
-        <ion-input type="text" [(ngModel)]="form.title"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label  position="floating" >Start</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM DD YYYY:HH:mm" [(ngModel)]="form.startTime"></ion-datetime>
-      </ion-item>
-      <ion-item> 
-        <ion-label  position="floating" >End</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM DD YYYY:HH:mm" [(ngModel)]="form.endTime"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label>All Day</ion-label>
-        <ion-checkbox [(ngModel)]="form.allday"></ion-checkbox>
-      </ion-item>
-      <ion-button fill="outline" expand="block" shape="round" (click)="addevent()" [disabled]="form.title == ''">Add Event</ion-button>
-    </ion-card-content>
-  </ion-card>
-
 </ion-content>
