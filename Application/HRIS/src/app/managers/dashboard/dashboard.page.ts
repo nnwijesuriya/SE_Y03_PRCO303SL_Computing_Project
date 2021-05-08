@@ -60,7 +60,8 @@ export class DashboardPage implements OnInit {
   async addnotes()
   {
     const modals = await this.modal.create({
-      component: NotepadComponent
+      component: NotepadComponent,
+      cssClass: 'my-noice-modal-css'
     });
     await modals.present();
   }

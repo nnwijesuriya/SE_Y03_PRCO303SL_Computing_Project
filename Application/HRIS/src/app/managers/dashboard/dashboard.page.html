@@ -7,7 +7,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-header position="stacked">Company Notices</ion-header>
+                <ion-label style="font-size: larger; font-weight: bold;">Company Notices</ion-label>
                 <ion-item slot="end">
                   <ion-select placeholder="Formal Notice" [(ngModel)]="typen" (ionChange)="getnotice(typen)">
                     <ion-select-option value="Urgent Notice">Urgent Notice</ion-select-option>
@@ -37,20 +37,20 @@
       <ion-col size-md="6">
         <div>
           <ion-card class="card">
-            <ion-header style="padding-bottom: 10px; padding-top: 10px;">
+            <ion-card-header style="padding-bottom: 10px; padding-top: 10px;">
               <ion-item>
-                <ion-card-title style="padding-left: 10px;">Notepad</ion-card-title>
+                <ion-card-title style="padding-left: 10px; font-weight: bold;">Notepad</ion-card-title>
                 <ion-buttons slot="end">
                 <ion-button (click)="addnotes()">
                 <ion-icon name="add-circle-outline"></ion-icon>
               </ion-button>
                 </ion-buttons>
               </ion-item>     
-            </ion-header>
+            </ion-card-header>
             <div style="height: 350px; overflow-y: auto;">
-            <ion-header style="padding-bottom: 10px; padding-top: 10px;">
-              <ion-card-subtitle style="padding-left: 10px;">Tasks To Do </ion-card-subtitle>
-            </ion-header>
+            <ion-card-header style="padding-bottom: 10px; padding-top: 10px;">
+              <ion-card-subtitle style="padding-left: 10px; font-weight: bold;">Tasks To Do </ion-card-subtitle>
+            </ion-card-header>
             <ion-card-content>
               <ion-list *ngFor="let notes of (notes | async)">
                 <ion-item>
@@ -72,9 +72,9 @@
                 </ion-item>
               </ion-list>
             </ion-card-content>
-            <ion-header style="padding-bottom: 10px; padding-top: 10px;">
-              <ion-card-subtitle style="padding-left: 10px;">Tasks Completed</ion-card-subtitle>
-            </ion-header>
+            <ion-card-header style="padding-bottom: 10px; padding-top: 10px;">
+              <ion-card-subtitle style="padding-left: 10px; font-weight: bold;">Tasks Completed</ion-card-subtitle>
+            </ion-card-header>
             <ion-card-content>
               <ion-list *ngFor="let Cnotes of (Cnotes | async)">
                 <ion-item>
