@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormPageRoutingModule } from './form-routing.module';
 
 import { FormPage } from './form.page';
+import { HeaderComponent } from 'src/app/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { FormPage } from './form.page';
     IonicModule,
     FormPageRoutingModule
   ],
-  declarations: [FormPage]
+  declarations: [FormPage, HeaderComponent]
 })
 export class FormPageModule {}
