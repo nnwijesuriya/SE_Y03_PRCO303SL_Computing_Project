@@ -1,5 +1,7 @@
 {
   "name": "HRIS",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
