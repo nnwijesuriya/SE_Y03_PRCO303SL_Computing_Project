@@ -224,10 +224,10 @@ export class GraphsPage implements OnInit {
     this.bars = new Chart(this.barChart.nativeElement, {
       type: 'bar',
       data: {
-        labels: ['Accounting', 'HR Managers', 'Managers', 'Production', 'Purchasing', 'Marketing', 'Reserach'],
+        labels: ['Accounting', 'HR Managers', 'Production', 'Purchasing', 'Marketing', 'Reserach'],
         datasets: [{
           label: 'Sallary in thousands',
-          data: [this.departmentData1,this.departmentData2,this.departmentData3,this.departmentData4,this.departmentData5,this.departmentData6,this.departmentData7],
+          data: [this.departmentData1,this.departmentData2,this.departmentData3,this.departmentData5,this.departmentData7,this.departmentData7],
           backgroundColor: '#1484FF',
           borderColor: 'rgb(38, 194, 129)',
           borderWidth: 1
@@ -306,10 +306,10 @@ export class GraphsPage implements OnInit {
     this.hrzBars = new Chart(this.horizontalChart.nativeElement, {
       type: 'horizontalBar',
       data: {
-        labels: ['Accounting', 'HR Managers', 'Managers', 'Production', 'Purchasing', 'Marketing', 'Reserach'],
+        labels: ['Accounting', 'HR Managers','Production', 'Purchasing', 'Marketing', 'Reserach'],
         datasets: [{
           label: 'Attendance Today',
-          data: [this.attenanceData1,this.attenanceData2,this.attenanceData3,this.attenanceData4,this.attenanceData5,this.attenanceData6,this.attenanceData7],
+          data: [this.attenanceData1,this.attenanceData2,this.attenanceData3,this.attenanceData5,this.attenanceData6,this.attenanceData7],
           backgroundColor: '#FFFE14',
           borderColor: 'rgb(38, 194, 129)',
           borderWidth: 1
@@ -388,14 +388,13 @@ export class GraphsPage implements OnInit {
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type: 'doughnut',
       data: {
-        labels: ['Accounting', 'HR Managers', 'Managers', 'Production', 'Purchasing', 'Marketing', 'Reserach'],
+        labels: ['Accounting', 'HR Managers', 'Production' , 'Purchasing', 'Marketing', 'Reserach'],
         datasets: [{
-          data: [this.employeesData1,this.employeesData2,this.employeesData3,this.employeesData4,this.employeesData5,this.employeesData6,this.employeesData7],
+          data: [this.employeesData1,this.employeesData2,this.employeesData3,this.employeesData5,this.employeesData6,this.employeesData7],
           backgroundColor: [
             '#FF5414',
             '#FCAA24',
             '#DBF70C',
-            '#0CF759',
             '#0AC5F5',
             '#A05DF3',
             '#D726BF'
@@ -404,7 +403,6 @@ export class GraphsPage implements OnInit {
             '#FFCE56',
             '#FF6384',
             '#36A2EB',
-            '#FFCE56',
             '#FF6384',
             '#FFCE56',
             '#36A2EB',
